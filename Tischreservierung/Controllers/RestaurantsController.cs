@@ -48,7 +48,6 @@ namespace Tischreservierung.Controllers
         [HttpPost]
         public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant)
         {
-            //_logger.LogInformation(restaurant.Name);
             bool inserted = _repository.InsertRestaurant(restaurant);
             if (inserted)
             {

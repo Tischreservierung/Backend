@@ -56,10 +56,15 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpGet("byZipCodeAndLocation")]
-        public async Task<ActionResult<IEnumerable<ZipCode>>> GetZipcodesByZipCodeAndLocation
-            (string zipZode, string location)
+        public async Task<ActionResult<ZipCode?>> GetZipcodesByZipCodeAndLocation
+            (string zipCode, string location)
         {
-            return Ok(await _repository.GetByZipCodeAndLocation(zipZode,location));
+            ZipCode? code = await _repository.GetByZipCodeAndLocation(zipCode,location);
+
+            if (code == null)
+                return NotFound();
+
+            return Ok(code);
 
         }
 
