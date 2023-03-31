@@ -12,8 +12,8 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OnlineReservationContext))]
-    [Migration("20230310142000_intialcreate")]
-    partial class intialcreate
+    [Migration("20230331111218_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
