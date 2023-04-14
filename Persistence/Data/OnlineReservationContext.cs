@@ -22,5 +22,6 @@ namespace Persistence.Data
         public DbSet<RestaurantTable> RestaurantTables => Set<RestaurantTable>();
         public DbSet<RestaurantOpeningTime> RestaurantOpeningTimes => Set<RestaurantOpeningTime>();
         public DbSet<ZipCode> Zipcodes => Set<ZipCode>();
+        public DbSet<Reservation> Reservation => Set<Reservation>();
     }
 }

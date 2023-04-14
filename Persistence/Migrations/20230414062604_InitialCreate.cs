@@ -163,6 +163,41 @@ namespace Persistence.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Reservation",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReservationDay = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    RestaurantTableId = table.Column<int>(type: "int", nullable: true),
+                    RestaurantId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservation", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reservation_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservation_Restaurants_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservation_RestaurantTables_RestaurantTableId",
+                        column: x => x.RestaurantTableId,
+                        principalTable: "RestaurantTables",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CustomerNumber",
                 table: "Customers",
@@ -185,6 +220,21 @@ namespace Persistence.Migrations
                 name: "IX_Employees_RestaurantId",
                 table: "Employees",
                 column: "RestaurantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservation_CustomerId",
+                table: "Reservation",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservation_RestaurantId",
+                table: "Reservation",
+                column: "RestaurantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservation_RestaurantTableId",
+                table: "Reservation",
+                column: "RestaurantTableId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RestaurantOpeningTimes_RestaurantId",
@@ -210,16 +260,19 @@ namespace Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Reservation");
 
             migrationBuilder.DropTable(
                 name: "RestaurantOpeningTimes");
 
             migrationBuilder.DropTable(
                 name: "RestaurantRestaurantCategory");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "RestaurantTables");
