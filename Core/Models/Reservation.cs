@@ -1,4 +1,4 @@
-﻿using Core.Models.Person;
+﻿using Core.Models.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-    public class Reservation
+    public class Reservation : EntityObject
     {
-        public int Id { get; set; }
         [DataType(DataType.Date)]
         public DateTime ReservationDay { get; set; }
         [DataType(DataType.Time)]
