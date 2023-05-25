@@ -24,6 +24,14 @@ namespace Persistence.Data
                 new Category() { Id=2, Name="Arabisch"});
         }
 
+        private ZipCode[] ReadCsv()
+        {
+            string[] lines = File.ReadAllLines("C:\\Users\\sebas\\Downloads\\ZipCodes.txt");
+            ZipCode[] zipCode = new ZipCode[lines.Length];
+
+            return zipCode;
+        }
+
         public DbSet<Customer> Customers => Set<Customer>();
 
         public DbSet<Employee> Employees => Set<Employee>();

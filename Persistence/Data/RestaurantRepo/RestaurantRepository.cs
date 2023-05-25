@@ -6,6 +6,7 @@ using Core.Models.User;
 
 namespace Persistence.Data.RestaurantRepo
 {
+
     public class RestaurantRepository : IRestaurantRepository
     {
         private  readonly OnlineReservationContext _context;
@@ -68,6 +69,32 @@ namespace Persistence.Data.RestaurantRepo
         public async Task Save()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Restaurant>> GetRestaurantsByName(string name, int zipCodeId)
+        {
+            name = name.ToLower();
+            if(zipCodeId == -1)
+                return await _context.Restaurants.Where(r => r.Name.ToLower().Contains(name)).ToListAsync();
+
+            return await _context.Restaurants.Where(r => r.Name.ToLower().Contains(name) 
+                    && r.ZipCodeId == zipCodeId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories(int[] categories, int zipCodeId)
+        {
+
+
+            if (zipCodeId == -1 && (categories == null || categories.Length == 0))
+                return await _context.Restaurants.ToListAsync();
+            else if (zipCodeId == -1)
+                return await _context.Restaurants.Where(r => r.Categories.Any(c =>
+                    categories.Contains(c.Id))).ToListAsync();
+            else if (categories == null || categories.Length == 0)
+                return await _context.Restaurants.Where(r => r.ZipCodeId == zipCodeId).ToListAsync();
+
+            return await _context.Restaurants.Where(r => r.ZipCodeId == zipCodeId && r.Categories.Any(c =>
+                    categories.Contains(c.Id))).ToListAsync();
         }
     }
 }
