@@ -10,9 +10,11 @@ namespace Core.Contracts
         Task<IEnumerable<Restaurant>> GetRestaurantsByName(string name, int zipCodeId);
         Task<IEnumerable<Restaurant>> GetRestaurantsByCategories(int[] categories, int zipCodeId);
 
-        Task<Restaurant> InsertRestaurantAsync(DTO_RestaurantPost restaurant);
+        Task<Restaurant?> InsertRestaurantAsync(DTO_RestaurantPost restaurant);
         void DeleteRestaurant(Restaurant restaurant);
         void UpdateRestaurant(Restaurant restaurant);
         Task Save();
+
+        Task<RestaurantViewDto?> GetRestaurantForViewById(int id);
     }
 }

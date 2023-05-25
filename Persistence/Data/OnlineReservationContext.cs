@@ -13,7 +13,6 @@ namespace Persistence.Data
 
         }
 
-        public DbSet<Person> Persons => Set<Person>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ZipCode>().HasData(
@@ -32,6 +31,7 @@ namespace Persistence.Data
             return zipCode;
         }
 
+        public DbSet<Person> Persons => Set<Person>();
         public DbSet<Customer> Customers => Set<Customer>();
 
         public DbSet<Employee> Employees => Set<Employee>();

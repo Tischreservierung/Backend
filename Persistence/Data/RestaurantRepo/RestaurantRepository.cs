@@ -25,16 +25,20 @@ namespace Persistence.Data.RestaurantRepo
         {
             return await _context.Restaurants.FindAsync(id);
         }
-        public async Task<Restaurant> InsertRestaurantAsync(DTO_RestaurantPost restaurant)
+        public async Task<Restaurant?> InsertRestaurantAsync(DTO_RestaurantPost restaurant)
         {
+            if (_context.Persons.Count(p => p.EMail == restaurant.Employee!.EMail) != 0)
+                return null;
+
             Restaurant res = new Restaurant()
             {
                 Name = restaurant.Name,
                 Address = restaurant.Address,
                 StreetNr = restaurant.StreetNr,
-                ZipCodeId = restaurant.ZipCode!.Id,
-                Categories = _context.Categories.Where(c => restaurant.Categories!.Contains(c)).ToList()
+                ZipCodeId = restaurant.ZipCode!.Id
             };
+            if (restaurant.Categories != null)
+                res.Categories = _context.Categories.Where(c => restaurant.Categories!.Contains(c)).ToList();
 
             Employee emp = restaurant.Employee!;
             emp.Restaurant = res;
@@ -50,7 +54,7 @@ namespace Persistence.Data.RestaurantRepo
 
             }).ToArray();
 
-            await _context.Restaurants.AddAsync(res);
+            _context.Restaurants.Add(res);
             await _context.RestaurantOpeningTimes.AddRangeAsync(openings);
             await _context.Employees.AddAsync(emp);
             return res;
@@ -95,6 +99,23 @@ namespace Persistence.Data.RestaurantRepo
 
             return await _context.Restaurants.Where(r => r.ZipCodeId == zipCodeId && r.Categories.Any(c =>
                     categories.Contains(c.Id))).ToListAsync();
+        }
+
+        public async Task<RestaurantViewDto?> GetRestaurantForViewById(int id)
+        {
+            return await _context.Restaurants.Where(x => x.Id == id).Select(x => new RestaurantViewDto()
+            {
+                Id = x.Id,
+                StreetNr = x.StreetNr,
+                Address = x.Address,
+                ZipCode = x.ZipCode,
+                Openings = _context.RestaurantOpeningTimes.Where(y => y.RestaurantId == x.Id)
+                    .Select(o => new DTO_OpeningTime() { Day = o.Day, 
+                        OpenFrom = o.OpeningTime.Hour + ":" + o.OpeningTime.Minute, 
+                        OpenTo = o.ClosingTime.Hour + ":" + o.ClosingTime.Minute}).ToArray(),
+                Name = x.Name,
+                Categories = x.Categories.ToArray(),
+            }).SingleOrDefaultAsync();
         }
     }
 }
