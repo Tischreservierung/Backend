@@ -85,20 +85,13 @@ namespace Persistence.Data.RestaurantRepo
                     && r.ZipCodeId == zipCodeId).ToListAsync();
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories(int[] categories, int zipCodeId)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories
+            (int[] categories, int zipCodeId, int day)
         {
-
-
-            if (zipCodeId == -1 && (categories == null || categories.Length == 0))
-                return await _context.Restaurants.ToListAsync();
-            else if (zipCodeId == -1)
-                return await _context.Restaurants.Where(r => r.Categories.Any(c =>
-                    categories.Contains(c.Id))).ToListAsync();
-            else if (categories == null || categories.Length == 0)
-                return await _context.Restaurants.Where(r => r.ZipCodeId == zipCodeId).ToListAsync();
-
-            return await _context.Restaurants.Where(r => r.ZipCodeId == zipCodeId && r.Categories.Any(c =>
-                    categories.Contains(c.Id))).ToListAsync();
+            return await _context.Restaurants.Where(r => (zipCodeId == -1 || r.ZipCodeId == zipCodeId)
+            && (categories.Length == 0 || r.Categories.Any(c => categories.Contains(c.Id)))
+            && (day == -1 || _context.RestaurantOpeningTimes.Any(o => o.Day == day && r.Id == o.RestaurantId)))
+                .ToListAsync();
         }
 
         public async Task<RestaurantViewDto?> GetRestaurantForViewById(int id)

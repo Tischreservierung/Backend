@@ -43,9 +43,9 @@ namespace Tischreservierung.Controllers
 
         [HttpGet("categories")]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByCategories
-            ([FromQuery] int[] categorieIds, int zipCodeId)
+            ([FromQuery] int[] categorieIds, int zipCodeId, int day)
         {
-            var restaurants = await _repository.GetRestaurantsByCategories(categorieIds, zipCodeId);
+            var restaurants = await _repository.GetRestaurantsByCategories(categorieIds, zipCodeId, day);
             return Ok(restaurants);
         }
 
