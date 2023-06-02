@@ -14,9 +14,10 @@ namespace Core.Models
         [JsonIgnore]
         public ZipCode? ZipCode { get; set; }
      
-
         public string Address { get; set; } = string.Empty;
         public string StreetNr { get; set; } = string.Empty;
+
+        //public int ReservationDuration { get; set; } = 90;
 
         [JsonIgnore]
         public List<RestaurantTable> Tables { get; set; } = new List<RestaurantTable>();

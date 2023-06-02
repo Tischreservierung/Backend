@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence.Data.RestaurantRepo;
+﻿using Microsoft.AspNetCore.Mvc;
 using Core.Models;
 using Core.Contracts;
 using Core.DTO;
-using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 
 namespace Tischreservierung.Controllers
 {
@@ -28,23 +19,22 @@ namespace Tischreservierung.Controllers
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
         {
             var restaurants = await _unitOfWork.Restaurants.GetAll();
-            
+
             return Ok(restaurants);
         }
 
         [HttpGet("name")]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByName(string name, int zipCodeId)
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByName(string name, int zipCodeId, DateTime? dateTime)
         {
-            var restaurants = await _repository.GetRestaurantsByName(name, zipCodeId);
-
+            var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByName(name, zipCodeId, dateTime);
             return Ok(restaurants);
         }
 
         [HttpGet("categories")]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByCategories
-            ([FromQuery] int[] categorieIds, int zipCodeId, int day)
+            ([FromQuery] int[] categorieIds, int zipCodeId, DateTime? dateTime)
         {
-            var restaurants = await _repository.GetRestaurantsByCategories(categorieIds, zipCodeId, day);
+            var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByCategories(categorieIds, zipCodeId, dateTime);
             return Ok(restaurants);
         }
 
