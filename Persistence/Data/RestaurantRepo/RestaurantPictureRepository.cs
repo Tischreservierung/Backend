@@ -21,11 +21,6 @@ namespace Persistence.Data.RestaurantRepo
             return _dbSet.Count(x => x.RestaurantId == restaurantId);
         }
 
-        public void DeletePictureById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<RestaurantPicture?> GetFirstPictureByRestaurantId(int restaurantId)
         {
             return await _dbSet.Where(x => x.RestaurantId == restaurantId && x.Index == 0).FirstOrDefaultAsync();
@@ -36,9 +31,8 @@ namespace Persistence.Data.RestaurantRepo
             return await _dbSet.Where(x => x.RestaurantId == restaurantId).ToListAsync();
         }
 
-        public void PostPicture(byte[] picture, int restaurantId)
+        public void PostPicture(RestaurantPicture pic)
         {
-            RestaurantPicture pic = new RestaurantPicture() { Picture = picture, Index = CountPicture(restaurantId), RestaurantId = restaurantId };
             _dbSet.Add(pic);
         }
     }
