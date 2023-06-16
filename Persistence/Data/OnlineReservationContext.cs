@@ -33,13 +33,6 @@ namespace Persistence.Data
                 new Category() { Id=1,Name= "Amerikanisch" },
                 new Category() { Id=2, Name="Arabisch"});
         }
-        private ZipCode[] ReadCsv()
-        {
-            string[] lines = File.ReadAllLines("C:\\Users\\sebas\\Downloads\\ZipCodes.txt");
-            ZipCode[] zipCode = new ZipCode[lines.Length];
-
-            return zipCode;
-        }
 
     }
 }
