@@ -74,6 +74,7 @@ namespace Persistence.Data.RestaurantRepo
             {
                 Id = x.Id,
                 StreetNr = x.StreetNr,
+                Description = x.Description,
                 Address = x.Address,
                 ZipCode = x.ZipCode,
                 Openings = _dbContext.RestaurantOpeningTimes.Where(y => y.RestaurantId == x.Id)
