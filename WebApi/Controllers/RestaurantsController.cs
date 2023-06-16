@@ -32,9 +32,9 @@ namespace Tischreservierung.Controllers
 
         [HttpGet("categories")]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByCategories
-            ([FromQuery] int[] categorieIds, DateTime? dateTime, int zipCodeId = -1)
+            ([FromQuery] int[] categories, DateTime? dateTime, int zipCodeId = -1)
         {
-            var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByCategories(categorieIds, zipCodeId, dateTime);
+            var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByCategories(categories, zipCodeId, dateTime);
             return Ok(restaurants);
         }
 
