@@ -4,6 +4,7 @@ metadata:
   name: online-reservation-backend
   namespace: student-s-raaber
 spec:
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: online-reservation
