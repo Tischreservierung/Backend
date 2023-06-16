@@ -13,7 +13,7 @@ namespace Persistence.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private OnlineReservationContext _dbContext;
+        private readonly OnlineReservationContext _dbContext;
 
         public IRestaurantRepository Restaurants { get; }
         public IRestaurantTableRepository RestaurantTables { get; }
@@ -43,7 +43,16 @@ namespace Persistence.Data
 
         public void Dispose()
         {
-            _dbContext.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _dbContext.Dispose();
+            }
         }
 
         public async ValueTask DisposeAsync()
