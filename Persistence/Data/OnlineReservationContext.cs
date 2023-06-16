@@ -33,5 +33,6 @@ namespace Persistence.Data
                 new Category() { Id=1,Name= "Amerikanisch" },
                 new Category() { Id=2, Name="Arabisch"});
         }
+
     }
 }

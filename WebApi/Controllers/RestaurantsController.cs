@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence.Data.RestaurantRepo;
+﻿using Microsoft.AspNetCore.Mvc;
 using Core.Models;
 using Core.Contracts;
 using Core.DTO;
@@ -26,7 +19,22 @@ namespace Tischreservierung.Controllers
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
         {
             var restaurants = await _unitOfWork.Restaurants.GetAll();
-            
+
+            return Ok(restaurants);
+        }
+
+        [HttpGet("name")]
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByName(string name, DateTime? dateTime, int zipCodeId = -1)
+        {
+            var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByName(name, zipCodeId, dateTime);
+            return Ok(restaurants);
+        }
+
+        [HttpGet("categories")]
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByCategories
+            ([FromQuery] int[] categorieIds, DateTime? dateTime, int zipCodeId = -1)
+        {
+            var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByCategories(categorieIds, zipCodeId, dateTime);
             return Ok(restaurants);
         }
 
