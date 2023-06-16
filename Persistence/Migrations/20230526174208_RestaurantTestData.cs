@@ -9,33 +9,6 @@ namespace Persistence.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "RestaurantCategory",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RestaurantId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RestaurantCategory", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RestaurantCategory_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RestaurantCategory_Restaurants_RestaurantId",
-                        column: x => x.RestaurantId,
-                        principalTable: "Restaurants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
@@ -1061,20 +1034,20 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "RestaurantCategory",
-                columns: new[] { "Id", "CategoryId", "RestaurantId" },
+                table: "CategoryRestaurant",
+                columns: new[] { "CategoriesId", "RestaurantsId" },
                 values: new object[,]
                 {
-                    { 1, 1, 1 },
-                    { 2, 27, 2 },
-                    { 3, 2, 3 },
-                    { 4, 6, 4 },
-                    { 5, 20, 5 },
-                    { 6, 2, 6 },
-                    { 7, 6, 7 },
-                    { 8, 3, 8 },
-                    { 9, 6, 9 },
-                    { 10, 1, 10 }
+                    { 1, 1 },
+                    { 27, 2 },
+                    { 2, 3 },
+                    { 6, 4 },
+                    { 20, 5 },
+                    { 2, 6 },
+                    { 6, 7 },
+                    { 3, 8 },
+                    { 6, 9 },
+                    { 1, 10 }
                 });
 
             migrationBuilder.InsertData(
@@ -1186,22 +1159,12 @@ namespace Persistence.Migrations
                 table: "RestaurantTables",
                 columns: new[] { "Id", "RestaurantId", "SeatPlaces" },
                 values: new object[] { 70, 10, 7 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RestaurantCategory_CategoryId",
-                table: "RestaurantCategory",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RestaurantCategory_RestaurantId",
-                table: "RestaurantCategory",
-                column: "RestaurantId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "RestaurantCategory");
+                name: "CategoryRestaurant");
 
             migrationBuilder.DeleteData(
                 table: "Categories",
