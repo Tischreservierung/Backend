@@ -24,7 +24,7 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpGet("name")]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByName(string name, int zipCodeId, DateTime? dateTime)
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByName(string name, DateTime? dateTime, int zipCodeId = -1)
         {
             var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByName(name, zipCodeId, dateTime);
             return Ok(restaurants);
@@ -32,7 +32,7 @@ namespace Tischreservierung.Controllers
 
         [HttpGet("categories")]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByCategories
-            ([FromQuery] int[] categorieIds, int zipCodeId, DateTime? dateTime)
+            ([FromQuery] int[] categorieIds, DateTime? dateTime, int zipCodeId = -1)
         {
             var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByCategories(categorieIds, zipCodeId, dateTime);
             return Ok(restaurants);
