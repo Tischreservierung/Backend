@@ -24,7 +24,8 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins("http://localhost:4200",
-                                "https://student.cloud.htl-leonding.ac.at/s.raaber/onlinereservation/");
+                                "https://student.cloud.htl-leonding.ac.at/s.raaber/onlinereservation/")
+            .AllowAnyHeader().AllowAnyMethod();
         });
 });
 
