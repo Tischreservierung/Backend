@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tischreservierung.Tests.RestaurantTest.Repository
 {
-    public class ReservationRepository
+    public class ReservationRepositoryTest
     {
         private readonly OnlineReservationContext _context;
 
