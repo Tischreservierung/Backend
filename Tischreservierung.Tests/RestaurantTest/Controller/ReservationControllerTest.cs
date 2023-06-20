@@ -133,7 +133,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         }
 
         [Fact]
-        public async void DeleteReservation_ReturnsNotFound()
+        public async Task DeleteReservation_ReturnsNotFound()
         {
             int reservationId = 10;
 
@@ -149,6 +149,50 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             Assert.Equal(StatusCodes.Status404NotFound, result!.StatusCode);
 
             unitOfWork.Verify(x => x.Reservations.GetById(reservationId));
+            unitOfWork.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetReservationByCustomer()
+        {
+            int customerId = 1;
+            List<Reservation> reservations = GetReservationTestData();
+
+            var unitOfWork = new Mock<IUnitOfWork>();
+            unitOfWork.Setup(x => x.Reservations.GetByCustomer(customerId))
+                .ReturnsAsync(new List<Reservation>() { reservations[0], reservations[1], reservations[2] });
+            var controller = new ReservationsController(unitOfWork.Object);
+
+            var actionResult = await controller.GetReservationsByCustomer(customerId);
+            var result = actionResult.Result as ObjectResult;
+
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
+            Assert.Equal(3, (result.Value as IEnumerable<Reservation>)!.Count());
+
+            unitOfWork.Verify(x => x.Reservations.GetByCustomer(It.IsAny<int>()));
+            unitOfWork.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetReservationByRestaurant()
+        {
+            int restaurantId = 1;
+            List<Reservation> reservations = GetReservationTestData();
+
+            var unitOfWork = new Mock<IUnitOfWork>();
+            unitOfWork.Setup(x => x.Reservations.GetByRestaurant(restaurantId))
+                .ReturnsAsync(new List<Reservation>() { reservations[0], reservations[1], reservations[2] });
+            var controller = new ReservationsController(unitOfWork.Object);
+
+            var actionResult = await controller.GetReservationsByRestaurant(restaurantId);
+            var result = actionResult.Result as ObjectResult;
+
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
+            Assert.Equal(3, (result.Value as IEnumerable<Reservation>)!.Count());
+
+            unitOfWork.Verify(x => x.Reservations.GetByRestaurant(It.IsAny<int>()));
             unitOfWork.VerifyNoOtherCalls();
         }
 
