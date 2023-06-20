@@ -73,7 +73,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         }
 
 
-            ZipCodeRepository TestData()
+        ZipCodeRepository TestData()
         {
             List<ZipCode> zipCodes = new List<ZipCode>() { new ZipCode() { Id = 1, District = "Linz-Land", Location = "Enns", ZipCodeNr = "4470"},
                     new ZipCode() { Id = 2, District = "Linz-Land", Location = "Ennsdorf", ZipCodeNr = "4481"},
