@@ -15,7 +15,7 @@ namespace Persistence.Data.RestaurantRepo
 
         public async Task<Restaurant?> InsertRestaurantAsync(RestaurantPostDto restaurant)
         {
-            if (_dbContext.Persons.Count(p => p.EMail == restaurant.Employee!.EMail) != 0)
+            if (_dbContext.Persons.Any(p => p.EMail == restaurant.Employee!.EMail))
                 return null;
 
             Restaurant res = new Restaurant()
@@ -55,7 +55,7 @@ namespace Persistence.Data.RestaurantRepo
             return await _dbSet.Where(r => (r.ZipCodeId == zipCodeId || zipCodeId == -1) 
             && r.Name.ToLower().Contains(name.ToLower())
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => o.Day == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id ))).ToListAsync();
+            .Any(o => (o.Day+1)%7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id ))).ToListAsync();
         }
 
         public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories
@@ -64,7 +64,7 @@ namespace Persistence.Data.RestaurantRepo
             return await _dbContext.Restaurants.Where(r => (zipCodeId == -1 || r.ZipCodeId == zipCodeId)
             && (categories.Length == 0 || r.Categories.Any(c => categories.Contains(c.Id)))
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => o.Day == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
+            .Any(o => (o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
                 .ToListAsync();
         }
 
