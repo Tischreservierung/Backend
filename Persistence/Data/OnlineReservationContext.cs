@@ -24,10 +24,5 @@ namespace Persistence.Data
         {
 
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-        }
     }
 }
