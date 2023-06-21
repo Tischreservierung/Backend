@@ -116,7 +116,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
 
 
             Assert.NotNull(result);
-            Assert.NotNull(result.Value);
+            Assert.NotNull(result!.Value);
             Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
             Assert.Equal(location, (result.Value as ZipCode)!.Location);
             Assert.Equal(zipCodeNr, (result.Value as ZipCode)!.ZipCodeNr);
