@@ -11,7 +11,7 @@ using Core.Contracts;
 using Core.Models.User;
 using Microsoft.AspNetCore.Http;
 
-namespace Tischreservierung.Tests.Person.Controller
+namespace Tischreservierung.Tests.PersonTest.Controller
 {
     public class EmployeeControllerTest
     {

@@ -100,6 +100,32 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             uow.VerifyNoOtherCalls();
         }
 
+        [Fact]
+        public async Task GetZipCodesByZipCodeAndLocation()
+        {
+            string location = "Linz";
+            string zipCodeNr = "4020";
+            List<ZipCode> zipCodes = GetZipCodeTestData();
+
+            var uow = new Mock<IUnitOfWork>();
+            uow.Setup(x => x.ZipCodes.GetByZipCodeAndLocation(zipCodeNr, location)).ReturnsAsync(zipCodes[1]);
+            var controller = new ZipCodesController(uow.Object);
+
+            var actionResult = await controller.GetZipCodesByZipCodeAndLocation(zipCodeNr,location);
+            var result = actionResult.Result as ObjectResult;
+
+
+            Assert.NotNull(result);
+            Assert.NotNull(result!.Value);
+            Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
+            Assert.Equal(location, (result.Value as ZipCode)!.Location);
+            Assert.Equal(zipCodeNr, (result.Value as ZipCode)!.ZipCodeNr);
+
+
+            uow.Verify(x => x.ZipCodes.GetByZipCodeAndLocation(It.IsAny<string>(),It.IsAny<string>()));
+            uow.VerifyNoOtherCalls();
+        }
+
         private static List<ZipCode> GetZipCodeTestData()
         {
             List<ZipCode> zipCodes = new()

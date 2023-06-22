@@ -23,7 +23,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
             var optionsBuilder = new DbContextOptionsBuilder<OnlineReservationContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString());
             _context = new OnlineReservationContext(optionsBuilder.Options);
-           }
+        }
 
         [Fact]
         public async void GetById()

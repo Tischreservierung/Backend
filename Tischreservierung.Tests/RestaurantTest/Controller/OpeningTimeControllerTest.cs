@@ -47,7 +47,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             List<RestaurantOpeningTime> times = OpeningTimeTestData();
 
             var uow = new Mock<IUnitOfWork>();
-            uow.Setup(x=> x.OpeningTimes.GetByDay(4)).ReturnsAsync(new List<RestaurantOpeningTime>() { times[4], times[5] });
+            uow.Setup(x => x.OpeningTimes.GetByDay(4)).ReturnsAsync(new List<RestaurantOpeningTime>() { times[4], times[5] });
             var openingTimeController = new RestaurantOpeningTimesController(uow.Object);
 
             var actionResult = await openingTimeController.GetRestaurantOpeningTimeForDay(4);
@@ -159,16 +159,54 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             uow.VerifyNoOtherCalls();
         }
 
+        [Fact]
+        public async Task PutRestaurantOpeningTime_IdNotEqual()
+        {
+            int openingTimeId = -1;
+            RestaurantOpeningTime openingTime = OpeningTimeTestData()[0];
+            var uow = new Mock<IUnitOfWork>();
+            var controller = new RestaurantOpeningTimesController(uow.Object);
+
+            var actionResult = await controller.PutRestaurantOpeningTime(openingTimeId, openingTime);
+            var result = actionResult as BadRequestResult;
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status400BadRequest, result!.StatusCode);
+        }
+
+        [Fact]
+        public async Task PutRestaurantOpeningTime()
+        {
+            int openingTimeId = 1;
+            RestaurantOpeningTime openingTime = OpeningTimeTestData()[0];
+
+            var uow = new Mock<IUnitOfWork>();
+            uow.Setup(x => x.OpeningTimes.Update(openingTime));
+            uow.Setup(x => x.SaveChangesAsync());
+            var controller = new RestaurantOpeningTimesController(uow.Object);
+
+
+            var actionResult = await controller.PutRestaurantOpeningTime(openingTimeId, openingTime);
+
+            var result = actionResult as NoContentResult; 
+            
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status204NoContent, result!.StatusCode);
+
+            uow.Verify(x => x.OpeningTimes.Update(openingTime));
+            uow.Verify(x => x.SaveChangesAsync());
+            uow.VerifyNoOtherCalls();
+        }
+
         private static List<RestaurantOpeningTime> OpeningTimeTestData()
         {
             List<RestaurantOpeningTime> openingTimes = new()
             {
-                new RestaurantOpeningTime() { Day = 1, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
-                new RestaurantOpeningTime() { Day = 0, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
-                new RestaurantOpeningTime() { Day = 2, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 2 },
-                new RestaurantOpeningTime() { Day = 3, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 2 },
-                new RestaurantOpeningTime() { Day = 4, ClosingTime = new DateTime(1900, 1, 1, 12, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
-                new RestaurantOpeningTime() { Day = 4, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 14, 0, 0), RestaurantId = 1 }
+                new RestaurantOpeningTime() {Id = 1, Day = 1, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
+                new RestaurantOpeningTime() {Id = 2, Day = 0, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
+                new RestaurantOpeningTime() {Id = 3, Day = 2, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 2 },
+                new RestaurantOpeningTime() {Id = 4, Day = 3, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 2 },
+                new RestaurantOpeningTime() {Id = 5, Day = 4, ClosingTime = new DateTime(1900, 1, 1, 12, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
+                new RestaurantOpeningTime() {Id = 6, Day = 4, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 14, 0, 0), RestaurantId = 1 }
             };
 
             return openingTimes;
