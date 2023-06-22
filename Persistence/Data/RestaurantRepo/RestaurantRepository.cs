@@ -23,7 +23,8 @@ namespace Persistence.Data.RestaurantRepo
                 Name = restaurant.Name,
                 Address = restaurant.Address,
                 StreetNr = restaurant.StreetNr,
-                ZipCodeId = restaurant.ZipCode!.Id
+                ZipCodeId = restaurant.ZipCode!.Id,
+                Description = restaurant.Description
             };
             if (restaurant.Categories != null)
                 res.Categories = _dbContext.Categories.Where(c => restaurant.Categories!.Contains(c)).ToList();
