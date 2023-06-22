@@ -53,7 +53,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             Assert.NotNull(result);
             Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
             var list = (List<RestaurantTable>)result.Value!;
-            Assert.Equal(3, list.Count());
+            Assert.Equal(3, list.Count);
             Assert.Equal(restaurantId, list[0].RestaurantId);
             Assert.Equal(restaurantId, list[1].RestaurantId);
             Assert.Equal(restaurantId, list[2].RestaurantId);
