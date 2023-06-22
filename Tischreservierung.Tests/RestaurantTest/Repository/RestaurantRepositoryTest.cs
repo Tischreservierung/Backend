@@ -25,22 +25,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         {
             List<Restaurant> restaurants = new List<Restaurant>()
             {
-                new Restaurant() { Id = 1, ZipCodeId = 1, Name = "Res1"},
+                new Restaurant() { Id = 1, ZipCodeId = 1, Name = "Res1" },
                 new Restaurant() { Id = 2, ZipCodeId = 2, Name = "Res2"},
                 new Restaurant() { Id = 3, ZipCodeId = 1, Name = "Res3"},
-            };
-
-            List<RestaurantCategory> categories = new List<RestaurantCategory>()
-            {
-                new RestaurantCategory() { RestaurantId = 1 , CategoryId = 1},
-                new RestaurantCategory() { RestaurantId = 1 , CategoryId = 2},
-                new RestaurantCategory() { RestaurantId = 1 , CategoryId = 3},
-                new RestaurantCategory() { RestaurantId = 2 , CategoryId = 1},
-                new RestaurantCategory() { RestaurantId = 2 , CategoryId = 3},
-                new RestaurantCategory() { RestaurantId = 2 , CategoryId = 5},
-                new RestaurantCategory() { RestaurantId = 3 , CategoryId = 2},
-                new RestaurantCategory() { RestaurantId = 3 , CategoryId = 4},
-                new RestaurantCategory() { RestaurantId = 3 , CategoryId = 5}
             };
 
             List<RestaurantOpeningTime> openingTimes = new List<RestaurantOpeningTime>()
@@ -54,7 +41,6 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
 
             _context.AddRange(restaurants);
             _context.AddRange(openingTimes);
-            _context.AddRange(categories);
             _context.SaveChanges();
 
             return new RestaurantRepository(_context);
@@ -65,7 +51,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         public async Task GetRestaurantByName()
         {
             var repository = TestData();
-            var result = await repository.GetRestaurantsByName("Res", 1,new DateTime(2023, 6, 21));
+            var result = await repository.GetRestaurantsByName("Res", 1, new DateTime(2023, 6, 21));
             Assert.NotNull(result);
 
             var list = result.ToList();

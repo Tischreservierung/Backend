@@ -21,7 +21,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         public async Task GetAllRestaurantTables()
         {
             var uow = new Mock<IUnitOfWork>();
-            uow.Setup(x => x.RestaurantTables.GetAll()).ReturnsAsync(GetRestaurantTableTestData);
+            uow.Setup(x => x.RestaurantTables.GetAll()).ReturnsAsync(GetRestaurantTableTestData());
             var controller = new RestaurantTablesController(uow.Object);
 
             var actionResult = await controller.GetRestaurantTables();
@@ -34,6 +34,31 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             Assert.Equal(6, ((List<RestaurantTable>)result.Value!).Count());
 
             uow.Verify(x => x.RestaurantTables.GetAll());
+            uow.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetAllRestaurantTablesByRestaurant()
+        {
+            var uow = new Mock<IUnitOfWork>();
+            int restaurantId = 1;
+            uow.Setup(x => x.RestaurantTables.GetRestaurantTablesByRestaurant(restaurantId)).ReturnsAsync(GetRestaurantTableTestData().Take(3).ToList());
+            var controller = new RestaurantTablesController(uow.Object);
+
+            var actionResult = await controller.GetRestaurantTablesByRestaurant(restaurantId);
+
+            Assert.IsType<OkObjectResult>(actionResult.Result);
+            var result = actionResult.Result as OkObjectResult;
+
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
+            var list = (List<RestaurantTable>)result.Value!;
+            Assert.Equal(3, list.Count);
+            Assert.Equal(restaurantId, list[0].RestaurantId);
+            Assert.Equal(restaurantId, list[1].RestaurantId);
+            Assert.Equal(restaurantId, list[2].RestaurantId);
+
+            uow.Verify(x => x.RestaurantTables.GetRestaurantTablesByRestaurant(restaurantId));
             uow.VerifyNoOtherCalls();
         }
 
