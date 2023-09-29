@@ -44,11 +44,12 @@ namespace WebApi.Controllers
         public async Task<ActionResult<RestaurantPicture>> PostPicture(List<string> pictureStrings, int restaurantId)
         {
             List<byte[]> pictures = StringToByteArray(pictureStrings);
-            
+            int count = _unitOfWork.RestaurantPictures.CountPicture(restaurantId);
 
-            foreach(byte[] pic in pictures) {
-                RestaurantPicture resPicture = new RestaurantPicture() { Picture = pic, Index = _unitOfWork.RestaurantPictures.CountPicture(restaurantId), RestaurantId = restaurantId };
+            foreach (byte[] pic in pictures) {
+                RestaurantPicture resPicture = new RestaurantPicture() { Picture = pic, Index = count, RestaurantId = restaurantId };
                 _unitOfWork.RestaurantPictures.PostPicture(resPicture);
+                count++;
             }
             
             await _unitOfWork.SaveChangesAsync();

@@ -17,5 +17,6 @@ namespace Core.DTO
 
         public Category[]? Categories { get; set; }
         public OpeningTimeDto[]? Openings { get; set; }
+        public RestaurantPicture[]? Pictures { get; set; }
     }
 }
