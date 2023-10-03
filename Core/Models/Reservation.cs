@@ -11,12 +11,15 @@ namespace Core.Models
 {
     public class Reservation : EntityObject
     {
+        [Required]
         [DataType(DataType.Date)]
         public DateTime ReservationDay { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime StartTime { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime EndTime { get; set; }
+
+        [Required]
+        public TimeSpan StartTime { get; set; }
+
+        [Required]
+        public TimeSpan EndTime { get; set; }
 
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }

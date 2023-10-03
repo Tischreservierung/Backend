@@ -11,12 +11,12 @@ namespace Persistence.Data.RestaurantRepo
             
         }
 
-        public async Task<IEnumerable<RestaurantOpeningTime>> GetByDay(int day)
+        public async Task<IEnumerable<RestaurantOpeningTime>> GetByDay(DayOfWeek day)
         {
             return await _dbSet.Where(oT => oT.Day == day).ToListAsync();
         }
 
-        public async Task<IEnumerable<RestaurantOpeningTime>> GetByDayAndRestaurant(int id, int day)
+        public async Task<IEnumerable<RestaurantOpeningTime>> GetByDayAndRestaurant(int id, DayOfWeek day)
         {
             return await _dbSet.Where(oT => oT.Day == day && oT.RestaurantId == id).ToListAsync();
         }

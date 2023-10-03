@@ -6,14 +6,18 @@ namespace Core.Models
 {
     public class RestaurantOpeningTime : EntityObject
     {
-        //Montag: 0, Sontag: 6
-        public int Day { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime OpeningTime { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime ClosingTime { get; set; }
+        [Required]
+        public DayOfWeek Day { get; set; }
+
+        [Required]
+        public TimeSpan OpeningTime { get; set; }
+
+        [Required]
+        public TimeSpan ClosingTime { get; set; }
+
         [ForeignKey(nameof(Restaurant))]
         public int RestaurantId { get; set; }
+
         [JsonIgnore]
         public Restaurant? Restaurant { get; set; }
     }

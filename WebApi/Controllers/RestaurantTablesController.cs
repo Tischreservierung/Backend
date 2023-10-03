@@ -45,7 +45,7 @@ namespace Tischreservierung.Controllers
         [HttpGet("/byRestaurant/{restaurantId}")]
         public async Task<ActionResult<IEnumerable<RestaurantTable>>> GetRestaurantTablesByRestaurant(int restaurantId)
         {
-            var table = await _unitOfWork.RestaurantTables.GetRestaurantTablesByRestaurant(restaurantId);
+            var table = await _unitOfWork.RestaurantTables.GetByRestaurant(restaurantId);
 
             return Ok(table);
         }

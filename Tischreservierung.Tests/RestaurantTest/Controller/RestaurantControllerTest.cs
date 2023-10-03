@@ -33,7 +33,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         }
 
         [Fact]
-        public async void GetReservation()
+        public async void GetRestaurant()
         {
             int restaurantId = 10;
             Restaurant restaurant = new Restaurant()
