@@ -2,6 +2,7 @@
 using Core.DTO;
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.QueryParams;
 
 namespace WebApi.Controllers
 {
@@ -10,9 +11,12 @@ namespace WebApi.Controllers
     public class ReservationsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ReservationsController(IUnitOfWork unitOfWork)
+        private readonly IReservationService _reservationService;
+
+        public ReservationsController(IUnitOfWork unitOfWork, IReservationService reservationService)
         {
             _unitOfWork = unitOfWork;
+            _reservationService = reservationService;
         }
 
         [HttpGet("{id}")]
@@ -29,35 +33,33 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpGet("byCustomer/{customerId}")]
+        [HttpGet("customer/{customerId}")]
         public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer(int customerId)
         {
-            return Ok(await _unitOfWork.Reservations.GetByCustomer(customerId));
+            var reservations = await _unitOfWork.Reservations.GetByCustomer(customerId);
+
+            return Ok(reservations);
         }
 
-        [HttpGet("byRestaurant/{restaurantId}")]
+        [HttpGet("restaurant/{restaurantId}")]
         public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByRestaurant(int restaurantId)
         {
-            return Ok(await _unitOfWork.Reservations.GetByRestaurant(restaurantId));
+            var reservations = await _unitOfWork.Reservations.GetByRestaurant(restaurantId);
+
+            return Ok(reservations);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Reservation>> PostReservation(ReservationPostDto reservation)
+        public async Task<ActionResult<Reservation>> RequestReservation([FromBody] ReservationRequestDto reservationRequest)
         {
-            Reservation reservationToInsert = new Reservation()
+            Reservation? reservation = await _reservationService.RequestReservation(reservationRequest);
+
+            if (reservation == null)
             {
-                ReservationDay = reservation.ReservationDay,
-                StartTime = reservation.StartTime,
-                EndTime = reservation.EndTime,
-                CustomerId = reservation.CustomerId,
-                RestaurantId = reservation.RestaurantId,
-                RestaurantTableId = reservation.RestaurantTableId
-            };
+                return BadRequest();
+            }
 
-            _unitOfWork.Reservations.Insert(reservationToInsert);
-            await _unitOfWork.SaveChangesAsync();
-
-            return CreatedAtAction("GetReservation", new { id = reservationToInsert.Id }, reservationToInsert);
+            return CreatedAtAction("GetReservation", new { id = reservation.Id }, reservation);
         }
 
         [HttpDelete("{id}")]
@@ -74,5 +76,18 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("restaurant/{restaurantId}/options")]
+        public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
+        {
+            var reservationOptions = await _reservationService.GetReservationOptions(restaurantId,
+                                                                                     queryParams.Day.Date,
+                                                                                     queryParams.From.TimeOfDay,
+                                                                                     queryParams.To.TimeOfDay,
+                                                                                     queryParams.SeatPlaces);
+
+            return Ok(reservationOptions);
+        }
+
     }
 }

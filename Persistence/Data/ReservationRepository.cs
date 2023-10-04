@@ -1,11 +1,6 @@
 ﻿using Core.Contracts;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Data
 {
@@ -23,6 +18,11 @@ namespace Persistence.Data
         public async Task<IEnumerable<Reservation>> GetByRestaurant(int restaurantId)
         {
             return await _dbSet.Where(r => r.RestaurantId == restaurantId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day)
+        {
+            return await _dbSet.Where(r => r.RestaurantId == restaurantId && r.ReservationDay == day).ToListAsync();
         }
     }
 }
