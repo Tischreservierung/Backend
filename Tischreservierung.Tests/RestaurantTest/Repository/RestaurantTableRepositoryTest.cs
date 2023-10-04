@@ -23,7 +23,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
 
         RestaurantTableRepository TestData()
         {
-            List<RestaurantTable> tables = new List<RestaurantTable>()
+            List<RestaurantTable> tables = new()
             {
                 new RestaurantTable(){ Id = 1, RestaurantId = 1, SeatPlaces = 2},
                 new RestaurantTable(){ Id = 2, RestaurantId = 1, SeatPlaces = 4},
@@ -42,7 +42,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         public async Task GetByRestaurant()
         {
             var repository = TestData();
-            var result = await repository.GetRestaurantTablesByRestaurant(1);
+            var result = await repository.GetByRestaurant(1);
             Assert.NotNull(result);
 
             var list = result.ToList();

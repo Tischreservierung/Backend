@@ -42,7 +42,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         {
             var uow = new Mock<IUnitOfWork>();
             int restaurantId = 1;
-            uow.Setup(x => x.RestaurantTables.GetRestaurantTablesByRestaurant(restaurantId)).ReturnsAsync(GetRestaurantTableTestData().Take(3).ToList());
+            uow.Setup(x => x.RestaurantTables.GetByRestaurant(restaurantId)).ReturnsAsync(GetRestaurantTableTestData().Take(3).ToList());
             var controller = new RestaurantTablesController(uow.Object);
 
             var actionResult = await controller.GetRestaurantTablesByRestaurant(restaurantId);
@@ -58,7 +58,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             Assert.Equal(restaurantId, list[1].RestaurantId);
             Assert.Equal(restaurantId, list[2].RestaurantId);
 
-            uow.Verify(x => x.RestaurantTables.GetRestaurantTablesByRestaurant(restaurantId));
+            uow.Verify(x => x.RestaurantTables.GetByRestaurant(restaurantId));
             uow.VerifyNoOtherCalls();
         }
 

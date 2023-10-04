@@ -36,7 +36,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         public async void GetRestaurant()
         {
             int restaurantId = 10;
-            Restaurant restaurant = new Restaurant()
+            Restaurant restaurant = new()
             {
                 Id = restaurantId,
                 Name = "R1"
@@ -85,7 +85,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         public async Task DeleteRestaurant()
         {
             int restaurantId = 10;
-            Restaurant restaurant = new Restaurant()
+            Restaurant restaurant = new()
             {
                 Id = restaurantId,
                 Name = "R1"
@@ -132,11 +132,13 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
 
         private static List<Restaurant> GetRestaurantTestData()
         {
-            List<Restaurant> restaurants = new();
-            restaurants.Add(new Restaurant() { Id = 1, Name = "R1" });
-            restaurants.Add(new Restaurant() { Id = 2, Name = "R2" });
-            restaurants.Add(new Restaurant() { Id = 3, Name = "R3" });
-            restaurants.Add(new Restaurant() { Id = 4, Name = "R4" });
+            List<Restaurant> restaurants = new()
+            {
+                new Restaurant() { Id = 1, Name = "R1" },
+                new Restaurant() { Id = 2, Name = "R2" },
+                new Restaurant() { Id = 3, Name = "R3" },
+                new Restaurant() { Id = 4, Name = "R4" }
+            };
             return restaurants;
         }
     }

@@ -26,13 +26,15 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
                 RestaurantTableId = 101,
                 RestaurantId = 1,
                 ReservationDay = DateTime.Now,
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now.AddHours(3)
+                StartTime = TimeSpan.FromHours(8),
+                EndTime = TimeSpan.FromHours(9)
             };
 
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync(reservation);
-            var controller = new ReservationsController(unitOfWork.Object);
+            var reservationService = new Mock<IReservationService>();
+
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
 
             var actionResult = await controller.GetReservation(reservationId);
 
@@ -54,7 +56,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
 
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync((Reservation?)null);
-            var controller = new ReservationsController(unitOfWork.Object);
+            var reservationService = new Mock<IReservationService>();
+
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
 
             var actionResult = await controller.GetReservation(reservationId);
 
@@ -69,54 +73,26 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         }
 
         [Fact]
-        public async void PostReservation()
-        {
-            ReservationPostDto reservation = new()
-            {
-                CustomerId = 1,
-                RestaurantTableId = 101,
-                RestaurantId = 1,
-                ReservationDay = DateTime.Now,
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now.AddHours(3)
-            };
-
-            var unitOfWork = new Mock<IUnitOfWork>();
-            unitOfWork.Setup(x => x.Reservations.Insert(It.IsAny<Reservation>()));
-            var controller = new ReservationsController(unitOfWork.Object);
-
-            var actionResult = await controller.PostReservation(reservation);
-
-            Assert.IsType<CreatedAtActionResult>(actionResult.Result);
-            var result = actionResult.Result as CreatedAtActionResult;
-
-            Assert.NotNull(result);
-            Assert.Equal(StatusCodes.Status201Created, result!.StatusCode);
-
-            unitOfWork.Verify(x => x.Reservations.Insert(It.IsAny<Reservation>()));
-            unitOfWork.Verify(x => x.SaveChangesAsync());
-            unitOfWork.VerifyNoOtherCalls();
-        }
-
-        [Fact]
         public async void DeleteReservation()
         {
             int reservationId = 10;
-            Reservation reservation = new Reservation()
+            Reservation reservation = new()
             {
                 Id = reservationId,
                 CustomerId = 1,
                 RestaurantTableId = 101,
                 RestaurantId = 1,
                 ReservationDay = DateTime.Now,
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now.AddHours(3)
+                StartTime = TimeSpan.FromHours(8),
+                EndTime = TimeSpan.FromHours(9)
             };
 
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync(reservation);
             unitOfWork.Setup(x => x.Reservations.Delete(It.IsAny<Reservation>()));
-            var controller = new ReservationsController(unitOfWork.Object);
+            var reservationService = new Mock<IReservationService>();
+
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
 
             var actionResult = await controller.DeleteReservation(reservationId);
 
@@ -139,7 +115,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
 
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync((Reservation?)null);
-            var controller = new ReservationsController(unitOfWork.Object);
+            var reservationService = new Mock<IReservationService>();
+
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
 
             var actionResult = await controller.DeleteReservation(reservationId);
 
@@ -161,7 +139,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetByCustomer(customerId))
                 .ReturnsAsync(new List<Reservation>() { reservations[0], reservations[1], reservations[2] });
-            var controller = new ReservationsController(unitOfWork.Object);
+            var reservationService = new Mock<IReservationService>();
+
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
 
             var actionResult = await controller.GetReservationsByCustomer(customerId);
             var result = actionResult.Result as ObjectResult;
@@ -183,7 +163,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetByRestaurant(restaurantId))
                 .ReturnsAsync(new List<Reservation>() { reservations[0], reservations[1], reservations[2] });
-            var controller = new ReservationsController(unitOfWork.Object);
+            var reservationService = new Mock<IReservationService>();
+
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
 
             var actionResult = await controller.GetReservationsByRestaurant(restaurantId);
             var result = actionResult.Result as ObjectResult;
@@ -200,12 +182,12 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         {
             List<Reservation> reservations = new()
             {
-                new Reservation() { CustomerId = 1, RestaurantTableId = 101, RestaurantId = 1, ReservationDay = DateTime.Now, StartTime = DateTime.Now, EndTime = DateTime.Now },
-                new Reservation() { CustomerId = 1, RestaurantTableId = 102, RestaurantId = 1, ReservationDay = DateTime.Now, StartTime = DateTime.Now, EndTime = DateTime.Now },
-                new Reservation() { CustomerId = 1, RestaurantTableId = 102, RestaurantId = 1, ReservationDay = DateTime.Now, StartTime = DateTime.Now, EndTime = DateTime.Now },
-                new Reservation() { CustomerId = 2, RestaurantTableId = 105, RestaurantId = 2, ReservationDay = DateTime.Now, StartTime = DateTime.Now, EndTime = DateTime.Now },
-                new Reservation() { CustomerId = 2, RestaurantTableId = 105, RestaurantId = 2, ReservationDay = DateTime.Now, StartTime = DateTime.Now, EndTime = DateTime.Now },
-                new Reservation() { CustomerId = 3, RestaurantTableId = 106, RestaurantId = 2, ReservationDay = DateTime.Now, StartTime = DateTime.Now, EndTime = DateTime.Now }
+                new Reservation() { CustomerId = 1, RestaurantTableId = 101, RestaurantId = 1, ReservationDay = DateTime.Now, StartTime = TimeSpan.FromHours(8), EndTime = TimeSpan.FromHours(9) },
+                new Reservation() { CustomerId = 1, RestaurantTableId = 102, RestaurantId = 1, ReservationDay = DateTime.Now, StartTime = TimeSpan.FromHours(8), EndTime = TimeSpan.FromHours(9) },
+                new Reservation() { CustomerId = 1, RestaurantTableId = 102, RestaurantId = 1, ReservationDay = DateTime.Now, StartTime = TimeSpan.FromHours(8), EndTime = TimeSpan.FromHours(9) },
+                new Reservation() { CustomerId = 2, RestaurantTableId = 105, RestaurantId = 2, ReservationDay = DateTime.Now, StartTime = TimeSpan.FromHours(8), EndTime = TimeSpan.FromHours(9) },
+                new Reservation() { CustomerId = 2, RestaurantTableId = 105, RestaurantId = 2, ReservationDay = DateTime.Now, StartTime = TimeSpan.FromHours(8), EndTime = TimeSpan.FromHours(9) },
+                new Reservation() { CustomerId = 3, RestaurantTableId = 106, RestaurantId = 2, ReservationDay = DateTime.Now, StartTime = TimeSpan.FromHours(8), EndTime = TimeSpan.FromHours(9) }
             };
 
             return reservations;

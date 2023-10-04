@@ -47,7 +47,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             List<RestaurantOpeningTime> times = OpeningTimeTestData();
 
             var uow = new Mock<IUnitOfWork>();
-            uow.Setup(x => x.OpeningTimes.GetByDay(4)).ReturnsAsync(new List<RestaurantOpeningTime>() { times[4], times[5] });
+            uow.Setup(x => x.OpeningTimes.GetByDay(DayOfWeek.Thursday)).ReturnsAsync(new List<RestaurantOpeningTime>() { times[4], times[5] });
             var openingTimeController = new RestaurantOpeningTimesController(uow.Object);
 
             var actionResult = await openingTimeController.GetRestaurantOpeningTimeForDay(4);
@@ -60,7 +60,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             Assert.Equal(2, ((List<RestaurantOpeningTime>)result.Value!).Count);
 
 
-            uow.Verify(x => x.OpeningTimes.GetByDay(It.IsAny<int>()));
+            uow.Verify(x => x.OpeningTimes.GetByDay(It.IsAny<DayOfWeek>()));
             uow.VerifyNoOtherCalls();
         }
 
@@ -70,7 +70,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             List<RestaurantOpeningTime> times = OpeningTimeTestData();
 
             var uow = new Mock<IUnitOfWork>();
-            uow.Setup(x => x.OpeningTimes.GetByDayAndRestaurant(1, 4)).ReturnsAsync(new List<RestaurantOpeningTime>() { times[4], times[5] });
+            uow.Setup(x => x.OpeningTimes.GetByDayAndRestaurant(1, DayOfWeek.Thursday)).ReturnsAsync(new List<RestaurantOpeningTime>() { times[4], times[5] });
             var openingTimeController = new RestaurantOpeningTimesController(uow.Object);
 
             var actionResult = await openingTimeController.GetRestaurantOpeningTimeForRestaurantAndDay(1, 4);
@@ -83,7 +83,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             Assert.Equal(2, ((List<RestaurantOpeningTime>)result.Value!).Count);
 
 
-            uow.Verify(x => x.OpeningTimes.GetByDayAndRestaurant(It.IsAny<int>(), It.IsAny<int>()));
+            uow.Verify(x => x.OpeningTimes.GetByDayAndRestaurant(It.IsAny<int>(), It.IsAny<DayOfWeek>()));
             uow.VerifyNoOtherCalls();
         }
 
@@ -92,9 +92,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         {
             RestaurantOpeningTime openingTime = new()
             {
-                Day = 1,
-                ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0),
-                OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0),
+                Day = DayOfWeek.Monday,
+                ClosingTime = new TimeSpan(18, 0, 0),
+                OpeningTime = new TimeSpan(10, 0, 0),
                 RestaurantId = 1
             };
 
@@ -201,12 +201,12 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         {
             List<RestaurantOpeningTime> openingTimes = new()
             {
-                new RestaurantOpeningTime() {Id = 1, Day = 1, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
-                new RestaurantOpeningTime() {Id = 2, Day = 0, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
-                new RestaurantOpeningTime() {Id = 3, Day = 2, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 2 },
-                new RestaurantOpeningTime() {Id = 4, Day = 3, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 2 },
-                new RestaurantOpeningTime() {Id = 5, Day = 4, ClosingTime = new DateTime(1900, 1, 1, 12, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 10, 0, 0), RestaurantId = 1 },
-                new RestaurantOpeningTime() {Id = 6, Day = 4, ClosingTime = new DateTime(1900, 1, 1, 18, 0, 0), OpeningTime = new DateTime(1900, 1, 1, 14, 0, 0), RestaurantId = 1 }
+                new RestaurantOpeningTime() {Id = 1, Day = DayOfWeek.Monday, ClosingTime = new TimeSpan(18, 0, 0), OpeningTime = new TimeSpan(10, 0, 0), RestaurantId = 1 },
+                new RestaurantOpeningTime() {Id = 2, Day = DayOfWeek.Sunday, ClosingTime = new TimeSpan(18, 0, 0), OpeningTime = new TimeSpan(10, 0, 0), RestaurantId = 1 },
+                new RestaurantOpeningTime() {Id = 3, Day = DayOfWeek.Tuesday, ClosingTime = new TimeSpan(18, 0, 0), OpeningTime = new TimeSpan(10, 0, 0), RestaurantId = 2 },
+                new RestaurantOpeningTime() {Id = 4, Day = DayOfWeek.Wednesday, ClosingTime = new TimeSpan(18, 0, 0), OpeningTime = new TimeSpan(10, 0, 0), RestaurantId = 2 },
+                new RestaurantOpeningTime() {Id = 5, Day = DayOfWeek.Thursday, ClosingTime = new TimeSpan(12, 0, 0), OpeningTime = new TimeSpan(10, 0, 0), RestaurantId = 1 },
+                new RestaurantOpeningTime() {Id = 6, Day = DayOfWeek.Thursday, ClosingTime = new TimeSpan(18, 0, 0), OpeningTime = new TimeSpan(14, 0, 0), RestaurantId = 1 }
             };
 
             return openingTimes;
