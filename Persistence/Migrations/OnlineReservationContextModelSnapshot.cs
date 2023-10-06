@@ -740,6 +740,35 @@ namespace Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Index")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Picture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("RestaurantId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId");
+
+                    b.ToTable("RestaurantPictures");
+                });
+
             modelBuilder.Entity("Core.Models.RestaurantTable", b =>
                 {
                     b.Property<int>("Id")
@@ -7025,6 +7054,17 @@ namespace Persistence.Migrations
                 });
 
             modelBuilder.Entity("Core.Models.RestaurantOpeningTime", b =>
+                {
+                    b.HasOne("Core.Models.Restaurant", "Restaurant")
+                        .WithMany()
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurant");
+                });
+
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
                 {
                     b.HasOne("Core.Models.Restaurant", "Restaurant")
                         .WithMany()
