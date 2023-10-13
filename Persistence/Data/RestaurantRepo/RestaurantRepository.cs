@@ -50,23 +50,52 @@ namespace Persistence.Data.RestaurantRepo
         }
 
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByName
+        public async Task<IEnumerable<RestaurantFilterDTO>> GetRestaurantsByName
             (string name, int zipCodeId, DateTime? dateTime)
         {
             return await _dbSet.Where(r => (r.ZipCodeId == zipCodeId || zipCodeId == -1) 
             && r.Name.ToLower().Contains(name.ToLower())
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => (o.Day+1)%7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id ))).ToListAsync();
+            .Any(o => (o.Day+1)%7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id ))).Select(r => new RestaurantFilterDTO
+            {
+                Id = r.Id,
+                StreetNr = r.StreetNr,
+                Description = r.Description,
+                Address = r.Address,
+                ZipCode = r.ZipCode,
+                Name = r.Name,
+                Categories = r.Categories.ToArray(),
+                ProfilPicture = _dbContext.RestaurantPictures.Where(p => r.Id == p.RestaurantId && p.Index == 0)
+                    .Select(p => new RestaurantPicture()
+                    {
+                        Picture = p.Picture,
+                        Index = p.Index
+                    }).SingleOrDefault(),
+            }).ToListAsync();
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories
+        public async Task<IEnumerable<RestaurantFilterDTO>> GetRestaurantsByCategories
             (int[] categories, int zipCodeId, DateTime? dateTime)
         {
             return await _dbContext.Restaurants.Where(r => (zipCodeId == -1 || r.ZipCodeId == zipCodeId)
             && (categories.Length == 0 || r.Categories.Any(c => categories.Contains(c.Id)))
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => (o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
-                .ToListAsync();
+            .Any(o => (o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id))).Select(r => new RestaurantFilterDTO
+            {
+                Id = r.Id,
+                StreetNr = r.StreetNr,
+                Description = r.Description,
+                Address = r.Address,
+                ZipCode = r.ZipCode,
+                Name = r.Name,
+                Categories = r.Categories.ToArray(),
+                ProfilPicture = _dbContext.RestaurantPictures.Where(p => r.Id == p.RestaurantId && p.Index == 0)
+                    .Select(p => new RestaurantPicture()
+                    {
+                        Picture = p.Picture,
+                        Index = p.Index
+                    }).SingleOrDefault(),
+            }).ToListAsync();
         }
 
         public async Task<RestaurantViewDto?> GetRestaurantForViewById(int id)
