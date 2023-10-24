@@ -105,7 +105,7 @@ namespace WebApi.Services
         {
             return reservation.StartTime < start && reservation.EndTime > start ||
                         reservation.StartTime < end && reservation.EndTime > end ||
-                        reservation.StartTime > start && reservation.EndTime < end;
+                        reservation.StartTime >= start && reservation.EndTime <= end;
         }
     }
 }
