@@ -1,5 +1,7 @@
-﻿using Core.Contracts;
+using Core.Contracts;
+using Core.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Persistence.Data.RestaurantRepo;
 using Persistence.Data.User;
 
@@ -18,6 +20,7 @@ namespace Persistence.Data
         public IEmployeeRepository Employees { get; }
         public IPersonRepository Persons { get; }
         public IReservationRepository Reservations { get; }
+        public IRestaurantPictureRepository RestaurantPictures { get; }
 
         public UnitOfWork(OnlineReservationContext context)
         {
@@ -31,6 +34,7 @@ namespace Persistence.Data
             Employees = new EmployeeRepository(_dbContext);
             Persons = new PersonRepository(_dbContext);
             Reservations = new ReservationRepository(_dbContext);
+            RestaurantPictures = new RestaurantPictureRepository(_dbContext);
         }
 
         public void Dispose()
