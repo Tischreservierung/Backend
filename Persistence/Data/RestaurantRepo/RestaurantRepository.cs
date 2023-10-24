@@ -23,7 +23,8 @@ namespace Persistence.Data.RestaurantRepo
                 Name = restaurant.Name,
                 Address = restaurant.Address,
                 StreetNr = restaurant.StreetNr,
-                ZipCodeId = restaurant.ZipCode!.Id
+                ZipCodeId = restaurant.ZipCode!.Id,
+                Description = restaurant.Description
             };
             if (restaurant.Categories != null)
                 res.Categories = _dbContext.Categories.Where(c => restaurant.Categories!.Contains(c)).ToList();
@@ -78,6 +79,12 @@ namespace Persistence.Data.RestaurantRepo
                         OpenTo = o.ClosingTime.Hours + ":" + o.ClosingTime.Minutes}).ToArray(),
                 Name = x.Name,
                 Categories = x.Categories.ToArray(),
+                Pictures = _dbContext.RestaurantPictures.Where(z => z.RestaurantId == x.Id)
+                    .Select(p => new RestaurantPicture()
+                    {
+                        Picture = p.Picture,
+                        Index = p.Index
+                    }).ToArray(),
             }).SingleOrDefaultAsync();
         }
     }

@@ -11,6 +11,7 @@
         public IEmployeeRepository Employees { get; }
         public IPersonRepository Persons { get; }
         public IReservationRepository Reservations { get; }
+        public IRestaurantPictureRepository RestaurantPictures { get; }
 
 
         Task<int> SaveChangesAsync();

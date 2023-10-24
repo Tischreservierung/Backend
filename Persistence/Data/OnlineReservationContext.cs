@@ -19,6 +19,8 @@ namespace Persistence.Data
         public DbSet<ZipCode> Zipcodes => Set<ZipCode>();
         public DbSet<Reservation> Reservations => Set<Reservation>();
 
+        public DbSet<RestaurantPicture> RestaurantPictures => Set<RestaurantPicture>();
+
         public OnlineReservationContext(DbContextOptions<OnlineReservationContext> options)
             : base(options)
         {
