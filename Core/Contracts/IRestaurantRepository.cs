@@ -11,5 +11,7 @@ namespace Core.Contracts
         Task<Restaurant?> InsertRestaurantAsync(RestaurantPostDto restaurant);
 
         Task<RestaurantViewDto?> GetRestaurantForViewById(int id);
+
+        Task<ReservationViewDto?> GetReservationViewById(int id);
     }
 }

@@ -92,5 +92,15 @@ namespace Persistence.Data.RestaurantRepo
                     }).ToArray(),
             }).SingleOrDefaultAsync();
         }
+
+        public async Task<ReservationViewDto?> GetReservationViewById(int id)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == id).Select(r => new ReservationViewDto()
+            {
+                Id = id,
+                RestaurantName = r.Name,
+                Picture = _dbContext.RestaurantPictures.Where(p => p.RestaurantId == id && p.Index == 0).Select(p => p.Picture).SingleOrDefault()
+            }).SingleOrDefaultAsync();
+        }
     }
 }
