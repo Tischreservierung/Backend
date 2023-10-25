@@ -47,7 +47,7 @@ namespace WebApi.Controllers
             int count = _unitOfWork.RestaurantPictures.CountPicture(restaurantId);
 
             foreach (byte[] pic in pictures) {
-                RestaurantPicture resPicture = new RestaurantPicture() { Picture = pic, Index = count, RestaurantId = restaurantId };
+                RestaurantPicture resPicture = new() { Picture = pic, Index = count, RestaurantId = restaurantId };
                 _unitOfWork.RestaurantPictures.PostPicture(resPicture);
                 count++;
             }
@@ -59,7 +59,7 @@ namespace WebApi.Controllers
 
         private static List<byte[]> StringToByteArray(List<string> pictureStrings)
         {
-            List<byte[]> ret = new List<byte[]>();
+            List<byte[]> ret = new();
             
             foreach(string pictureString in pictureStrings)
             {

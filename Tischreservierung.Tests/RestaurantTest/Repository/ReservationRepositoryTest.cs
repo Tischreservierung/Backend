@@ -17,7 +17,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
 
         ReservationRepository TestData()
         {
-            List<Reservation> reservations = new List<Reservation>() { 
+            List<Reservation> reservations = new() {
                 new Reservation() { CustomerId = 1, RestaurantId = 1, RestaurantTableId = 1 },
                 new Reservation() { CustomerId = 1, RestaurantId = 2, RestaurantTableId = 2 },
                 new Reservation() { CustomerId = 2, RestaurantId = 1, RestaurantTableId = 2 },

@@ -65,24 +65,7 @@ namespace Persistence.Data
 
         public async Task<int> SaveChangesAsync()
         {
-            var entities = _dbContext!.ChangeTracker.Entries()
-                .Where(entity => entity.State == EntityState.Added 
-                    || entity.State == EntityState.Modified)
-                .Select(e => e.Entity)
-                .ToArray(); 
-
-            foreach (var entity in entities)
-            {
-                ValidateEntity(entity);
-            }
-
             return await _dbContext.SaveChangesAsync();
         }
-
-        private void ValidateEntity(object entity)
-        {
-
-        }
-
     }
 }

@@ -96,9 +96,8 @@ namespace WebApi.Services
             var reservations = await _unitOfWork.Reservations.GetByRestaurantAndDay(restaurantId, day);
 
             return restaurantTables
-                .Where(t => reservations
-                    .All(r => !ReservationTimeIntersects(r, startTime, endTime)))
-                .FirstOrDefault();
+                .FirstOrDefault(t => reservations
+                    .All(r => !ReservationTimeIntersects(r, startTime, endTime)));
         }
 
         private static bool ReservationTimeIntersects(Reservation reservation, TimeSpan start, TimeSpan end)

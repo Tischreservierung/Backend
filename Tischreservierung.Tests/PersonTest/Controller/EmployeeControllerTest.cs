@@ -28,7 +28,7 @@ namespace Tischreservierung.Tests.PersonTest.Controller
 
             Assert.NotNull(result);
             Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
-            Assert.Equal(3, ((List<Employee>)result.Value!).Count());
+            Assert.Equal(3, ((List<Employee>)result.Value!).Count);
 
             uow.Verify(x => x.Employees.GetByRestaurant(restaurantId));
             uow.VerifyNoOtherCalls();
@@ -112,8 +112,8 @@ namespace Tischreservierung.Tests.PersonTest.Controller
 
         private static List<Employee> TestData()
         {
-            Restaurant restaurant = new Restaurant() { Id = 1, Name = "Test Restaurant" };
-            Restaurant restaurant2 = new Restaurant() { Id = 2, Name = "Test Bar" };
+            Restaurant restaurant = new() { Id = 1, Name = "Test Restaurant" };
+            Restaurant restaurant2 = new() { Id = 2, Name = "Test Bar" };
             List<Employee> data = new()
             {
                 new Employee()

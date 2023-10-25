@@ -9,7 +9,7 @@ namespace Tischreservierung.Tests
     public class ReservationServiceTest
     {
         [Fact]
-        public async void RequestReservation()
+        public async Task RequestReservation()
         {
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.Reservations.Insert(It.IsAny<Reservation>()));
@@ -43,7 +43,7 @@ namespace Tischreservierung.Tests
         }
 
         [Fact]
-        public async void RequestReservation_NoFreeTable()
+        public async Task RequestReservation_NoFreeTable()
         {
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.Reservations.Insert(It.IsAny<Reservation>()));
@@ -65,7 +65,7 @@ namespace Tischreservierung.Tests
         }
 
         [Fact]
-        public async void GetReservationOptions_OpeningTimeToShort()
+        public async Task GetReservationOptions_OpeningTimeToShort()
         {
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.OpeningTimes.GetByDayAndRestaurant(It.IsAny<int>(), It.IsAny<DayOfWeek>()))
@@ -99,7 +99,7 @@ namespace Tischreservierung.Tests
         }
 
         [Fact]
-        public async void GetReservationOptions()
+        public async Task GetReservationOptions()
         {
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.OpeningTimes.GetByDayAndRestaurant(It.IsAny<int>(), It.IsAny<DayOfWeek>())).ReturnsAsync(
@@ -146,7 +146,7 @@ namespace Tischreservierung.Tests
         }
 
         [Fact]
-        public async void GetReservationOptions_IntersectingReservation()
+        public async Task GetReservationOptions_IntersectingReservation()
         {
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.OpeningTimes.GetByDayAndRestaurant(It.IsAny<int>(), It.IsAny<DayOfWeek>())).ReturnsAsync(
@@ -182,7 +182,7 @@ namespace Tischreservierung.Tests
         }
 
         [Fact]
-        public async void GetReservationOptions_OpeningTimeOutsideReservationOffset()
+        public async Task GetReservationOptions_OpeningTimeOutsideReservationOffset()
         {
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.OpeningTimes.GetByDayAndRestaurant(It.IsAny<int>(), It.IsAny<DayOfWeek>()))
