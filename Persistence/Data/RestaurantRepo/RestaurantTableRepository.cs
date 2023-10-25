@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Core.Models;
 using Core.Contracts;
-using Core.DTO;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Persistence.Data.RestaurantRepo
 {

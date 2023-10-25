@@ -1,5 +1,4 @@
-﻿using Core.DTO;
-using Core.Models;
+﻿using Core.Models;
 
 namespace Core.Contracts
 {

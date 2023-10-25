@@ -1,12 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System.Net;
 using Tischreservierung.Controllers;
-using Persistence.Data.RestaurantRepo;
 using Core.Models;
 using Core.Contracts;
 using Microsoft.AspNetCore.Http;
-using WebApi.Controllers;
 
 namespace Tischreservierung.Tests.RestaurantTest.Controller
 {

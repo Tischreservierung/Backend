@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Security.Policy;
 using Core.Models.User;
 using Core.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace Persistence.Data
 {

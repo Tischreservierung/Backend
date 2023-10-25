@@ -1,7 +1,5 @@
 using Core.Contracts;
-using Core.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Persistence.Data.RestaurantRepo;
 using Persistence.Data.User;
 

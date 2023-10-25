@@ -4,8 +4,6 @@ using Tischreservierung.Controllers;
 using Core.Models;
 using Core.Contracts;
 using Microsoft.AspNetCore.Http;
-using System.Web.Http.Results;
-using WebApi.Controllers;
 
 namespace Tischreservierung.Tests.RestaurantTest.Controller
 {

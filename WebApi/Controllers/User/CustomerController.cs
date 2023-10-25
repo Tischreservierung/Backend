@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using Persistence.Data.User;
-using Core.Models;
 using Core.Models.User;
 using Core.Contracts;
 
