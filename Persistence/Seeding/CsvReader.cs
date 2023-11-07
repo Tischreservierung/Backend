@@ -17,7 +17,7 @@
         public static string GetFullPathTo(string file)
         {
             file = file.Trim().Replace('\\', Path.DirectorySeparatorChar);
-            return Path.Combine(, file);
+            return Path.Combine(SolutionPath, file);
         }
 
         public static string[] Read(string file)
