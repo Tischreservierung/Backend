@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Persistence.Seeding
+﻿namespace Persistence.Seeding
 {
     public static class CsvReader
     {
@@ -14,7 +7,7 @@ namespace Persistence.Seeding
         public static DirectoryInfo TryGetSolutionDirectoryInfo()
         {
             var directory = new DirectoryInfo(Directory.GetCurrentDirectory());
-            while (directory != null && !directory.GetFiles("*.sln").Any())
+            while (directory != null && !directory.GetFiles("*.sln").Any() && directory.FullName != "src")
             {
                 directory = directory.Parent;
             }
@@ -24,7 +17,7 @@ namespace Persistence.Seeding
         public static string GetFullPathTo(string file)
         {
             file = file.Trim().Replace('\\', Path.DirectorySeparatorChar);
-            return Path.Combine(SolutionPath, file);
+            return Path.Combine(, file);
         }
 
         public static string[] Read(string file)
