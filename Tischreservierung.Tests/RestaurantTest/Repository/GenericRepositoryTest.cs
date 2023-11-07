@@ -1,16 +1,6 @@
-﻿using Core.Contracts;
-using Core.Models;
+﻿using Core.Models;
 using Microsoft.EntityFrameworkCore;
-using Moq;
-using NuGet.ContentModel;
 using Persistence.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Xunit.Sdk;
 
 namespace Tischreservierung.Tests.RestaurantTest.Repository
 {

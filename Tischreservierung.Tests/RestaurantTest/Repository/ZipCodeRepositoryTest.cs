@@ -1,11 +1,6 @@
 ﻿using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tischreservierung.Tests.RestaurantTest.Repository
 {
@@ -75,7 +70,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
 
         ZipCodeRepository TestData()
         {
-            List<ZipCode> zipCodes = new List<ZipCode>() { new ZipCode() { Id = 1, District = "Linz-Land", Location = "Enns", ZipCodeNr = "4470"},
+            List<ZipCode> zipCodes = new() { new ZipCode() { Id = 1, District = "Linz-Land", Location = "Enns", ZipCodeNr = "4470"},
                     new ZipCode() { Id = 2, District = "Linz-Land", Location = "Ennsdorf", ZipCodeNr = "4481"},
                     new ZipCode() { Id = 3, District = "Linz", Location = "Linz", ZipCodeNr = "4020"},
                     new ZipCode() { Id = 4, District = "Linz-Land", Location = "Enns", ZipCodeNr="4471" }};

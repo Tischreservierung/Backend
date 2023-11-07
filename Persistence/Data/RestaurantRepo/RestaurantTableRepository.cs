@@ -11,9 +11,14 @@ namespace Persistence.Data.RestaurantRepo
 
         }
 
-        public async Task<IEnumerable<RestaurantTable>> GetRestaurantTablesByRestaurant(int restaurantId)
+        public async Task<IEnumerable<RestaurantTable>> GetByRestaurant(int restaurantId)
         {
-            return await _dbSet.Where(r => r.RestaurantId == restaurantId).ToListAsync();
+            return await _dbSet.Where(t => t.RestaurantId == restaurantId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<RestaurantTable>> GetByRestaurantAndTableSize(int restaurantId, int seatPlaces)
+        {
+            return await _dbSet.Where(t => t.RestaurantId == restaurantId && t.SeatPlaces >= seatPlaces).ToListAsync();
         }
     }
 }

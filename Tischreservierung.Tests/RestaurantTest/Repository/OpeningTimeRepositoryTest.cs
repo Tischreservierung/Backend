@@ -2,11 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using Persistence.Data.RestaurantRepo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tischreservierung.Tests.RestaurantTest.Repository
 {
@@ -23,13 +18,13 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
 
         OpeningTimeRepository TestData()
         {
-            List<RestaurantOpeningTime> openingTimes = new List<RestaurantOpeningTime>()
+            List<RestaurantOpeningTime> openingTimes = new()
             {
-                new RestaurantOpeningTime(){ Id = 1, Day = 1, RestaurantId =2},
-                new RestaurantOpeningTime(){ Id = 2, Day = 2, RestaurantId =2},
-                new RestaurantOpeningTime(){ Id = 3, Day = 2, RestaurantId =1},
-                new RestaurantOpeningTime(){ Id = 4, Day = 4, RestaurantId =3},
-                new RestaurantOpeningTime(){ Id = 5, Day = 5, RestaurantId =1},
+                new RestaurantOpeningTime(){ Id = 1, Day = DayOfWeek.Monday, RestaurantId = 2},
+                new RestaurantOpeningTime(){ Id = 2, Day = DayOfWeek.Tuesday, RestaurantId = 2},
+                new RestaurantOpeningTime(){ Id = 3, Day = DayOfWeek.Tuesday, RestaurantId = 1},
+                new RestaurantOpeningTime(){ Id = 4, Day = DayOfWeek.Thursday, RestaurantId = 3},
+                new RestaurantOpeningTime(){ Id = 5, Day = DayOfWeek.Friday, RestaurantId = 1},
             };
 
             _context.AddRange(openingTimes);
@@ -42,16 +37,16 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         public async Task GetByDay()
         {
             var repository = TestData();
-            var result = await repository.GetByDay(2);
+            var result = await repository.GetByDay(DayOfWeek.Tuesday);
             Assert.NotNull(result);
 
             var list = result.ToList();
 
             Assert.Equal(2, list.Count);
 
-            Assert.Equal(2, list[0].Day);
+            Assert.Equal(DayOfWeek.Tuesday, list[0].Day);
             Assert.Equal(2, list[0].RestaurantId);
-            Assert.Equal(2, list[1].Day);
+            Assert.Equal(DayOfWeek.Tuesday, list[1].Day);
             Assert.Equal(1, list[1].RestaurantId);
         }
 
@@ -66,9 +61,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
 
             Assert.Equal(2, list.Count);
 
-            Assert.Equal(2, list[0].Day);
+            Assert.Equal(DayOfWeek.Tuesday, list[0].Day);
             Assert.Equal(1, list[0].RestaurantId);
-            Assert.Equal(5, list[1].Day);
+            Assert.Equal(DayOfWeek.Friday, list[1].Day);
             Assert.Equal(1, list[1].RestaurantId);
         }
 
@@ -76,14 +71,14 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         public async Task GetByRestaurantAndDay()
         {
             var repository = TestData();
-            var result = await repository.GetByDayAndRestaurant(2,1);
+            var result = await repository.GetByDayAndRestaurant(2, DayOfWeek.Monday);
             Assert.NotNull(result);
 
             var list = result.ToList();
 
             Assert.Single(list);
 
-            Assert.Equal(1, list[0].Day);
+            Assert.Equal(DayOfWeek.Monday, list[0].Day);
             Assert.Equal(2, list[0].RestaurantId);
         }
     }

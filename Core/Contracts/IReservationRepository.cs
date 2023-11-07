@@ -6,5 +6,6 @@ namespace Core.Contracts
     {
         Task<IEnumerable<Reservation>> GetByCustomer(int customerId);
         Task<IEnumerable<Reservation>> GetByRestaurant(int restaurantId);
+        Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day);
     }
 }

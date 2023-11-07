@@ -18,7 +18,7 @@ namespace Persistence.Data.RestaurantRepo
             if (_dbContext.Persons.Any(p => p.EMail == restaurant.Employee!.EMail))
                 return null;
 
-            Restaurant res = new Restaurant()
+            Restaurant res = new()
             {
                 Name = restaurant.Name,
                 Address = restaurant.Address,
@@ -33,14 +33,10 @@ namespace Persistence.Data.RestaurantRepo
             emp.Restaurant = res;
             RestaurantOpeningTime[] openings = restaurant.Openings!.Select(o => new RestaurantOpeningTime()
             {
-                Day = o.Day,
-                OpeningTime = new DateTime(2000, 1, 1, Int32.Parse(o.OpenFrom.Split(':')[0])
-                , Int32.Parse(o.OpenFrom.Split(':')[1]),0),
-                ClosingTime = new DateTime(2000, 1, 1, Int32.Parse(o.OpenTo.Split(':')[0])
-                , Int32.Parse(o.OpenTo.Split(':')[1]), 0),
+                Day = (DayOfWeek)o.Day,
+                OpeningTime = new TimeSpan(int.Parse(o.OpenFrom.Split(':')[0]), int.Parse(o.OpenFrom.Split(':')[1]), 0),
+                ClosingTime = new TimeSpan(int.Parse(o.OpenTo.Split(':')[0]), int.Parse(o.OpenTo.Split(':')[1]), 0),
                 Restaurant = res
-
-
             }).ToArray();
 
             _dbContext.Restaurants.Add(res);
@@ -50,13 +46,12 @@ namespace Persistence.Data.RestaurantRepo
         }
 
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByName
-            (string name, int zipCodeId, DateTime? dateTime)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantsByName(string name, int zipCodeId, DateTime? dateTime)
         {
             return await _dbSet.Where(r => (r.ZipCodeId == zipCodeId || zipCodeId == -1) 
             && r.Name.ToLower().Contains(name.ToLower())
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => (o.Day+1)%7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id ))).ToListAsync();
+            .Any(o => ((int)o.Day+1)%7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id ))).ToListAsync();
         }
 
         public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories
@@ -65,7 +60,7 @@ namespace Persistence.Data.RestaurantRepo
             return await _dbContext.Restaurants.Where(r => (zipCodeId == -1 || r.ZipCodeId == zipCodeId)
             && (categories.Length == 0 || r.Categories.Any(c => categories.Contains(c.Id)))
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => (o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
+            .Any(o => ((int)o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
                 .ToListAsync();
         }
 
@@ -79,9 +74,9 @@ namespace Persistence.Data.RestaurantRepo
                 Address = x.Address,
                 ZipCode = x.ZipCode,
                 Openings = _dbContext.RestaurantOpeningTimes.Where(y => y.RestaurantId == x.Id)
-                    .Select(o => new OpeningTimeDto() { Day = o.Day, 
-                        OpenFrom = o.OpeningTime.Hour + ":" + o.OpeningTime.Minute, 
-                        OpenTo = o.ClosingTime.Hour + ":" + o.ClosingTime.Minute}).ToArray(),
+                    .Select(o => new OpeningTimeDto() { Day = (int)o.Day, 
+                        OpenFrom = o.OpeningTime.Hours + ":" + o.OpeningTime.Minutes, 
+                        OpenTo = o.ClosingTime.Hours + ":" + o.ClosingTime.Minutes}).ToArray(),
                 Name = x.Name,
                 Categories = x.Categories.ToArray(),
                 Pictures = _dbContext.RestaurantPictures.Where(z => z.RestaurantId == x.Id)

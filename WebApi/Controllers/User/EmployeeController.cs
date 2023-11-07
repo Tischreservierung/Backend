@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Persistence.Data.User;
 using Core.Models.User;
 using Core.Contracts;
 
