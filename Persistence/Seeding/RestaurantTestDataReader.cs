@@ -6,11 +6,11 @@ namespace Persistence.Seeding
 {
     public static class RestaurantTestDataReader
     {
-        const string file = @"..\Persistence\Seeding\csv\RestaurantTestData.csv";
+        const string file = @"Persistence\Seeding\csv\RestaurantTestData.csv";
 
         public static Restaurant[] Read(ZipCode[] zipCodes)
         {
-            string[] lines = File.ReadAllLines(file);
+            string[] lines = CsvReader.Read(file);
 
             Restaurant[] restaurants = new Restaurant[lines.Length - 1];
 

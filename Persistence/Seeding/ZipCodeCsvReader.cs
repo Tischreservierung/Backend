@@ -4,11 +4,11 @@ namespace Persistence.Seeding
 {
     public static class ZipCodeCsvReader
     {
-        const string file = @"..\Persistence\Seeding\csv\ZipCodes.txt";
+        const string file = @"Persistence\Seeding\csv\ZipCodes.txt";
 
         public static ZipCode[] Read()
         {
-            string[] lines = File.ReadAllLines(file);
+            string[] lines = CsvReader.Read(file);
 
             ZipCode[] zipCodes = new ZipCode[lines.Length];
 

@@ -5,11 +5,11 @@ namespace Persistence.Seeding
 {
     public static class OpeningTimeTestDataReader
     {
-        const string file = @"..\Persistence\Seeding\csv\OpeningTimeTestData.csv";
+        const string file = @"Persistence\Seeding\csv\OpeningTimeTestData.csv";
 
         public static RestaurantOpeningTime[] Read()
         {
-            string[] lines = File.ReadAllLines(file);
+            string[] lines = CsvReader.Read(file);
 
             List<RestaurantOpeningTime> openingTimes = new();
 

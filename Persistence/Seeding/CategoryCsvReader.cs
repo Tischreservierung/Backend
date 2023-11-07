@@ -4,11 +4,11 @@ namespace Persistence.Seeding
 {
     public static class CategoryCsvReader
     {
-        const string file = @"..\Persistence\Seeding\csv\Categories.csv";
+        const string file = @"Persistence\Seeding\csv\Categories.csv";
 
         public static Category[] Read()
         {
-            string[] lines = File.ReadAllLines(file);
+            string[] lines = CsvReader.Read(file);
 
             Category[] cateogries = new Category[lines.Length];
 

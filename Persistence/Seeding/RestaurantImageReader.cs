@@ -6,12 +6,13 @@ namespace Persistence.Seeding
 {
     public static class RestaurantImageReader
     {
-        const string path = @"..\Persistence\Seeding\images";
+        const string file = @"Persistence\Seeding\images";
 
         public static RestaurantPicture[] Read(Restaurant[] restaurants)
         {
             List<RestaurantPicture> pictures = new();
 
+            string path = Path.Combine(CsvReader.SolutionPath, file);
             string[] files = Directory.GetFiles(path);
 
             for (int i = 0; i < files.Length; i++)

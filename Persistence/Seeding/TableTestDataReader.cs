@@ -4,11 +4,11 @@ namespace Persistence.Seeding
 {
     public static class TableTestDataReader
     {
-        const string file = @"..\Persistence\Seeding\csv\TablesTestData.csv";
+        const string file = @"Persistence\Seeding\csv\TablesTestData.csv";
 
         public static RestaurantTable[] Read()
         {
-            string[] lines = File.ReadAllLines(file);
+            string[] lines = CsvReader.Read(file);
 
             List<RestaurantTable> restaurantTables = new();
 
