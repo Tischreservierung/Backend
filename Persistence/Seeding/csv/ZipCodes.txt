@@ -1,0 +1,809 @@
+Oberösterreich	4020	Leonding	Stadt   	Bezirk Linz-Land		 
+Oberösterreich	4020	Linz	Statutarstadt   	Bezirk Linz (Stadt)	 
+Oberösterreich	4030	Linz	Statutarstadt   	Bezirk Linz (Stadt)	 
+Oberösterreich	4040	Altenberg bei Linz	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4040	Gramastetten	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4040	Kirchschlag bei Linz	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4040	Lichtenberg	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4040	Linz	Statutarstadt   	Bezirk Linz (Stadt)	 
+Oberösterreich	4040	Steyregg	Stadt   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4048	Puchenau	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4050	Traun	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4052	Ansfelden	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4052	Linz	Statutarstadt   	Bezirk Linz (Stadt)	 
+Oberösterreich	4053	Ansfelden	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4053	Neuhofen an der Krems	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4055	Pucking	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4060	Leonding	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4061	Leonding	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4061	Pasching	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4061	Wilhering	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4062	Kirchberg-Thening	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4063	Hörsching	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4063	Traun	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4064	Oftering	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4070	Eferding	Stadt   	Bezirk Eferding	 
+Oberösterreich	4070	Fraham	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4070	Hartkirchen	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4070	Hinzenbach	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4070	Prambachkirchen	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4070	Pupping	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4070	Stroheim	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4072	Alkoven	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4073	Wilhering	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4074	Hartkirchen	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4074	Prambachkirchen	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4074	Stroheim	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4075	Fraham	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4076	St. Marienkirchen an der Polsenz	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4081	Hartkirchen	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4081	Pupping	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4081	Stroheim	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4082	Aschach an der Donau	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4083	Haibach ob der Donau	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4083	St. Agatha	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4084	Eschenau im Hausruckkreis	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4084	St. Agatha	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4085	Eschenau im Hausruckkreis	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4085	Hofkirchen im Mühlkreis	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4085	Neustift im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4085	Pfarrkirchen im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4085	Waldkirchen am Wesen	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4090	Engelhartszell	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4091	St. Roman	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4091	Vichtenstein	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4092	Esternberg	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4100	Gramastetten	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4100	Ottensheim	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4101	Feldkirchen an der Donau	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4101	Herzogsdorf	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4102	Goldwörth	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4111	Gramastetten	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4111	Walding	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4112	Gramastetten	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4112	St. Gotthard im Mühlkreis	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4113	Feldkirchen an der Donau	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4113	Niederwaldkirchen	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4113	St. Martin im Mühlkreis	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4114	Kirchberg ob der Donau	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4114	Kleinzell im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4114	St. Martin im Mühlkreis	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4115	Kirchberg ob der Donau	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4115	Kleinzell im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4116	St. Ulrich im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4120	Altenfelden	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4120	Kleinzell im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4120	Neufelden	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4121	Altenfelden	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4121	Arnreit	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4121	Hörbich	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4121	Neufelden	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4122	Arnreit	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4131	Kirchberg ob der Donau	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4131	Lembach im Mühlkreis	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4131	Niederkappel	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4132	Hörbich	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4132	Lembach im Mühlkreis	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4132	Niederkappel	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4132	Putzleinsdorf	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4133	Hofkirchen im Mühlkreis	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4133	Niederkappel	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4133	Putzleinsdorf	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4134	Atzesberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4134	Hörbich	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4134	Putzleinsdorf	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4141	Pfarrkirchen im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4141	Putzleinsdorf	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4142	Hofkirchen im Mühlkreis	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4142	Pfarrkirchen im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4143	Neustift im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4144	Neustift im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4144	Oberkappel	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4144	Pfarrkirchen im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4150	Rohrbach-Berg	Stadt   	Bezirk Rohrbach	 
+Oberösterreich	4150	Sarleinsbach	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4151	Oepping	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4152	Atzesberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4152	Hörbich	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4152	Kollerschlag	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4152	Oberkappel	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4152	Sarleinsbach	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4153	Julbach	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4153	Peilstein im Mühlviertel	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4154	Kollerschlag	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4154	Oberkappel	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4155	Julbach	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4155	Nebelberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4160	Aigen-Schlägl	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4160	Ulrichsberg	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4161	Aigen-Schlägl	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4161	Schwarzenberg am Böhmerwald	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4161	Ulrichsberg	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4162	Julbach	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4162	Peilstein im Mühlviertel	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4162	Ulrichsberg	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4163	Klaffer am Hochficht	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4163	Ulrichsberg	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4164	Schwarzenberg am Böhmerwald	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4170	Auberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4170	Haslach an der Mühl	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4170	Lichtenau im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4170	Rohrbach-Berg	Stadt   	Bezirk Rohrbach	 
+Oberösterreich	4170	St. Oswald bei Haslach	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4170	St. Peter am Wimberg	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4170	St. Stefan-Afiesl	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4171	Auberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4171	St. Peter am Wimberg	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4171	St. Stefan-Afiesl	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4172	St. Johann am Wimberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4173	St. Veit im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4174	Niederwaldkirchen	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4174	St. Veit im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4175	Herzogsdorf	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4175	St. Veit im Mühlkreis	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4180	Reichenau im Mühlkreis	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4180	Sonnberg im Mühlkreis	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4180	Zwettl an der Rodl	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4181	Herzogsdorf	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4181	Oberneukirchen	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4181	Zwettl an der Rodl	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4182	Helfenberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4182	Oberneukirchen	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4183	Helfenberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4183	Oberneukirchen	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4183	Vorderweißenbach	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4184	Helfenberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4184	St. Johann am Wimberg	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4184	St. Peter am Wimberg	Marktgemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4184	St. Stefan-Afiesl	Gemeinde   	Bezirk Rohrbach	 
+Oberösterreich	4184	Vorderweißenbach	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4190	Bad Leonfelden	Stadt   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4190	Vorderweißenbach	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4191	Vorderweißenbach	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4192	Hirschbach im Mühlkreis	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4192	Schenkenfelden	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4193	Hirschbach im Mühlkreis	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4193	Rainbach im Mühlkreis	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4193	Reichenthal	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4193	Waldburg	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4201	Eidenberg	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4201	Gramastetten	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4201	Kirchschlag bei Linz	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4201	Lichtenberg	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4201	Zwettl an der Rodl	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4202	Alberndorf in der Riedmark	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4202	Altenberg bei Linz	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4202	Eidenberg	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4202	Hellmonsödt	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4202	Kirchschlag bei Linz	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4202	Sonnberg im Mühlkreis	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4203	Altenberg bei Linz	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4204	Haibach im Mühlkreis	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4204	Ottenschlag im Mühlkreis	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4204	Reichenau im Mühlkreis	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4209	Altenberg bei Linz	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4209	Engerwitzdorf	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4210	Altenberg bei Linz	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4210	Gallneukirchen	Stadt   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4211	Alberndorf in der Riedmark	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4211	Altenberg bei Linz	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4211	Neumarkt im Mühlkreis	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4212	Kefermarkt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4212	Neumarkt im Mühlkreis	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4213	Unterweitersdorf	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4221	Steyregg	Stadt   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4222	Engerwitzdorf	Gemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4222	Langenstein	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4222	St. Georgen an der Gusen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4223	Katsdorf	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4223	St. Georgen an der Gusen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4224	Katsdorf	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4224	Wartberg ob der Aist	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4225	Luftenberg an der Donau	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4230	Gutau	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4230	Hagenberg im Mühlkreis	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4230	Pregarten	Stadt   	Bezirk Freistadt	 
+Oberösterreich	4230	Tragwein	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4232	Hagenberg im Mühlkreis	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4240	Freistadt	Stadt   	Bezirk Freistadt	 
+Oberösterreich	4240	Kefermarkt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4240	Lasberg	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4240	Reichenthal	Marktgemeinde   	Bezirk Urfahr-Umgebung	 
+Oberösterreich	4240	Waldburg	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4242	Hirschbach im Mühlkreis	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4251	Sandl	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4252	Liebenau	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4261	Grünbach	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4261	Rainbach im Mühlkreis	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4262	Leopoldschlag	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4263	Sandl	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4263	Windhaag bei Freistadt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4264	Grünbach	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4264	Lasberg	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4271	Lasberg	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4271	St. Oswald bei Freistadt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4272	St. Leonhard bei Freistadt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4272	Weitersfelden	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4273	Kaltenberg	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4273	Unterweißenbach	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4274	Bad Zell	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4274	Pierbach	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4274	Schönau im Mühlkreis	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4280	Königswiesen	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4281	Königswiesen	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4281	Pabneukirchen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4281	Pierbach	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4282	Königswiesen	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4282	Pierbach	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4282	Schönau im Mühlkreis	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4282	St. Thomas am Blasenstein	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4283	Bad Zell	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4284	Allerheiligen im Mühlkreis	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4284	Tragwein	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4291	Kefermarkt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4291	Lasberg	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4292	Gutau	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4292	Kefermarkt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4292	Lasberg	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4292	Pregarten	Stadt   	Bezirk Freistadt	 
+Oberösterreich	4293	Bad Zell	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4293	Gutau	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4293	Schönau im Mühlkreis	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4293	St. Leonhard bei Freistadt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4293	Tragwein	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4294	Gutau	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4294	Schönau im Mühlkreis	Gemeinde   	Bezirk Freistadt	 
+Oberösterreich	4294	St. Leonhard bei Freistadt	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4294	St. Oswald bei Freistadt	Marktgemeinde   	Bezirk Freistadt	 
+Niederösterreich	4300	Ernsthofen	Gemeinde   	Bezirk Amstetten	 
+Niederösterreich	4300	St. Valentin	Stadt   	Bezirk Amstetten	 
+Niederösterreich	4303	St. Pantaleon-Erla	Gemeinde   	Bezirk Amstetten	 
+Oberösterreich	4310	Langenstein	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4310	Mauthausen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4311	Naarn im Machlande	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4311	Ried in der Riedmark	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4311	Schwertberg	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4311	Tragwein	Marktgemeinde   	Bezirk Freistadt	 
+Oberösterreich	4312	Langenstein	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4312	Mauthausen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4312	Ried in der Riedmark	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4312	Schwertberg	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4320	Allerheiligen im Mühlkreis	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4320	Naarn im Machlande	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4320	Perg	Stadt   	Bezirk Perg	 
+Oberösterreich	4320	Windhaag bei Perg	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4322	St. Thomas am Blasenstein	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4322	Windhaag bei Perg	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4323	Arbing	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4323	Bad Kreuzen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4323	Münzbach	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4323	Rechberg	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4323	Windhaag bei Perg	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4324	Rechberg	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4331	Naarn im Machlande	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4332	Naarn im Machlande	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4341	Arbing	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4341	Baumgartenberg	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4342	Arbing	Gemeinde   	Bezirk Perg	 
+Oberösterreich	4342	Baumgartenberg	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4342	Münzbach	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4343	Mitterkirchen im Machland	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4351	Baumgartenberg	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4351	Saxen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4352	Bad Kreuzen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4352	Klam	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4352	Münzbach	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4352	Saxen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4360	Bad Kreuzen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4360	Grein	Stadt   	Bezirk Perg	 
+Oberösterreich	4360	Waldhausen im Strudengau	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4362	Bad Kreuzen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4362	Pabneukirchen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4362	St. Thomas am Blasenstein	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4363	Pabneukirchen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4363	St. Thomas am Blasenstein	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4364	St. Thomas am Blasenstein	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4371	Dimbach	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4371	Pabneukirchen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4371	St. Georgen am Walde	Marktgemeinde   	Bezirk Perg	 
+Niederösterreich	4372	Altmelon	Marktgemeinde   	Bezirk Zwettl	 
+Oberösterreich	4372	Pabneukirchen	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4372	St. Georgen am Walde	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4381	St. Nikola an der Donau	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4382	St. Nikola an der Donau	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4382	Waldhausen im Strudengau	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4391	Waldhausen im Strudengau	Marktgemeinde   	Bezirk Perg	 
+Niederösterreich	4392	Dorfstetten	Gemeinde   	Bezirk Melk	 
+Oberösterreich	4392	Waldhausen im Strudengau	Marktgemeinde   	Bezirk Perg	 
+Oberösterreich	4400	Garsten	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4400	St. Ulrich bei Steyr	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4400	Steyr	Statutarstadt   	Bezirk Steyr (Stadt)	 
+Oberösterreich	4407	Dietach	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4407	Steyr	Statutarstadt   	Bezirk Steyr (Stadt)	 
+Oberösterreich	4421	Aschach an der Steyr	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4421	Steinbach an der Steyr	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Niederösterreich	4431	Haidershofen	Gemeinde   	Bezirk Amstetten	 
+Niederösterreich	4432	Ernsthofen	Gemeinde   	Bezirk Amstetten	 
+Niederösterreich	4441	Behamberg	Gemeinde   	Bezirk Amstetten	 
+Oberösterreich	4442	Maria Neustift	Gemeinde   	Bezirk Steyr-Land	 
+Niederösterreich	4442	St. Peter in der Au	Marktgemeinde   	Bezirk Amstetten	 
+Oberösterreich	4442	St. Ulrich bei Steyr	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4443	Großraming	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4443	Maria Neustift	Gemeinde   	Bezirk Steyr-Land	 
+Niederösterreich	4443	St. Peter in der Au	Marktgemeinde   	Bezirk Amstetten	 
+Oberösterreich	4443	St. Ulrich bei Steyr	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4451	Garsten	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4451	St. Ulrich bei Steyr	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4451	Steyr	Statutarstadt   	Bezirk Steyr (Stadt)	 
+Oberösterreich	4451	Ternberg	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4452	Ternberg	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4453	Ternberg	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4460	Laussa	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4460	Losenstein	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4461	Garsten	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4461	Laussa	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4462	Reichraming	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4463	Großraming	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4463	Laussa	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4464	Weyer	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4470	Enns	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4470	Kronstorf	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4481	Asten	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4481	Enns	Stadt   	Bezirk Linz-Land	 
+Oberösterreich	4481	Luftenberg an der Donau	Marktgemeinde   	Bezirk Perg	 
+Niederösterreich	4482	Ennsdorf	Gemeinde   	Bezirk Amstetten	 
+Niederösterreich	4482	St. Valentin	Stadt   	Bezirk Amstetten	 
+Oberösterreich	4483	Hargelsberg	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4483	Kronstorf	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4484	Dietach	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4484	Hargelsberg	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4484	Kronstorf	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4490	St. Florian	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4491	Hofkirchen im Traunkreis	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4491	Niederneukirchen	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4491	St. Marien	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4492	Hofkirchen im Traunkreis	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4493	Schiedlberg	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4493	Wolfern	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4501	Neuhofen an der Krems	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4502	St. Marien	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4511	Allhaming	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4511	Neuhofen an der Krems	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4521	Schiedlberg	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4521	St. Marien	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4522	Schiedlberg	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4522	Sierning	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4523	Aschach an der Steyr	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4523	Garsten	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4523	Sierning	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4531	Kematen an der Krems	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4531	Neuhofen an der Krems	Marktgemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4531	Sierning	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4532	Kematen an der Krems	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4532	Kremsmünster	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4532	Rohr im Kremstal	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4533	Piberbach	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4540	Adlwang	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4540	Bad Hall	Stadt   	Bezirk Steyr-Land	 
+Oberösterreich	4540	Kremsmünster	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4540	Pfarrkirchen bei Bad Hall	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4541	Adlwang	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4542	Nußbach	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4550	Kematen an der Krems	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4550	Kremsmünster	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4550	Rohr im Kremstal	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4551	Ried im Traunkreis	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4552	Pfarrkirchen bei Bad Hall	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4552	Wartberg an der Krems	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4553	Schlierbach	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4554	Oberschlierbach	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4560	Kirchdorf an der Krems	Stadt   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4562	Steinbach am Ziehberg	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4563	Kirchdorf an der Krems	Stadt   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4563	Micheldorf in Oberösterreich	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4564	Klaus an der Pyhrnbahn	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4565	Inzersdorf im Kremstal	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4571	Klaus an der Pyhrnbahn	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4572	Hinterstoder	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4572	Klaus an der Pyhrnbahn	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4572	St. Pankraz	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4573	Hinterstoder	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4574	Hinterstoder	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4574	Vorderstoder	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4575	Roßleithen	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4580	Edlbach	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4580	Windischgarsten	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4581	Edlbach	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4581	Rosenau am Hengstpaß	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4582	Edlbach	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4582	Spital am Pyhrn	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4591	Molln	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4591	Rosenau am Hengstpaß	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4592	Grünburg	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4593	Grünburg	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4594	Aschach an der Steyr	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4594	Grünburg	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4594	Steinbach an der Steyr	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4595	Waldneukirchen	Gemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4596	Steinbach an der Steyr	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4596	Ternberg	Marktgemeinde   	Bezirk Steyr-Land	 
+Oberösterreich	4600	Schleißheim	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4600	Thalheim bei Wels	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4600	Wels	Statutarstadt   	Bezirk Wels (Stadt)	 
+Oberösterreich	4611	Buchkirchen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4611	Wallern an der Trattnach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4612	Buchkirchen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4612	Scharten	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4613	Buchkirchen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4614	Marchtrenk	Stadt   	Bezirk Wels-Land	 
+Oberösterreich	4615	Holzhausen	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4616	Eggendorf im Traunkreis	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4616	Weißkirchen an der Traun	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4621	Kremsmünster	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4621	Sipbachzell	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4622	Eggendorf im Traunkreis	Gemeinde   	Bezirk Linz-Land	 
+Oberösterreich	4623	Gunskirchen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4624	Offenhausen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4624	Pennewang	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4625	Meggenhofen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4625	Offenhausen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4625	Pennewang	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4631	Buchkirchen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4631	Krenglbach	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4631	Pichl bei Wels	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4631	Wallern an der Trattnach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4632	Kematen am Innbach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4632	Pichl bei Wels	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4632	Schlüßlberg	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4633	Kematen am Innbach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4633	Pichl bei Wels	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4641	Fischlham	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4641	Steinhaus	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4642	Sattledt	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4643	Eberstalzell	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4643	Pettenbach	Marktgemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4643	Ried im Traunkreis	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4643	Steinbach am Ziehberg	Gemeinde   	Bezirk Kirchdorf an der Krems	 
+Oberösterreich	4644	Grünau im Almtal	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4644	Scharnstein	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4644	St. Konrad	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4645	Grünau im Almtal	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4645	Scharnstein	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4650	Edt bei Lambach	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4650	Gunskirchen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4650	Lambach	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4651	Stadl-Paura	Stadt   	Bezirk Wels-Land	 
+Oberösterreich	4652	Fischlham	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4652	Steinerkirchen an der Traun	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4653	Eberstalzell	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4653	Vorchdorf	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4654	Bad Wimsbach-Neydharting	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4655	Roitham am Traunfall	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4655	Steinerkirchen an der Traun	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4655	Vorchdorf	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4656	Kirchham	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4656	Laakirchen	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4661	Roitham am Traunfall	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4662	Laakirchen	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4663	Laakirchen	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4664	Gschwandt	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4664	Laakirchen	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4671	Aichkirchen	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4671	Neukirchen bei Lambach	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4672	Bachmanning	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4672	Meggenhofen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4672	Pennewang	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4673	Gaspoltshofen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4674	Gaspoltshofen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4675	Weibern	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4676	Aistersheim	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4676	Gaspoltshofen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4680	Geiersberg	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4680	Haag am Hausruck	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4680	Weibern	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4681	Rottenbach	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4682	Gaspoltshofen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4682	Geboltskirchen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4690	Oberndorf bei Schwanenstadt	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4690	Pitzenberg	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4690	Pühret	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4690	Rüstorf	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4690	Rutzenham	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4690	Schlatt	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4690	Schwanenstadt	Stadt   	Bezirk Vöcklabruck	 
+Oberösterreich	4690	Stadl-Paura	Stadt   	Bezirk Wels-Land	 
+Oberösterreich	4691	Niederthalheim	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4691	Schlatt	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4692	Gaspoltshofen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4692	Niederthalheim	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4693	Desselbrunn	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4693	Rüstorf	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4694	Ohlsdorf	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4701	Bad Schallerbach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4701	Pichl bei Wels	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4701	Wallern an der Trattnach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4702	Bad Schallerbach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4702	Krenglbach	Gemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4702	Pichl bei Wels	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4702	Wallern an der Trattnach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4707	Grieskirchen	Stadt   	Bezirk Grieskirchen	 
+Oberösterreich	4707	Schlüßlberg	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4710	Grieskirchen	Stadt   	Bezirk Grieskirchen	 
+Oberösterreich	4710	Pollham	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4710	St. Georgen bei Grieskirchen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4710	Tollet	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4712	Michaelnbach	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4712	Tollet	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4712	Waizenkirchen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4713	Gallspach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4713	Grieskirchen	Stadt   	Bezirk Grieskirchen	 
+Oberösterreich	4713	Kematen am Innbach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4713	Schlüßlberg	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4713	St. Georgen bei Grieskirchen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4714	Gaspoltshofen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4714	Meggenhofen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4714	Offenhausen	Marktgemeinde   	Bezirk Wels-Land	 
+Oberösterreich	4715	St. Georgen bei Grieskirchen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4715	Taufkirchen an der Trattnach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4715	Tollet	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4716	Hofkirchen an der Trattnach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4720	Kallham	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4720	Michaelnbach	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4720	Neumarkt im Hausruckkreis	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4720	Pötting	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4720	Wendling	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4721	Altschwendt	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4722	Neukirchen am Walde	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4722	Peuerbach	Stadt   	Bezirk Grieskirchen	 
+Oberösterreich	4722	Steegen	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4723	Kopfing im Innkreis	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4723	Natternbach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4724	Eschenau im Hausruckkreis	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4724	Neukirchen am Walde	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4724	Waldkirchen am Wesen	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4725	Engelhartszell	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4725	Kopfing im Innkreis	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4725	St. Aegidi	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4725	St. Roman	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4730	Prambachkirchen	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4730	St. Agatha	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4730	Stroheim	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4730	Waizenkirchen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4731	Prambachkirchen	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4731	Stroheim	Gemeinde   	Bezirk Eferding	 
+Oberösterreich	4731	Waizenkirchen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4732	Pollham	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4732	Prambachkirchen	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4732	St. Marienkirchen an der Polsenz	Marktgemeinde   	Bezirk Eferding	 
+Oberösterreich	4732	St. Thomas	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4733	Heiligenberg	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4741	Hofkirchen an der Trattnach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4741	Rottenbach	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4741	Wendling	Gemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4742	Pram	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4743	Peterskirchen	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4751	Dorf an der Pram	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4751	Taiskirchen im Innkreis	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4752	Lambrechten	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4752	Riedau	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4753	Lambrechten	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4753	Taiskirchen im Innkreis	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4754	Andrichsfurt	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4754	Peterskirchen	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4754	Utzenaich	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4755	Altschwendt	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4755	Zell an der Pram	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4760	Raab	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4760	St. Willibald	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4761	Enzenkirchen	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4762	Enzenkirchen	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4762	Natternbach	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4762	St. Willibald	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4770	Andorf	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4771	Enzenkirchen	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4771	Sigharting	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4772	Andorf	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4772	Lambrechten	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4772	Utzenaich	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4773	Eggerding	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4773	St. Marienkirchen bei Schärding	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4774	St. Marienkirchen bei Schärding	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4774	Taufkirchen an der Pram	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4775	Eggerding	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4775	Taufkirchen an der Pram	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4776	Diersbach	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4776	Rainbach im Innkreis	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4777	Mayrhof	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4780	Schärding	Stadt   	Bezirk Schärding	 
+Oberösterreich	4782	St. Florian am Inn	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4783	Schardenberg	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4783	Wernstein am Inn	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4784	Schardenberg	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4784	Wernstein am Inn	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4785	Freinberg	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4785	Schardenberg	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4786	Brunnenthal	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4791	Rainbach im Innkreis	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4791	Schardenberg	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4791	Taufkirchen an der Pram	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4792	Münzkirchen	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4792	Schardenberg	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4792	St. Roman	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4793	Kopfing im Innkreis	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4793	St. Roman	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4794	Enzenkirchen	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4794	Kopfing im Innkreis	Marktgemeinde   	Bezirk Schärding	 
+Oberösterreich	4794	St. Aegidi	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4800	Attnang-Puchheim	Stadt   	Bezirk Vöcklabruck	 
+Oberösterreich	4800	Desselbrunn	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4800	Pilsbach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4800	Pühret	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4800	Regau	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4801	Altmünster	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4801	Traunkirchen	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4802	Ebensee am Traunsee	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4810	Altmünster	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4810	Gmunden	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4810	Gschwandt	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4810	Pinsdorf	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4812	Altmünster	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4812	Pinsdorf	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4812	Regau	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4813	Altmünster	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4814	Altmünster	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4814	Aurach am Hongar	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4816	Gschwandt	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4816	Laakirchen	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4817	Gschwandt	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4817	Kirchham	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4817	Scharnstein	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4817	St. Konrad	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4820	Bad Ischl	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4821	Bad Ischl	Stadt   	Bezirk Gmunden	 
+Oberösterreich	4822	Bad Goisern am Hallstättersee	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4823	Hallstatt	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4824	Gosau	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4825	Gosau	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4830	Hallstatt	Marktgemeinde   	Bezirk Gmunden	 
+Oberösterreich	4831	Obertraun	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4840	Pilsbach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4840	Vöcklabruck	Stadt   	Bezirk Vöcklabruck	 
+Oberösterreich	4841	Pilsbach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4841	Timelkam	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4841	Ungenach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4841	Vöcklabruck	Stadt   	Bezirk Vöcklabruck	 
+Oberösterreich	4842	Zell am Pettenfirst	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4843	Ampflwang im Hausruckwald	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4844	Aurach am Hongar	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4844	Regau	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4845	Pinsdorf	Gemeinde   	Bezirk Gmunden	 
+Oberösterreich	4845	Regau	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4846	Redlham	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4849	Puchkirchen am Trattberg	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4850	Neukirchen an der Vöckla	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4850	Timelkam	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4850	Ungenach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4850	Vöcklabruck	Stadt   	Bezirk Vöcklabruck	 
+Oberösterreich	4851	Gampern	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4851	Seewalchen am Attersee	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4852	Weyregg am Attersee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4853	Steinbach am Attersee	Gemeinde   	Bezirk Vöcklabruck	 
+Salzburg	4854	Sankt Gilgen	Gemeinde   	Bezirk Salzburg-Umgebung	 
+Oberösterreich	4854	Steinbach am Attersee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4860	Lenzing	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4860	Regau	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4860	Timelkam	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4861	Aurach am Hongar	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4861	Schörfling am Attersee	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4861	Weyregg am Attersee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4863	Berg im Attergau	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4863	Seewalchen am Attersee	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4864	Attersee am Attersee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4865	Nußdorf am Attersee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4866	Innerschwand am Mondsee	Gemeinde   	Bezirk Vöcklabruck	 
+Salzburg	4866	Sankt Gilgen	Gemeinde   	Bezirk Salzburg-Umgebung	 
+Oberösterreich	4866	Unterach am Attersee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4870	Pfaffing	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4870	Vöcklamarkt	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4871	Frankenburg am Hausruck	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4871	Gampern	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4871	Neukirchen an der Vöckla	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4871	Pfaffing	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4871	Vöcklamarkt	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4872	Neukirchen an der Vöckla	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4873	Frankenburg am Hausruck	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4873	Neukirchen an der Vöckla	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4873	Redleiten	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4880	Berg im Attergau	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4880	Seewalchen am Attersee	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4880	St. Georgen im Attergau	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4881	Straß im Attergau	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4882	Oberwang	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4890	Fornach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4890	Frankenmarkt	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4890	Vöcklamarkt	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4890	Weißenkirchen im Attergau	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4891	Frankenmarkt	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4891	Pöndorf	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4891	Weißenkirchen im Attergau	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4892	Fornach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4892	Pfaffing	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4893	Oberhofen am Irrsee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4893	Tiefgraben	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4893	Zell am Moos	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4894	Oberhofen am Irrsee	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4901	Ottnang am Hausruck	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4902	Gaspoltshofen	Marktgemeinde   	Bezirk Grieskirchen	 
+Oberösterreich	4902	Niederthalheim	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4902	Wolfsegg am Hausruck	Marktgemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4903	Manning	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4904	Atzbach	Gemeinde   	Bezirk Vöcklabruck	 
+Oberösterreich	4906	Eberschwang	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4910	Aurolzmünster	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4910	Mehrnbach	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4910	Pattigham	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4910	Ried im Innkreis	Stadt   	Bezirk Ried im Innkreis	 
+Oberösterreich	4911	Tumeltsham	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4912	Neuhofen im Innkreis	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4920	Schildorn	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4921	Hohenzell	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4922	Geiersberg	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4923	Lohnsburg am Kobernaußerwald	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4924	Waldzell	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4925	Pattigham	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4925	Pramet	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4926	St. Marienkirchen am Hausruck	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4931	Aspach	Marktgemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4931	Mettmach	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4932	Aspach	Marktgemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4932	Kirchheim im Innkreis	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4933	Aspach	Marktgemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4941	Mehrnbach	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4941	Ried im Innkreis	Stadt   	Bezirk Ried im Innkreis	 
+Oberösterreich	4942	Gurten	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4942	Wippenham	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4943	Geinberg	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4943	Gurten	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4943	Kirchdorf am Inn	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4943	Polling im Innkreis	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4950	Altheim	Stadt   	Bezirk Braunau am Inn	 
+Oberösterreich	4950	Weng im Innkreis	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4951	Geinberg	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4951	Polling im Innkreis	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4952	Altheim	Stadt   	Bezirk Braunau am Inn	 
+Oberösterreich	4952	Moosbach	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4952	Weng im Innkreis	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4961	Mühlheim am Inn	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4961	Weng im Innkreis	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4962	Mining	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4962	St. Peter am Hart	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4963	Burgkirchen	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4963	St. Peter am Hart	Gemeinde   	Bezirk Braunau am Inn	 
+Oberösterreich	4970	Eitzing	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4971	Andrichsfurt	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4971	Aurolzmünster	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4971	Mehrnbach	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4971	Utzenaich	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4972	Andrichsfurt	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4972	Aurolzmünster	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4972	Utzenaich	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4973	Aurolzmünster	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4973	Mörschwang	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4973	Reichersberg	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4973	Senftenbach	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4973	St. Martin im Innkreis	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4973	Utzenaich	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4974	Lambrechten	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4974	Ort im Innkreis	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4974	Reichersberg	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4975	Suben	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4980	Antiesenhofen	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4980	Eggerding	Gemeinde   	Bezirk Schärding	 
+Oberösterreich	4980	Reichersberg	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4981	Reichersberg	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4982	Kirchdorf am Inn	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4982	Mörschwang	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4982	Obernberg am Inn	Marktgemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4983	St. Georgen bei Obernberg am Inn	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4984	Mörschwang	Gemeinde   	Bezirk Ried im Innkreis	 
+Oberösterreich	4984	Weilbach	Gemeinde   	Bezirk Ried im Innkreis	 

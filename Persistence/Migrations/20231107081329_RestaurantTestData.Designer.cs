@@ -12,17 +12,18 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OnlineReservationContext))]
-    [Migration("20230622123701_testData")]
-    partial class testData
+    [Migration("20231107081329_RestaurantTestData")]
+    partial class RestaurantTestData
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("CategoryRestaurant", b =>
                 {
@@ -45,7 +46,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -219,13 +220,13 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
 
                     b.Property<DateTime>("ReservationDay")
                         .HasColumnType("datetime2");
@@ -241,8 +242,8 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
 
                     b.HasKey("Id");
 
@@ -261,7 +262,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -297,6 +298,366 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "Bergstraße",
+                            Description = "Inmitten der malerischen Alpen gelegen, bietet unser Gasthaus einen atemberaubenden Blick auf die Berglandschaft. Genießen Sie hausgemachte österreichische Gerichte, frische Bergluft und herzliche Gastfreundschaft.",
+                            Name = "Gasthaus Zum Bergblick",
+                            StreetNr = "2",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Am Marktplatz",
+                            Description = "Treten Sie ein in eine Oase mediterraner Genüsse. Unser Restaurant ist bekannt für seine hausgemachten Pasta-Gerichte, frischen Fisch und erstklassige Weinauswahl. Lassen Sie sich von den Aromen des Südens verzaubern.",
+                            Name = "Das Mediterrane Flair",
+                            StreetNr = "7",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Kunststraße",
+                            Description = "Ein einzigartiger Ort, an dem Kunst und Kulinarik verschmelzen. Unsere Küche ist eine Leinwand, auf der unsere talentierten Küche mit Farben und Geschmacksrichtungen zaubern. Erleben Sie ein Fest für die Sinne in unserem Restaurant.",
+                            Name = "Kunst und Kulinarik",
+                            StreetNr = "10",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Gartenweg",
+                            Description = "Umgeben von üppigen Gärten und blühenden Blumenbeeten, ist unser Restaurant der ideale Ort, um dem Alltag zu entfliehen. Genießen Sie Kaffee und Kuchen in einer idyllischen Umgebung und tanken Sie frische Energie.",
+                            Name = "Das Grüne Paradies",
+                            StreetNr = "3",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Weinstraße",
+                            Description = "Unser Weinkeller ist gefällt mit erlesenen Weinen aus der Region und der ganzen Welt. Begleiten Sie Ihre Weinauswahl mit einer raffinierten Auswahl an Gerichten, die perfekt zu jedem Schluck passen. Ein wahres Paradies für Weinliebhaber.",
+                            Name = "Zur Weintraube",
+                            StreetNr = "14",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "Gourmetplatz",
+                            Description = "Willkommen in einem Ort, an dem kulinarische Kunstwerke geschaffen werden. Unsere Gerichte sind mehr als nur Mahlzeiten, sie sind eine Symphonie aus Aromen und Präsentation. Genießen Sie ein unvergessliches Feinschmecker-Erlebnis.",
+                            Name = "Das Feinschmecker-Erlebnis",
+                            StreetNr = "5",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Address = "Meeresweg",
+                            Description = "Unsere Speisekarte bietet die Frische des Ozeans auf Ihrem Teller. Von frischem Sushi und Sashimi bis hin zu köstlichen Meeresfrüchten, bereiten wir für Sie Meeresdelikatessen zu, die Ihre Geschmacksnerven verwöhnen.",
+                            Name = "Sushi & Meeresfrüchte",
+                            StreetNr = "12",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Address = "Gasthausstraße",
+                            Description = "In unserem rustikalen Gasthaus servieren wir traditionelle österreichische Gerichte in einem gemütlichen Ambiente. Genießen Sie knusprige Schnitzel, hausgemachte Suppen und herzhafte Beilagen, die Ihre Seele erwärmen.",
+                            Name = "Das Rustikale Gasthaus",
+                            StreetNr = "8",
+                            ZipCodeId = 644
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Address = "Harmonieplatz",
+                            Description = "Ein Café, in dem die Zeit stillzustehen scheint. Genießen Sie Kaffee und Kuchen in einem nostalgischen Ambiente, begleitet von Live-Jazzmusik. Ein Ort des Genusses und der Entspannung.",
+                            Name = "Café Harmonie",
+                            StreetNr = "6",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Address = "Flussuferstraße",
+                            Description = "Unser Restaurant am Ufer des Donau bietet einen atemberaubenden Blick auf den Fluss. Genießen Sie frische Fischgerichte und eine Auswahl an internationalen Köstlichkeiten, während Sie die vorbeiziehenden Schiffe beobachten.",
+                            Name = "Genuss am Flussufer",
+                            StreetNr = "9",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Address = "Hauptstraße",
+                            Description = "Ein charmantes Bistro im Herzen der Stadt, das französische Köstlichkeiten und eine erlesene Weinauswahl bietet.",
+                            Name = "Chez Le Bistro",
+                            StreetNr = "3",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Address = "Hauptstraße",
+                            Description = "Ein charmantes italienisches Restaurant, das köstliche Pasta und Pizza serviert",
+                            Name = "Ristorante Bellavita",
+                            StreetNr = "5",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Address = "Uferweg",
+                            Description = "Ein beliebter Biergarten mit Blick auf die Donau und eine große Auswahl an Biersorten",
+                            Name = "Biergarten am Fluss",
+                            StreetNr = "12",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Address = "Marktplatz",
+                            Description = "Ein traditionelles Gasthaus, das herzhafte österreichische Gerichte und eine gemütliche Atmosphäre bietet",
+                            Name = "Gasthaus zum Guten Essen",
+                            StreetNr = "8",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Address = "Sushistraße",
+                            Description = "Ein Sushi-Restaurant, das frische Sushi-Rollen und japanische Spezialitäten zubereitet",
+                            Name = "SushiMeister",
+                            StreetNr = "3",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Address = "Caféweg",
+                            Description = "Ein gemütliches Café, in dem Sie Kaffee, Kuchen und eine entspannte Atmosphäre genießen können",
+                            Name = "Café Sonnenschein",
+                            StreetNr = "6",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Address = "Bergblickstraße",
+                            Description = "Genießen Sie traditionelle Alpenüche und einen atemberaubenden Blick auf die Berge",
+                            Name = "Alpenblick Stuben",
+                            StreetNr = "9",
+                            ZipCodeId = 644
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Address = "Lindenplatz",
+                            Description = "Ein traditioneller Gasthof, der regionale Gerichte und Gastfreundschaft bietet",
+                            Name = "Gasthof Zur Linde",
+                            StreetNr = "7",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Address = "Chinatown",
+                            Description = "Ein chinesisches Restaurant, das köstliche Peking-Ente und Szechuan-Gerichte serviert",
+                            Name = "Peking Palast",
+                            StreetNr = "2",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Address = "Meeresblick",
+                            Description = "Ein Paradies für Meeresfrüchte-Liebhaber mit einer großen Auswahl an frischem Fisch und Meeresfrüchten",
+                            Name = "Meeresfrüchteparadies",
+                            StreetNr = "4",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Address = "Zeitlosplatz",
+                            Description = "Ein zeitloses Café, das Kaffee, Kuchen und frische Backwaren in einer entspannten Umgebung bietet",
+                            Name = "Café Zeitlos",
+                            StreetNr = "15",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Address = "Biergartenallee",
+                            Description = "Ein traditioneller bayerischer Biergarten mit bayerischer Küche und Live-Musik",
+                            Name = "Bayerischer Biergarten",
+                            StreetNr = "11",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Address = "Italienische Gasse",
+                            Description = "Genießen Sie die Aromen Italiens in unserem Restaurant mit hausgemachter Pasta und Pizza",
+                            Name = "Mediterraneo Trattoria",
+                            StreetNr = "14",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Address = "Sonnenstraße",
+                            Description = "Ein familienfreundlicher Gasthof mit traditioneller österreichischer Küche und einem sonnigen Biergarten",
+                            Name = "Gasthof zur Sonne",
+                            StreetNr = "6",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Address = "Amadeusplatz",
+                            Description = "Ein charmantes Café, das Kaffee, Kuchen und Livemusik bietet",
+                            Name = "Café Amadeus",
+                            StreetNr = "8",
+                            ZipCodeId = 642
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Address = "Schnitzelplatz",
+                            Description = "Ein Paradies für Schnitzelliebhaber mit einer großen Auswahl an Schnitzelgerichten und Beilagen",
+                            Name = "Schnitzelhaus Deluxe",
+                            StreetNr = "10",
+                            ZipCodeId = 642
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Address = "Süßstraße",
+                            Description = "Eine Konditorei, die köstliche Torten, Torten und Pralinen anbietet",
+                            Name = "Süße Versuchung Konditorei",
+                            StreetNr = "3",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Address = "Kaisekistraße",
+                            Description = "Ein Restaurant, das die Kunst des Kaiseki-Essens zelebriert und eine kulinarische Reise durch Japan bietet",
+                            Name = "Kaiseki Kultur",
+                            StreetNr = "1",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Address = "Gartenstraße",
+                            Description = "Ein charmantes Café mit einem malerischen Garten, in dem Sie Kaffee und hausgemachte Desserts genießen können",
+                            Name = "Garten Eden Café",
+                            StreetNr = "5",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Address = "Burgerweg",
+                            Description = "Ein Restaurant, das eine Auswahl an Gourmet-Burgern und handgemachten Pommes serviert",
+                            Name = "Burgerparadies",
+                            StreetNr = "12",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Address = "Sushiplatz",
+                            Description = "Ein modernes Sushi-Restaurant mit einer großen Auswahl an Sushi-Rollen und japanischen Spezialitäten",
+                            Name = "Sushi Lounge",
+                            StreetNr = "7",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Address = "Seepromenade",
+                            Description = "Ein elegantes Restaurant am See, das frische Fischgerichte und französische Küche serviert",
+                            Name = "Brasserie Am See",
+                            StreetNr = "11",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Address = "Griechenplatz",
+                            Description = "Ein griechisches Restaurant, das traditionelle griechische Gerichte und Meeresfrüchte bietet",
+                            Name = "Griechischer Genuss",
+                            StreetNr = "3",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Address = "Harmoniestraße",
+                            Description = "Ein Café mit entspannter Atmosphäre, das Kaffee, Kuchen und Live-Jazzmusik bietet",
+                            Name = "Restaurant Genussoase",
+                            StreetNr = "9",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Address = "Eichenweg",
+                            Description = "Ein traditioneller Bierkeller mit einer Auswahl an Biersorten und herzhaften Brotzeiten",
+                            Name = "Bierkeller zur Eiche",
+                            StreetNr = "14",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Address = "Waldring",
+                            Description = "Ein gastfreundliches Gasthaus im Wald, das herzhafte österreichische Speisen und Wandererlebnisse bietet",
+                            Name = "Waldgasthaus Zur Rose",
+                            StreetNr = "6",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Address = "Mamastraße",
+                            Description = "Genießen Sie hausgemachte österreichische Gerichte, die nach den Rezepten von Mama zubereitet werden",
+                            Name = "Mama's Küche",
+                            StreetNr = "5",
+                            ZipCodeId = 644
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Address = "Gartenparadiesweg",
+                            Description = "Ein idyllischer Garten mit einer Vielzahl von Blumen und Pflanzen sowie einem gemütlichen Café",
+                            Name = "Das Gartenparadies",
+                            StreetNr = "3",
+                            ZipCodeId = 642
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Address = "Sushiweg",
+                            Description = "Ein trendiges Sushi-Restaurant im Herzen der Stadt, das frische Sushi und Sashimi serviert",
+                            Name = "Sushi in der Stadt",
+                            StreetNr = "2",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Address = "Kaminplatz",
+                            Description = "Ein gemütliches Restaurant mit einem offenen Kamin und einer GourmetKüche",
+                            Name = "Kulinarischer Kamin",
+                            StreetNr = "1",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 41,
                             Address = "Hauptstraße",
                             Description = "Genießen Sie authentische italienische Küche in einer gemütlichen Atmosphäre. Von hausgemachten Pastagerichten bis hin zu frisch zubereiteten Pizzen bieten wir eine Vielzahl von Optionen für jeden Geschmack.",
                             Name = "La Trattoria",
@@ -305,174 +666,84 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 42,
                             Address = "Bahnhofstraße",
                             Description = "Tauchen Sie ein in die Welt des Sushis und erleben Sie eine Fusion aus traditionellen und modernen japanischen Geschmacksrichtungen. Unsere Sushi-Rollen und frischen Meeresfrüchte werden Sie begeistern.",
                             Name = "Sushi Corner",
                             StreetNr = "456",
-                            ZipCodeId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "Kirchplatz",
-                            Description = "Lassen Sie sich von der französischen Küche verführen. Unsere raffinierten Gerichte, inspiriert von den Aromen Frankreichs, werden Ihren Gaumen verwöhnen. Genießen Sie ein Glas Wein aus unserer umfangreichen Weinkarte.",
-                            Name = "Le Bistro Français",
-                            StreetNr = "789",
                             ZipCodeId = 4
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 43,
+                            Address = "Kirchplatz",
+                            Description = "Lassen Sie sich von der französischen Küche verführen. Unsere raffinierten Gerichte inspiriert von den Aromen Frankreichs werden Ihren Gaumen verwöhnen. Genießen Sie ein Glas Wein aus unserer umfangreichen Weinkarte.",
+                            Name = "Le Bistro Français",
+                            StreetNr = "789",
+                            ZipCodeId = 3
+                        },
+                        new
+                        {
+                            Id = 44,
                             Address = "Gartenweg",
-                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten, die Ihre Sinne begeistern werden.",
+                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten die Ihre Sinne begeistern werden.",
                             Name = "Spice Paradise",
                             StreetNr = "234",
-                            ZipCodeId = 2
+                            ZipCodeId = 22
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 45,
                             Address = "Marktstraße",
-                            Description = "Freuen Sie sich auf saftige Steaks, perfekt gegrillt nach Ihren Wünschen. Unser Steakhaus bietet eine rustikale Atmosphäre und eine Auswahl an hochwertigen Fleischsorten. Begleitet von Beilagen und Saucen wird Ihr Besuch zu einem kulinarischen Erlebnis.",
+                            Description = "Freuen Sie sich auf saftige Steaks perfekt gegrillt nach Ihren Wünschen. Unser Steakhaus bietet eine rustikale Atmosphäre und eine Auswahl an hochwertigen Fleischsorten. Begleitet von Beilagen und Saucen wird Ihr Besuch zu einem kulinarischen Erlebnis.",
                             Name = "Steakhouse Deluxe",
                             StreetNr = "567",
-                            ZipCodeId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Address = "Rue de la Paix",
-                            Description = "Chez Pierre ist ein elegantes französisches Restaurant, das sich auf klassische französische Küche spezialisiert hat. Mit einer raffinierten Atmosphäre und einer umfangreichen Weinkarte bietet Chez Pierre ein unvergessliches kulinarisches Erlebnis.",
-                            Name = "Chez Pierre",
-                            StreetNr = "10",
-                            ZipCodeId = 12
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Address = "Main Street",
-                            Description = "The Spice Garden entführt Sie auf eine kulinarische Reise durch die Aromen Indiens. Von würzigen Currygerichten bis hin zu delikaten Vorspeisen bieten wir eine vielfältige Auswahl an indischen Spezialitäten, die Ihre Geschmacksknospen verzaubern werden.",
-                            Name = "The Spice Garden",
-                            StreetNr = "10",
-                            ZipCodeId = 54
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Address = "Shibuya-ku, Shibuya",
-                            Description = "Erleben Sie den Geschmack von Mexiko bei El Rancho. Unser lebhaftes Restaurant serviert authentische mexikanische Gerichte wie Tacos, Enchiladas und frittierte Nachos, begleitet von erfrischenden Margaritas und traditionellen lateinamerikanischen Getränken.",
-                            Name = "Sushi Zen",
-                            StreetNr = "3-1-1",
-                            ZipCodeId = 67
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Address = "Calle Principal",
-                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten, die Ihre Sinne begeistern werden.",
-                            Name = "El Rancho",
-                            StreetNr = "20",
                             ZipCodeId = 17
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 46,
+                            Address = "Rue de la Paix",
+                            Description = "Chez Pierre ist ein elegantes französisches Restaurant das sich auf klassische französische Küche spezialisiert hat. Mit einer raffinierten Atmosphäre und einer umfangreichen Weinkarte bietet Chez Pierre ein unvergessliches kulinarisches Erlebnis.",
+                            Name = "Chez Pierre",
+                            StreetNr = "10",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Address = "Main Street",
+                            Description = "The Spice Garden entführt Sie auf eine kulinarische Reise durch die Aromen Indiens. Von würzigen Currygerichten bis hin zu delikaten Vorspeisen bieten wir eine vielfältige Auswahl an indischen Spezialitäten die Ihre Geschmacksknospen verzaubern werden.",
+                            Name = "The Spice Garden",
+                            StreetNr = "10",
+                            ZipCodeId = 3
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Address = "Shibuya-ku Shibuya",
+                            Description = "Erleben Sie den Geschmack von Mexiko bei El Rancho. Unser lebhaftes Restaurant serviert authentische mexikanische Gerichte wie Tacos Enchiladas und frittierte Nachos begleitet von erfrischenden Margaritas und traditionellen lateinamerikanischen Getränken.",
+                            Name = "Sushi Zen",
+                            StreetNr = "3-1-1",
+                            ZipCodeId = 56
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Address = "Calle Principal",
+                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten die Ihre Sinne begeistern werden.",
+                            Name = "El Rancho",
+                            StreetNr = "20",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 50,
                             Address = "Via Roma",
-                            Description = "Bella Italia ist ein charmantes italienisches Restaurant, das köstliche Pasta, Pizza und Antipasti anbietet. Mit frischen Zutaten und traditionellen Rezepten möchten wir Ihnen ein Stück Italien inmitten der Stadt präsentieren.",
+                            Description = "Bella Italia ist ein charmantes italienisches Restaurant das köstliche Pasta Pizza und Antipasti anbietet. Mit frischen Zutaten und traditionellen Rezepten möchten wir Ihnen ein Stück Italien inmitten der Stadt präsentieren.",
                             Name = "Bella Italia",
                             StreetNr = "5a",
                             ZipCodeId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Core.Models.RestaurantCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("RestaurantId");
-
-                    b.ToTable("RestaurantCategory");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 27,
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 2,
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 6,
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 20,
-                            RestaurantId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 2,
-                            RestaurantId = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryId = 6,
-                            RestaurantId = 7
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryId = 3,
-                            RestaurantId = 8
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryId = 6,
-                            RestaurantId = 9
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CategoryId = 1,
-                            RestaurantId = 10
                         });
                 });
 
@@ -482,16 +753,16 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("ClosingTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("ClosingTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OpeningTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("OpeningTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -506,240 +777,35 @@ namespace Persistence.Migrations
                     b.HasIndex("RestaurantId");
 
                     b.ToTable("RestaurantOpeningTimes");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ClosingTime = new DateTime(2023, 5, 27, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ClosingTime = new DateTime(2023, 5, 28, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ClosingTime = new DateTime(2023, 5, 27, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ClosingTime = new DateTime(2023, 5, 28, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ClosingTime = new DateTime(2023, 5, 26, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 7, 30, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ClosingTime = new DateTime(2023, 5, 26, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ClosingTime = new DateTime(2023, 5, 26, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ClosingTime = new DateTime(2023, 5, 27, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ClosingTime = new DateTime(2023, 5, 28, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ClosingTime = new DateTime(2023, 5, 26, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ClosingTime = new DateTime(2023, 5, 26, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 25,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 26,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 27,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 28,
-                            ClosingTime = new DateTime(2023, 5, 27, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 29,
-                            ClosingTime = new DateTime(2023, 5, 28, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        });
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Index")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Picture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("RestaurantId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId");
+
+                    b.ToTable("RestaurantPictures");
                 });
 
             modelBuilder.Entity("Core.Models.RestaurantTable", b =>
@@ -748,7 +814,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -766,428 +832,6 @@ namespace Persistence.Migrations
                     b.HasIndex("RestaurantId");
 
                     b.ToTable("RestaurantTables");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 2,
-                            RestaurantId = 2,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 3,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 4,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 5,
-                            RestaurantId = 5,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 6,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 8,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 9,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 10,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 11,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 12,
-                            RestaurantId = 2,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 13,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 14,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 15,
-                            RestaurantId = 5,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 16,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 17,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 18,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 19,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 20,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 21,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 22,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 23,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 24,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 25,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 26,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 27,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 28,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 29,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 30,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 31,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 32,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 33,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 34,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 35,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 36,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 37,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 38,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 39,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 40,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 41,
-                            RestaurantId = 1,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 42,
-                            RestaurantId = 2,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 43,
-                            RestaurantId = 3,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 44,
-                            RestaurantId = 4,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 45,
-                            RestaurantId = 5,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 46,
-                            RestaurantId = 6,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 47,
-                            RestaurantId = 7,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 48,
-                            RestaurantId = 8,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 49,
-                            RestaurantId = 9,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 50,
-                            RestaurantId = 10,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 51,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 52,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 53,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 54,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 55,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 56,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 57,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 58,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 59,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 60,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 61,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 62,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 63,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 64,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 65,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 66,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 67,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 68,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 69,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 70,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        });
                 });
 
             modelBuilder.Entity("Core.Models.User.Person", b =>
@@ -1196,7 +840,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -1231,6 +875,8 @@ namespace Persistence.Migrations
                     b.ToTable("Persons");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Core.Models.ZipCode", b =>
@@ -1239,7 +885,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("District")
                         .IsRequired()
@@ -7007,26 +6653,18 @@ namespace Persistence.Migrations
                     b.Navigation("ZipCode");
                 });
 
-            modelBuilder.Entity("Core.Models.RestaurantCategory", b =>
+            modelBuilder.Entity("Core.Models.RestaurantOpeningTime", b =>
                 {
-                    b.HasOne("Core.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Core.Models.Restaurant", "Restaurant")
                         .WithMany()
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-
                     b.Navigation("Restaurant");
                 });
 
-            modelBuilder.Entity("Core.Models.RestaurantOpeningTime", b =>
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
                 {
                     b.HasOne("Core.Models.Restaurant", "Restaurant")
                         .WithMany()

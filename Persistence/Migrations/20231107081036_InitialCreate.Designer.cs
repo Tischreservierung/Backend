@@ -12,17 +12,18 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OnlineReservationContext))]
-    [Migration("20230602072031_RestaurantPicture_V2")]
-    partial class RestaurantPicture_V2
+    [Migration("20231107081036_InitialCreate")]
+    partial class InitialCreate
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("CategoryRestaurant", b =>
                 {
@@ -45,7 +46,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -59,18 +60,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Amerikanisch"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Arabisch"
-                        });
                 });
 
             modelBuilder.Entity("Core.Models.Reservation", b =>
@@ -79,13 +68,13 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
 
                     b.Property<DateTime>("ReservationDay")
                         .HasColumnType("datetime2");
@@ -101,8 +90,8 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
 
                     b.HasKey("Id");
 
@@ -121,7 +110,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -160,16 +149,16 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("ClosingTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("ClosingTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OpeningTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("OpeningTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -192,7 +181,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Index")
                         .HasColumnType("int");
@@ -221,7 +210,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -247,7 +236,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -282,6 +271,8 @@ namespace Persistence.Migrations
                     b.ToTable("Persons");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Core.Models.ZipCode", b =>
@@ -290,7 +281,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("District")
                         .IsRequired()
@@ -312,22 +303,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Zipcodes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            District = "Linz-Land",
-                            Location = "Enns",
-                            ZipCodeNr = "4470"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            District = "Linz",
-                            Location = "Linz",
-                            ZipCodeNr = "4020"
-                        });
                 });
 
             modelBuilder.Entity("Core.Models.User.Customer", b =>

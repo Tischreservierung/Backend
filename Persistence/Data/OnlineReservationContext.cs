@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Core.Models.User;
 using Core.Models;
+using Persistence.Seeding;
 
 namespace Persistence.Data
 {
@@ -11,7 +12,6 @@ namespace Persistence.Data
         public DbSet<Employee> Employees => Set<Employee>();
         public DbSet<Restaurant> Restaurants => Set<Restaurant>();
         public DbSet<Category> Categories => Set<Category>();
-        public DbSet<RestaurantCategory> RestaurantCategories => Set<RestaurantCategory>();
         public DbSet<RestaurantTable> RestaurantTables => Set<RestaurantTable>();
         public DbSet<RestaurantOpeningTime> RestaurantOpeningTimes => Set<RestaurantOpeningTime>();
         public DbSet<ZipCode> Zipcodes => Set<ZipCode>();
@@ -25,14 +25,22 @@ namespace Persistence.Data
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.EnableSensitiveDataLogging();
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            ZipCode[] zipCodes = ZipCodeCsvReader.Read();
+            modelBuilder.Entity<ZipCode>().HasData(zipCodes);
 
+            Category[] categories = CategoryCsvReader.Read();
+            modelBuilder.Entity<Category>().HasData(categories);
+
+            Restaurant[] restaurants = RestaurantTestDataReader.Read(zipCodes);
+            modelBuilder.Entity<Restaurant>().HasData(restaurants);
+
+            RestaurantOpeningTime[] openingTimes = OpeningTimeTestDataReader.Read();
+            modelBuilder.Entity<RestaurantOpeningTime>().HasData(openingTimes);
+
+            RestaurantTable[] restaurantTables = TableTestDataReader.Read();
+            modelBuilder.Entity<RestaurantTable>().HasData(restaurantTables);
         }
     }
 }
