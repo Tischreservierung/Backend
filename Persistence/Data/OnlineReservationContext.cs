@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Security.Policy;
 using Core.Models.User;
 using Core.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace Persistence.Data
 {
@@ -23,6 +21,16 @@ namespace Persistence.Data
 
         public OnlineReservationContext(DbContextOptions<OnlineReservationContext> options)
             : base(options)
+        {
+
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
         }

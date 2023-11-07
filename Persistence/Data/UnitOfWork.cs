@@ -1,13 +1,7 @@
-﻿using Core.Contracts;
-using Core.Models;
-using Microsoft.Extensions.Configuration;
+using Core.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Persistence.Data.RestaurantRepo;
 using Persistence.Data.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Data
 {

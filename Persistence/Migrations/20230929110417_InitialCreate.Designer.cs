@@ -12,8 +12,8 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OnlineReservationContext))]
-    [Migration("20230526174208_RestaurantTestData")]
-    partial class RestaurantTestData
+    [Migration("20230929110417_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -224,8 +224,8 @@ namespace Persistence.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
 
                     b.Property<DateTime>("ReservationDay")
                         .HasColumnType("datetime2");
@@ -241,8 +241,8 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
 
                     b.HasKey("Id");
 
@@ -411,7 +411,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("RestaurantCategory");
+                    b.ToTable("RestaurantCategories");
 
                     b.HasData(
                         new
@@ -484,14 +484,14 @@ namespace Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("ClosingTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("ClosingTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OpeningTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("OpeningTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -511,57 +511,57 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 2,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 3,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 4,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 5,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 6,
-                            ClosingTime = new DateTime(2023, 5, 27, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
                             Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 7,
-                            ClosingTime = new DateTime(2023, 5, 28, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
                             Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
                             RestaurantId = 1
                         });
                 });

@@ -1,7 +1,6 @@
 ﻿using Core.Contracts;
 using Core.Models.User;
 using Microsoft.AspNetCore.Mvc;
-using Persistence.Data.User;
 
 namespace WebApi.Controllers.User
 {

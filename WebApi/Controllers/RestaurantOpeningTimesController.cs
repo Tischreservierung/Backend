@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Persistence.Data.RestaurantRepo;
 using Core.Models;
 using Core.Contracts;
 
@@ -32,15 +26,15 @@ namespace Tischreservierung.Controllers
         [HttpGet("day")]
         public async Task<ActionResult<IEnumerable<RestaurantOpeningTime>>> GetRestaurantOpeningTimeForDay(int day)
         {
-            var restaurantOpeningTime = await _unitOfWork.OpeningTimes.GetByDay(day);
+            var restaurantOpeningTime = await _unitOfWork.OpeningTimes.GetByDay((DayOfWeek)day);
 
             return Ok(restaurantOpeningTime);
         }
 
         [HttpGet("restaurantDay")]
-        public async Task<ActionResult<IEnumerable<RestaurantOpeningTime>>> GetRestaurantOpeningTimeForRestaurantAndDay(int id,int day)
+        public async Task<ActionResult<IEnumerable<RestaurantOpeningTime>>> GetRestaurantOpeningTimeForRestaurantAndDay(int id, int day)
         {
-            var restaurantOpeningTime = await _unitOfWork.OpeningTimes.GetByDayAndRestaurant(id, day);
+            var restaurantOpeningTime = await _unitOfWork.OpeningTimes.GetByDayAndRestaurant(id, (DayOfWeek)day);
 
             return Ok(restaurantOpeningTime);
         }

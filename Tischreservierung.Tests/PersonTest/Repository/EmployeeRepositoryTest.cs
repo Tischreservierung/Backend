@@ -1,12 +1,5 @@
-﻿using Core.Models;
-using Microsoft.EntityFrameworkCore;
-using Persistence.Data.RestaurantRepo;
+﻿using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Persistence.Data.User;
 using Core.Models.User;
 
@@ -25,7 +18,7 @@ namespace Tischreservierung.Tests.PersonTest.Repository
 
         EmployeeRepository TestData()
         {
-            List<Employee> employees = new List<Employee>()
+            List<Employee> employees = new()
             {
                 new Employee() { EMail = "test1@gmail.com", RestaurantId = 1, FamilyName = "Mauer"},
                 new Employee() { EMail = "test2@gmail.com", RestaurantId = 2, FamilyName = "Bucek"},
