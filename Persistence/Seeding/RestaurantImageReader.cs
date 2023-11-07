@@ -12,7 +12,7 @@ namespace Persistence.Seeding
         {
             List<RestaurantPicture> pictures = new();
 
-            string path = Path.Combine(CsvReader.SolutionPath, file);
+            string path = CsvReader.GetFullPathTo(file);
             string[] files = Directory.GetFiles(path);
 
             for (int i = 0; i < files.Length; i++)
