@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Core.Models
 {
@@ -8,6 +9,7 @@ namespace Core.Models
         public int Id { get; set; }
 
         [Timestamp]
+        [JsonIgnore]
         public byte[]? RowVersion { get; set; }
     }
 }

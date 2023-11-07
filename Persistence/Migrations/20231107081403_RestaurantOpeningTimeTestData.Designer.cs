@@ -12,17 +12,18 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OnlineReservationContext))]
-    [Migration("20230929110417_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231107081403_RestaurantOpeningTimeTestData")]
+    partial class RestaurantOpeningTimeTestData
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("CategoryRestaurant", b =>
                 {
@@ -45,7 +46,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -219,7 +220,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -261,7 +262,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -297,6 +298,366 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "Bergstraße",
+                            Description = "Inmitten der malerischen Alpen gelegen, bietet unser Gasthaus einen atemberaubenden Blick auf die Berglandschaft. Genießen Sie hausgemachte österreichische Gerichte, frische Bergluft und herzliche Gastfreundschaft.",
+                            Name = "Gasthaus Zum Bergblick",
+                            StreetNr = "2",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Am Marktplatz",
+                            Description = "Treten Sie ein in eine Oase mediterraner Genüsse. Unser Restaurant ist bekannt für seine hausgemachten Pasta-Gerichte, frischen Fisch und erstklassige Weinauswahl. Lassen Sie sich von den Aromen des Südens verzaubern.",
+                            Name = "Das Mediterrane Flair",
+                            StreetNr = "7",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Kunststraße",
+                            Description = "Ein einzigartiger Ort, an dem Kunst und Kulinarik verschmelzen. Unsere Küche ist eine Leinwand, auf der unsere talentierten Küche mit Farben und Geschmacksrichtungen zaubern. Erleben Sie ein Fest für die Sinne in unserem Restaurant.",
+                            Name = "Kunst und Kulinarik",
+                            StreetNr = "10",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Gartenweg",
+                            Description = "Umgeben von üppigen Gärten und blühenden Blumenbeeten, ist unser Restaurant der ideale Ort, um dem Alltag zu entfliehen. Genießen Sie Kaffee und Kuchen in einer idyllischen Umgebung und tanken Sie frische Energie.",
+                            Name = "Das Grüne Paradies",
+                            StreetNr = "3",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Weinstraße",
+                            Description = "Unser Weinkeller ist gefällt mit erlesenen Weinen aus der Region und der ganzen Welt. Begleiten Sie Ihre Weinauswahl mit einer raffinierten Auswahl an Gerichten, die perfekt zu jedem Schluck passen. Ein wahres Paradies für Weinliebhaber.",
+                            Name = "Zur Weintraube",
+                            StreetNr = "14",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "Gourmetplatz",
+                            Description = "Willkommen in einem Ort, an dem kulinarische Kunstwerke geschaffen werden. Unsere Gerichte sind mehr als nur Mahlzeiten, sie sind eine Symphonie aus Aromen und Präsentation. Genießen Sie ein unvergessliches Feinschmecker-Erlebnis.",
+                            Name = "Das Feinschmecker-Erlebnis",
+                            StreetNr = "5",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Address = "Meeresweg",
+                            Description = "Unsere Speisekarte bietet die Frische des Ozeans auf Ihrem Teller. Von frischem Sushi und Sashimi bis hin zu köstlichen Meeresfrüchten, bereiten wir für Sie Meeresdelikatessen zu, die Ihre Geschmacksnerven verwöhnen.",
+                            Name = "Sushi & Meeresfrüchte",
+                            StreetNr = "12",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Address = "Gasthausstraße",
+                            Description = "In unserem rustikalen Gasthaus servieren wir traditionelle österreichische Gerichte in einem gemütlichen Ambiente. Genießen Sie knusprige Schnitzel, hausgemachte Suppen und herzhafte Beilagen, die Ihre Seele erwärmen.",
+                            Name = "Das Rustikale Gasthaus",
+                            StreetNr = "8",
+                            ZipCodeId = 644
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Address = "Harmonieplatz",
+                            Description = "Ein Café, in dem die Zeit stillzustehen scheint. Genießen Sie Kaffee und Kuchen in einem nostalgischen Ambiente, begleitet von Live-Jazzmusik. Ein Ort des Genusses und der Entspannung.",
+                            Name = "Café Harmonie",
+                            StreetNr = "6",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Address = "Flussuferstraße",
+                            Description = "Unser Restaurant am Ufer des Donau bietet einen atemberaubenden Blick auf den Fluss. Genießen Sie frische Fischgerichte und eine Auswahl an internationalen Köstlichkeiten, während Sie die vorbeiziehenden Schiffe beobachten.",
+                            Name = "Genuss am Flussufer",
+                            StreetNr = "9",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Address = "Hauptstraße",
+                            Description = "Ein charmantes Bistro im Herzen der Stadt, das französische Köstlichkeiten und eine erlesene Weinauswahl bietet.",
+                            Name = "Chez Le Bistro",
+                            StreetNr = "3",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Address = "Hauptstraße",
+                            Description = "Ein charmantes italienisches Restaurant, das köstliche Pasta und Pizza serviert",
+                            Name = "Ristorante Bellavita",
+                            StreetNr = "5",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Address = "Uferweg",
+                            Description = "Ein beliebter Biergarten mit Blick auf die Donau und eine große Auswahl an Biersorten",
+                            Name = "Biergarten am Fluss",
+                            StreetNr = "12",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Address = "Marktplatz",
+                            Description = "Ein traditionelles Gasthaus, das herzhafte österreichische Gerichte und eine gemütliche Atmosphäre bietet",
+                            Name = "Gasthaus zum Guten Essen",
+                            StreetNr = "8",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Address = "Sushistraße",
+                            Description = "Ein Sushi-Restaurant, das frische Sushi-Rollen und japanische Spezialitäten zubereitet",
+                            Name = "SushiMeister",
+                            StreetNr = "3",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Address = "Caféweg",
+                            Description = "Ein gemütliches Café, in dem Sie Kaffee, Kuchen und eine entspannte Atmosphäre genießen können",
+                            Name = "Café Sonnenschein",
+                            StreetNr = "6",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Address = "Bergblickstraße",
+                            Description = "Genießen Sie traditionelle Alpenüche und einen atemberaubenden Blick auf die Berge",
+                            Name = "Alpenblick Stuben",
+                            StreetNr = "9",
+                            ZipCodeId = 644
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Address = "Lindenplatz",
+                            Description = "Ein traditioneller Gasthof, der regionale Gerichte und Gastfreundschaft bietet",
+                            Name = "Gasthof Zur Linde",
+                            StreetNr = "7",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Address = "Chinatown",
+                            Description = "Ein chinesisches Restaurant, das köstliche Peking-Ente und Szechuan-Gerichte serviert",
+                            Name = "Peking Palast",
+                            StreetNr = "2",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Address = "Meeresblick",
+                            Description = "Ein Paradies für Meeresfrüchte-Liebhaber mit einer großen Auswahl an frischem Fisch und Meeresfrüchten",
+                            Name = "Meeresfrüchteparadies",
+                            StreetNr = "4",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Address = "Zeitlosplatz",
+                            Description = "Ein zeitloses Café, das Kaffee, Kuchen und frische Backwaren in einer entspannten Umgebung bietet",
+                            Name = "Café Zeitlos",
+                            StreetNr = "15",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Address = "Biergartenallee",
+                            Description = "Ein traditioneller bayerischer Biergarten mit bayerischer Küche und Live-Musik",
+                            Name = "Bayerischer Biergarten",
+                            StreetNr = "11",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Address = "Italienische Gasse",
+                            Description = "Genießen Sie die Aromen Italiens in unserem Restaurant mit hausgemachter Pasta und Pizza",
+                            Name = "Mediterraneo Trattoria",
+                            StreetNr = "14",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Address = "Sonnenstraße",
+                            Description = "Ein familienfreundlicher Gasthof mit traditioneller österreichischer Küche und einem sonnigen Biergarten",
+                            Name = "Gasthof zur Sonne",
+                            StreetNr = "6",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Address = "Amadeusplatz",
+                            Description = "Ein charmantes Café, das Kaffee, Kuchen und Livemusik bietet",
+                            Name = "Café Amadeus",
+                            StreetNr = "8",
+                            ZipCodeId = 642
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Address = "Schnitzelplatz",
+                            Description = "Ein Paradies für Schnitzelliebhaber mit einer großen Auswahl an Schnitzelgerichten und Beilagen",
+                            Name = "Schnitzelhaus Deluxe",
+                            StreetNr = "10",
+                            ZipCodeId = 642
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Address = "Süßstraße",
+                            Description = "Eine Konditorei, die köstliche Torten, Torten und Pralinen anbietet",
+                            Name = "Süße Versuchung Konditorei",
+                            StreetNr = "3",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Address = "Kaisekistraße",
+                            Description = "Ein Restaurant, das die Kunst des Kaiseki-Essens zelebriert und eine kulinarische Reise durch Japan bietet",
+                            Name = "Kaiseki Kultur",
+                            StreetNr = "1",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Address = "Gartenstraße",
+                            Description = "Ein charmantes Café mit einem malerischen Garten, in dem Sie Kaffee und hausgemachte Desserts genießen können",
+                            Name = "Garten Eden Café",
+                            StreetNr = "5",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Address = "Burgerweg",
+                            Description = "Ein Restaurant, das eine Auswahl an Gourmet-Burgern und handgemachten Pommes serviert",
+                            Name = "Burgerparadies",
+                            StreetNr = "12",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Address = "Sushiplatz",
+                            Description = "Ein modernes Sushi-Restaurant mit einer großen Auswahl an Sushi-Rollen und japanischen Spezialitäten",
+                            Name = "Sushi Lounge",
+                            StreetNr = "7",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Address = "Seepromenade",
+                            Description = "Ein elegantes Restaurant am See, das frische Fischgerichte und französische Küche serviert",
+                            Name = "Brasserie Am See",
+                            StreetNr = "11",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Address = "Griechenplatz",
+                            Description = "Ein griechisches Restaurant, das traditionelle griechische Gerichte und Meeresfrüchte bietet",
+                            Name = "Griechischer Genuss",
+                            StreetNr = "3",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Address = "Harmoniestraße",
+                            Description = "Ein Café mit entspannter Atmosphäre, das Kaffee, Kuchen und Live-Jazzmusik bietet",
+                            Name = "Restaurant Genussoase",
+                            StreetNr = "9",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Address = "Eichenweg",
+                            Description = "Ein traditioneller Bierkeller mit einer Auswahl an Biersorten und herzhaften Brotzeiten",
+                            Name = "Bierkeller zur Eiche",
+                            StreetNr = "14",
+                            ZipCodeId = 1
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Address = "Waldring",
+                            Description = "Ein gastfreundliches Gasthaus im Wald, das herzhafte österreichische Speisen und Wandererlebnisse bietet",
+                            Name = "Waldgasthaus Zur Rose",
+                            StreetNr = "6",
+                            ZipCodeId = 17
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Address = "Mamastraße",
+                            Description = "Genießen Sie hausgemachte österreichische Gerichte, die nach den Rezepten von Mama zubereitet werden",
+                            Name = "Mama's Küche",
+                            StreetNr = "5",
+                            ZipCodeId = 644
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Address = "Gartenparadiesweg",
+                            Description = "Ein idyllischer Garten mit einer Vielzahl von Blumen und Pflanzen sowie einem gemütlichen Café",
+                            Name = "Das Gartenparadies",
+                            StreetNr = "3",
+                            ZipCodeId = 642
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Address = "Sushiweg",
+                            Description = "Ein trendiges Sushi-Restaurant im Herzen der Stadt, das frische Sushi und Sashimi serviert",
+                            Name = "Sushi in der Stadt",
+                            StreetNr = "2",
+                            ZipCodeId = 4
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Address = "Kaminplatz",
+                            Description = "Ein gemütliches Restaurant mit einem offenen Kamin und einer GourmetKüche",
+                            Name = "Kulinarischer Kamin",
+                            StreetNr = "1",
+                            ZipCodeId = 645
+                        },
+                        new
+                        {
+                            Id = 41,
                             Address = "Hauptstraße",
                             Description = "Genießen Sie authentische italienische Küche in einer gemütlichen Atmosphäre. Von hausgemachten Pastagerichten bis hin zu frisch zubereiteten Pizzen bieten wir eine Vielzahl von Optionen für jeden Geschmack.",
                             Name = "La Trattoria",
@@ -305,174 +666,84 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 42,
                             Address = "Bahnhofstraße",
                             Description = "Tauchen Sie ein in die Welt des Sushis und erleben Sie eine Fusion aus traditionellen und modernen japanischen Geschmacksrichtungen. Unsere Sushi-Rollen und frischen Meeresfrüchte werden Sie begeistern.",
                             Name = "Sushi Corner",
                             StreetNr = "456",
-                            ZipCodeId = 1
+                            ZipCodeId = 4
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 43,
                             Address = "Kirchplatz",
-                            Description = "Lassen Sie sich von der französischen Küche verführen. Unsere raffinierten Gerichte, inspiriert von den Aromen Frankreichs, werden Ihren Gaumen verwöhnen. Genießen Sie ein Glas Wein aus unserer umfangreichen Weinkarte.",
+                            Description = "Lassen Sie sich von der französischen Küche verführen. Unsere raffinierten Gerichte inspiriert von den Aromen Frankreichs werden Ihren Gaumen verwöhnen. Genießen Sie ein Glas Wein aus unserer umfangreichen Weinkarte.",
                             Name = "Le Bistro Français",
                             StreetNr = "789",
-                            ZipCodeId = 1
+                            ZipCodeId = 3
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 44,
                             Address = "Gartenweg",
-                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten, die Ihre Sinne begeistern werden.",
+                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten die Ihre Sinne begeistern werden.",
                             Name = "Spice Paradise",
                             StreetNr = "234",
-                            ZipCodeId = 1
+                            ZipCodeId = 22
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 45,
                             Address = "Marktstraße",
-                            Description = "Freuen Sie sich auf saftige Steaks, perfekt gegrillt nach Ihren Wünschen. Unser Steakhaus bietet eine rustikale Atmosphäre und eine Auswahl an hochwertigen Fleischsorten. Begleitet von Beilagen und Saucen wird Ihr Besuch zu einem kulinarischen Erlebnis.",
+                            Description = "Freuen Sie sich auf saftige Steaks perfekt gegrillt nach Ihren Wünschen. Unser Steakhaus bietet eine rustikale Atmosphäre und eine Auswahl an hochwertigen Fleischsorten. Begleitet von Beilagen und Saucen wird Ihr Besuch zu einem kulinarischen Erlebnis.",
                             Name = "Steakhouse Deluxe",
                             StreetNr = "567",
-                            ZipCodeId = 1
+                            ZipCodeId = 17
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 46,
                             Address = "Rue de la Paix",
-                            Description = "Chez Pierre ist ein elegantes französisches Restaurant, das sich auf klassische französische Küche spezialisiert hat. Mit einer raffinierten Atmosphäre und einer umfangreichen Weinkarte bietet Chez Pierre ein unvergessliches kulinarisches Erlebnis.",
+                            Description = "Chez Pierre ist ein elegantes französisches Restaurant das sich auf klassische französische Küche spezialisiert hat. Mit einer raffinierten Atmosphäre und einer umfangreichen Weinkarte bietet Chez Pierre ein unvergessliches kulinarisches Erlebnis.",
                             Name = "Chez Pierre",
                             StreetNr = "10",
                             ZipCodeId = 1
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 47,
                             Address = "Main Street",
-                            Description = "The Spice Garden entführt Sie auf eine kulinarische Reise durch die Aromen Indiens. Von würzigen Currygerichten bis hin zu delikaten Vorspeisen bieten wir eine vielfältige Auswahl an indischen Spezialitäten, die Ihre Geschmacksknospen verzaubern werden.",
+                            Description = "The Spice Garden entführt Sie auf eine kulinarische Reise durch die Aromen Indiens. Von würzigen Currygerichten bis hin zu delikaten Vorspeisen bieten wir eine vielfältige Auswahl an indischen Spezialitäten die Ihre Geschmacksknospen verzaubern werden.",
                             Name = "The Spice Garden",
                             StreetNr = "10",
-                            ZipCodeId = 1
+                            ZipCodeId = 3
                         },
                         new
                         {
-                            Id = 8,
-                            Address = "Shibuya-ku, Shibuya",
-                            Description = "Erleben Sie den Geschmack von Mexiko bei El Rancho. Unser lebhaftes Restaurant serviert authentische mexikanische Gerichte wie Tacos, Enchiladas und frittierte Nachos, begleitet von erfrischenden Margaritas und traditionellen lateinamerikanischen Getränken.",
+                            Id = 48,
+                            Address = "Shibuya-ku Shibuya",
+                            Description = "Erleben Sie den Geschmack von Mexiko bei El Rancho. Unser lebhaftes Restaurant serviert authentische mexikanische Gerichte wie Tacos Enchiladas und frittierte Nachos begleitet von erfrischenden Margaritas und traditionellen lateinamerikanischen Getränken.",
                             Name = "Sushi Zen",
                             StreetNr = "3-1-1",
-                            ZipCodeId = 1
+                            ZipCodeId = 56
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 49,
                             Address = "Calle Principal",
-                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten, die Ihre Sinne begeistern werden.",
+                            Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten die Ihre Sinne begeistern werden.",
                             Name = "El Rancho",
                             StreetNr = "20",
-                            ZipCodeId = 1
+                            ZipCodeId = 4
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 50,
                             Address = "Via Roma",
-                            Description = "Bella Italia ist ein charmantes italienisches Restaurant, das köstliche Pasta, Pizza und Antipasti anbietet. Mit frischen Zutaten und traditionellen Rezepten möchten wir Ihnen ein Stück Italien inmitten der Stadt präsentieren.",
+                            Description = "Bella Italia ist ein charmantes italienisches Restaurant das köstliche Pasta Pizza und Antipasti anbietet. Mit frischen Zutaten und traditionellen Rezepten möchten wir Ihnen ein Stück Italien inmitten der Stadt präsentieren.",
                             Name = "Bella Italia",
                             StreetNr = "5a",
                             ZipCodeId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Core.Models.RestaurantCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("RestaurantId");
-
-                    b.ToTable("RestaurantCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 27,
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 2,
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 6,
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 20,
-                            RestaurantId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 2,
-                            RestaurantId = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryId = 6,
-                            RestaurantId = 7
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryId = 3,
-                            RestaurantId = 8
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryId = 6,
-                            RestaurantId = 9
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CategoryId = 1,
-                            RestaurantId = 10
                         });
                 });
 
@@ -482,7 +753,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<TimeSpan>("ClosingTime")
                         .HasColumnType("time");
@@ -510,60 +781,2433 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 100,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 1
+                        },
+                        new
+                        {
+                            Id = 110,
                             ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 1,
-                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 120,
                             ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 2,
-                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 130,
                             ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 3,
-                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 140,
                             ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 4,
-                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
-                            Id = 5,
-                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
-                            Day = 5,
-                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
-                            Day = 6,
-                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
-                            RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
+                            Id = 150,
                             ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
-                            Day = 0,
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 1
+                        },
+                        new
+                        {
+                            Id = 151,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 1
+                        },
+                        new
+                        {
+                            Id = 160,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
                             OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
                             RestaurantId = 1
+                        },
+                        new
+                        {
+                            Id = 161,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 1
+                        },
+                        new
+                        {
+                            Id = 200,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 2
+                        },
+                        new
+                        {
+                            Id = 210,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 2
+                        },
+                        new
+                        {
+                            Id = 220,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 2
+                        },
+                        new
+                        {
+                            Id = 230,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 2
+                        },
+                        new
+                        {
+                            Id = 240,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 2
+                        },
+                        new
+                        {
+                            Id = 260,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 2
+                        },
+                        new
+                        {
+                            Id = 261,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 2
+                        },
+                        new
+                        {
+                            Id = 300,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 310,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 320,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 330,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 340,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 350,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 360,
+                            ClosingTime = new TimeSpan(0, 15, 30, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 361,
+                            ClosingTime = new TimeSpan(0, 21, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 3
+                        },
+                        new
+                        {
+                            Id = 400,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 410,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 420,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 421,
+                            ClosingTime = new TimeSpan(0, 23, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 20, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 430,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 431,
+                            ClosingTime = new TimeSpan(0, 23, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 20, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 440,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 441,
+                            ClosingTime = new TimeSpan(0, 23, 30, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 20, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 460,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 4
+                        },
+                        new
+                        {
+                            Id = 510,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 5
+                        },
+                        new
+                        {
+                            Id = 520,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 5
+                        },
+                        new
+                        {
+                            Id = 521,
+                            ClosingTime = new TimeSpan(0, 22, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 20, 0, 0, 0),
+                            RestaurantId = 5
+                        },
+                        new
+                        {
+                            Id = 530,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 5
+                        },
+                        new
+                        {
+                            Id = 531,
+                            ClosingTime = new TimeSpan(0, 22, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 20, 0, 0, 0),
+                            RestaurantId = 5
+                        },
+                        new
+                        {
+                            Id = 540,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 5
+                        },
+                        new
+                        {
+                            Id = 560,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 5
+                        },
+                        new
+                        {
+                            Id = 600,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 6
+                        },
+                        new
+                        {
+                            Id = 610,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 6
+                        },
+                        new
+                        {
+                            Id = 620,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 6
+                        },
+                        new
+                        {
+                            Id = 630,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 6
+                        },
+                        new
+                        {
+                            Id = 640,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 6
+                        },
+                        new
+                        {
+                            Id = 660,
+                            ClosingTime = new TimeSpan(0, 16, 30, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 6
+                        },
+                        new
+                        {
+                            Id = 700,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 7
+                        },
+                        new
+                        {
+                            Id = 710,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 7
+                        },
+                        new
+                        {
+                            Id = 720,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 7
+                        },
+                        new
+                        {
+                            Id = 740,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 7
+                        },
+                        new
+                        {
+                            Id = 750,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 7
+                        },
+                        new
+                        {
+                            Id = 760,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 7
+                        },
+                        new
+                        {
+                            Id = 810,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 8
+                        },
+                        new
+                        {
+                            Id = 820,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 8
+                        },
+                        new
+                        {
+                            Id = 830,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 8
+                        },
+                        new
+                        {
+                            Id = 840,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 8
+                        },
+                        new
+                        {
+                            Id = 860,
+                            ClosingTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 8
+                        },
+                        new
+                        {
+                            Id = 900,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 9
+                        },
+                        new
+                        {
+                            Id = 910,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 9
+                        },
+                        new
+                        {
+                            Id = 920,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 9
+                        },
+                        new
+                        {
+                            Id = 930,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 9
+                        },
+                        new
+                        {
+                            Id = 940,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 9
+                        },
+                        new
+                        {
+                            Id = 950,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 9
+                        },
+                        new
+                        {
+                            Id = 960,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 9
+                        },
+                        new
+                        {
+                            Id = 1000,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 10
+                        },
+                        new
+                        {
+                            Id = 1010,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 10
+                        },
+                        new
+                        {
+                            Id = 1020,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 10
+                        },
+                        new
+                        {
+                            Id = 1030,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 10
+                        },
+                        new
+                        {
+                            Id = 1040,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 10
+                        },
+                        new
+                        {
+                            Id = 1060,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 10
+                        },
+                        new
+                        {
+                            Id = 1110,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 11
+                        },
+                        new
+                        {
+                            Id = 1120,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 11
+                        },
+                        new
+                        {
+                            Id = 1140,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 11
+                        },
+                        new
+                        {
+                            Id = 1150,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 11
+                        },
+                        new
+                        {
+                            Id = 1200,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 12
+                        },
+                        new
+                        {
+                            Id = 1210,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 12
+                        },
+                        new
+                        {
+                            Id = 1230,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 12
+                        },
+                        new
+                        {
+                            Id = 1240,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 12
+                        },
+                        new
+                        {
+                            Id = 1250,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 12
+                        },
+                        new
+                        {
+                            Id = 1310,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 13
+                        },
+                        new
+                        {
+                            Id = 1320,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 13
+                        },
+                        new
+                        {
+                            Id = 1330,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 13
+                        },
+                        new
+                        {
+                            Id = 1340,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 13
+                        },
+                        new
+                        {
+                            Id = 1360,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 13
+                        },
+                        new
+                        {
+                            Id = 1400,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 14
+                        },
+                        new
+                        {
+                            Id = 1410,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 14
+                        },
+                        new
+                        {
+                            Id = 1430,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 14
+                        },
+                        new
+                        {
+                            Id = 1440,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 14
+                        },
+                        new
+                        {
+                            Id = 1450,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 14
+                        },
+                        new
+                        {
+                            Id = 1460,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 14
+                        },
+                        new
+                        {
+                            Id = 1500,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 15
+                        },
+                        new
+                        {
+                            Id = 1510,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 15
+                        },
+                        new
+                        {
+                            Id = 1520,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 15
+                        },
+                        new
+                        {
+                            Id = 1530,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 15
+                        },
+                        new
+                        {
+                            Id = 1540,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 15
+                        },
+                        new
+                        {
+                            Id = 1560,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 15
+                        },
+                        new
+                        {
+                            Id = 1610,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 16
+                        },
+                        new
+                        {
+                            Id = 1620,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 16
+                        },
+                        new
+                        {
+                            Id = 1630,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 16
+                        },
+                        new
+                        {
+                            Id = 1640,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 16
+                        },
+                        new
+                        {
+                            Id = 1650,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 16
+                        },
+                        new
+                        {
+                            Id = 1700,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 17
+                        },
+                        new
+                        {
+                            Id = 1710,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 17
+                        },
+                        new
+                        {
+                            Id = 1720,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 17
+                        },
+                        new
+                        {
+                            Id = 1730,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 17
+                        },
+                        new
+                        {
+                            Id = 1740,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 17
+                        },
+                        new
+                        {
+                            Id = 1750,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 17
+                        },
+                        new
+                        {
+                            Id = 1760,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 17
+                        },
+                        new
+                        {
+                            Id = 1810,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 18
+                        },
+                        new
+                        {
+                            Id = 1820,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 18
+                        },
+                        new
+                        {
+                            Id = 1830,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 18
+                        },
+                        new
+                        {
+                            Id = 1840,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 18
+                        },
+                        new
+                        {
+                            Id = 1860,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 18
+                        },
+                        new
+                        {
+                            Id = 1900,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 19
+                        },
+                        new
+                        {
+                            Id = 1910,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 19
+                        },
+                        new
+                        {
+                            Id = 1920,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 19
+                        },
+                        new
+                        {
+                            Id = 1930,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 19
+                        },
+                        new
+                        {
+                            Id = 1940,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 19
+                        },
+                        new
+                        {
+                            Id = 1960,
+                            ClosingTime = new TimeSpan(0, 16, 30, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 19
+                        },
+                        new
+                        {
+                            Id = 2000,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 20
+                        },
+                        new
+                        {
+                            Id = 2010,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 20
+                        },
+                        new
+                        {
+                            Id = 2020,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 20
+                        },
+                        new
+                        {
+                            Id = 2030,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 20
+                        },
+                        new
+                        {
+                            Id = 2040,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 20
+                        },
+                        new
+                        {
+                            Id = 2060,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 20
+                        },
+                        new
+                        {
+                            Id = 2110,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 21
+                        },
+                        new
+                        {
+                            Id = 2120,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 21
+                        },
+                        new
+                        {
+                            Id = 2130,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 21
+                        },
+                        new
+                        {
+                            Id = 2140,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 21
+                        },
+                        new
+                        {
+                            Id = 2160,
+                            ClosingTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 21
+                        },
+                        new
+                        {
+                            Id = 2161,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 21
+                        },
+                        new
+                        {
+                            Id = 2200,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 22
+                        },
+                        new
+                        {
+                            Id = 2210,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 22
+                        },
+                        new
+                        {
+                            Id = 2220,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 22
+                        },
+                        new
+                        {
+                            Id = 2230,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 22
+                        },
+                        new
+                        {
+                            Id = 2240,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 22
+                        },
+                        new
+                        {
+                            Id = 2260,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 22
+                        },
+                        new
+                        {
+                            Id = 2300,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 23
+                        },
+                        new
+                        {
+                            Id = 2310,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 23
+                        },
+                        new
+                        {
+                            Id = 2320,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 23
+                        },
+                        new
+                        {
+                            Id = 2330,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 23
+                        },
+                        new
+                        {
+                            Id = 2340,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 23
+                        },
+                        new
+                        {
+                            Id = 2360,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 23
+                        },
+                        new
+                        {
+                            Id = 2410,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 24
+                        },
+                        new
+                        {
+                            Id = 2420,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 24
+                        },
+                        new
+                        {
+                            Id = 2430,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 24
+                        },
+                        new
+                        {
+                            Id = 2440,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 24
+                        },
+                        new
+                        {
+                            Id = 2450,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 24
+                        },
+                        new
+                        {
+                            Id = 2500,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 25
+                        },
+                        new
+                        {
+                            Id = 2510,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 25
+                        },
+                        new
+                        {
+                            Id = 2520,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 25
+                        },
+                        new
+                        {
+                            Id = 2540,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 25
+                        },
+                        new
+                        {
+                            Id = 2550,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 25
+                        },
+                        new
+                        {
+                            Id = 2610,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 26
+                        },
+                        new
+                        {
+                            Id = 2620,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 26
+                        },
+                        new
+                        {
+                            Id = 2630,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 26
+                        },
+                        new
+                        {
+                            Id = 2640,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 26
+                        },
+                        new
+                        {
+                            Id = 2660,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 26
+                        },
+                        new
+                        {
+                            Id = 2700,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 27
+                        },
+                        new
+                        {
+                            Id = 2710,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 27
+                        },
+                        new
+                        {
+                            Id = 2730,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 27
+                        },
+                        new
+                        {
+                            Id = 2740,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 27
+                        },
+                        new
+                        {
+                            Id = 2750,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 27
+                        },
+                        new
+                        {
+                            Id = 2760,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 27
+                        },
+                        new
+                        {
+                            Id = 2800,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 28
+                        },
+                        new
+                        {
+                            Id = 2810,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 28
+                        },
+                        new
+                        {
+                            Id = 2820,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 28
+                        },
+                        new
+                        {
+                            Id = 2830,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 28
+                        },
+                        new
+                        {
+                            Id = 2840,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 28
+                        },
+                        new
+                        {
+                            Id = 2860,
+                            ClosingTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 28
+                        },
+                        new
+                        {
+                            Id = 2861,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 28
+                        },
+                        new
+                        {
+                            Id = 2910,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 29
+                        },
+                        new
+                        {
+                            Id = 2920,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 29
+                        },
+                        new
+                        {
+                            Id = 2930,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 29
+                        },
+                        new
+                        {
+                            Id = 2950,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 29
+                        },
+                        new
+                        {
+                            Id = 3000,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 30
+                        },
+                        new
+                        {
+                            Id = 3010,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 30
+                        },
+                        new
+                        {
+                            Id = 3020,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 30
+                        },
+                        new
+                        {
+                            Id = 3030,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 30
+                        },
+                        new
+                        {
+                            Id = 3040,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 30
+                        },
+                        new
+                        {
+                            Id = 3050,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 30
+                        },
+                        new
+                        {
+                            Id = 3060,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 30
+                        },
+                        new
+                        {
+                            Id = 3110,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 31
+                        },
+                        new
+                        {
+                            Id = 3120,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 31
+                        },
+                        new
+                        {
+                            Id = 3130,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 31
+                        },
+                        new
+                        {
+                            Id = 3140,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 31
+                        },
+                        new
+                        {
+                            Id = 3160,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 31
+                        },
+                        new
+                        {
+                            Id = 3210,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 32
+                        },
+                        new
+                        {
+                            Id = 3220,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 32
+                        },
+                        new
+                        {
+                            Id = 3230,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 32
+                        },
+                        new
+                        {
+                            Id = 3240,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 32
+                        },
+                        new
+                        {
+                            Id = 3250,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 32
+                        },
+                        new
+                        {
+                            Id = 3260,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 32
+                        },
+                        new
+                        {
+                            Id = 3300,
+                            ClosingTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 33
+                        },
+                        new
+                        {
+                            Id = 3301,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 33
+                        },
+                        new
+                        {
+                            Id = 3320,
+                            ClosingTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 33
+                        },
+                        new
+                        {
+                            Id = 3321,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 33
+                        },
+                        new
+                        {
+                            Id = 3330,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 33
+                        },
+                        new
+                        {
+                            Id = 3350,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 33
+                        },
+                        new
+                        {
+                            Id = 3360,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 33
+                        },
+                        new
+                        {
+                            Id = 3400,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 34
+                        },
+                        new
+                        {
+                            Id = 3410,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 34
+                        },
+                        new
+                        {
+                            Id = 3430,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 30, 0, 0),
+                            RestaurantId = 34
+                        },
+                        new
+                        {
+                            Id = 3440,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 34
+                        },
+                        new
+                        {
+                            Id = 3450,
+                            ClosingTime = new TimeSpan(0, 15, 30, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 34
+                        },
+                        new
+                        {
+                            Id = 3451,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 18, 0, 0, 0),
+                            RestaurantId = 34
+                        },
+                        new
+                        {
+                            Id = 3460,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 34
+                        },
+                        new
+                        {
+                            Id = 3510,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 35
+                        },
+                        new
+                        {
+                            Id = 3520,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 35
+                        },
+                        new
+                        {
+                            Id = 3530,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 35
+                        },
+                        new
+                        {
+                            Id = 3540,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 35
+                        },
+                        new
+                        {
+                            Id = 3560,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 35
+                        },
+                        new
+                        {
+                            Id = 3600,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 36
+                        },
+                        new
+                        {
+                            Id = 3610,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 36
+                        },
+                        new
+                        {
+                            Id = 3630,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 36
+                        },
+                        new
+                        {
+                            Id = 3640,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 36
+                        },
+                        new
+                        {
+                            Id = 3650,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 36
+                        },
+                        new
+                        {
+                            Id = 3660,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 36
+                        },
+                        new
+                        {
+                            Id = 3700,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 37
+                        },
+                        new
+                        {
+                            Id = 3710,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 37
+                        },
+                        new
+                        {
+                            Id = 3720,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 37
+                        },
+                        new
+                        {
+                            Id = 3730,
+                            ClosingTime = new TimeSpan(0, 18, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 30, 0, 0),
+                            RestaurantId = 37
+                        },
+                        new
+                        {
+                            Id = 3750,
+                            ClosingTime = new TimeSpan(0, 16, 30, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 37
+                        },
+                        new
+                        {
+                            Id = 3760,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 37
+                        },
+                        new
+                        {
+                            Id = 3810,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 38
+                        },
+                        new
+                        {
+                            Id = 3820,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 38
+                        },
+                        new
+                        {
+                            Id = 3830,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 38
+                        },
+                        new
+                        {
+                            Id = 3840,
+                            ClosingTime = new TimeSpan(0, 17, 30, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 30, 0, 0),
+                            RestaurantId = 38
+                        },
+                        new
+                        {
+                            Id = 3860,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 38
+                        },
+                        new
+                        {
+                            Id = 3870,
+                            ClosingTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Day = 7,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 38
+                        },
+                        new
+                        {
+                            Id = 3900,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 39
+                        },
+                        new
+                        {
+                            Id = 3910,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 39
+                        },
+                        new
+                        {
+                            Id = 3930,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 39
+                        },
+                        new
+                        {
+                            Id = 3940,
+                            ClosingTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 39
+                        },
+                        new
+                        {
+                            Id = 3950,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 39
+                        },
+                        new
+                        {
+                            Id = 3960,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 39
+                        },
+                        new
+                        {
+                            Id = 4000,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 40
+                        },
+                        new
+                        {
+                            Id = 4010,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 40
+                        },
+                        new
+                        {
+                            Id = 4020,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 40
+                        },
+                        new
+                        {
+                            Id = 4040,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 40
+                        },
+                        new
+                        {
+                            Id = 4050,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 40
+                        },
+                        new
+                        {
+                            Id = 4060,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 40
+                        },
+                        new
+                        {
+                            Id = 4110,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 41
+                        },
+                        new
+                        {
+                            Id = 4120,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 41
+                        },
+                        new
+                        {
+                            Id = 4130,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 41
+                        },
+                        new
+                        {
+                            Id = 4150,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 41
+                        },
+                        new
+                        {
+                            Id = 4160,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 41
+                        },
+                        new
+                        {
+                            Id = 4200,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 42
+                        },
+                        new
+                        {
+                            Id = 4210,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 42
+                        },
+                        new
+                        {
+                            Id = 4230,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 42
+                        },
+                        new
+                        {
+                            Id = 4240,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 42
+                        },
+                        new
+                        {
+                            Id = 4250,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 42
+                        },
+                        new
+                        {
+                            Id = 4260,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 42
+                        },
+                        new
+                        {
+                            Id = 4300,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 43
+                        },
+                        new
+                        {
+                            Id = 4310,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 43
+                        },
+                        new
+                        {
+                            Id = 4330,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 43
+                        },
+                        new
+                        {
+                            Id = 4340,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 43
+                        },
+                        new
+                        {
+                            Id = 4350,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 43
+                        },
+                        new
+                        {
+                            Id = 4360,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 43
+                        },
+                        new
+                        {
+                            Id = 4410,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 44
+                        },
+                        new
+                        {
+                            Id = 4420,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 44
+                        },
+                        new
+                        {
+                            Id = 4430,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 44
+                        },
+                        new
+                        {
+                            Id = 4440,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 44
+                        },
+                        new
+                        {
+                            Id = 4450,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 44
+                        },
+                        new
+                        {
+                            Id = 4460,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 44
+                        },
+                        new
+                        {
+                            Id = 4500,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 45
+                        },
+                        new
+                        {
+                            Id = 4510,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 45
+                        },
+                        new
+                        {
+                            Id = 4530,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
+                            RestaurantId = 45
+                        },
+                        new
+                        {
+                            Id = 4540,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 45
+                        },
+                        new
+                        {
+                            Id = 4550,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 45
+                        },
+                        new
+                        {
+                            Id = 4560,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 45
+                        },
+                        new
+                        {
+                            Id = 4600,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 46
+                        },
+                        new
+                        {
+                            Id = 4610,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 46
+                        },
+                        new
+                        {
+                            Id = 4630,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 46
+                        },
+                        new
+                        {
+                            Id = 4640,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 46
+                        },
+                        new
+                        {
+                            Id = 4650,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 46
+                        },
+                        new
+                        {
+                            Id = 4660,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 46
+                        },
+                        new
+                        {
+                            Id = 4710,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 47
+                        },
+                        new
+                        {
+                            Id = 4720,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 47
+                        },
+                        new
+                        {
+                            Id = 4730,
+                            ClosingTime = new TimeSpan(0, 19, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 47
+                        },
+                        new
+                        {
+                            Id = 4750,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 47
+                        },
+                        new
+                        {
+                            Id = 4760,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 47
+                        },
+                        new
+                        {
+                            Id = 4800,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 48
+                        },
+                        new
+                        {
+                            Id = 4810,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 48
+                        },
+                        new
+                        {
+                            Id = 4830,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 48
+                        },
+                        new
+                        {
+                            Id = 4840,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 48
+                        },
+                        new
+                        {
+                            Id = 4850,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 48
+                        },
+                        new
+                        {
+                            Id = 4860,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 48
+                        },
+                        new
+                        {
+                            Id = 4900,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 0,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 49
+                        },
+                        new
+                        {
+                            Id = 4910,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 49
+                        },
+                        new
+                        {
+                            Id = 4930,
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 49
+                        },
+                        new
+                        {
+                            Id = 4940,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 49
+                        },
+                        new
+                        {
+                            Id = 4950,
+                            ClosingTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 49
+                        },
+                        new
+                        {
+                            Id = 4960,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 12, 0, 0, 0),
+                            RestaurantId = 49
+                        },
+                        new
+                        {
+                            Id = 5010,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 1,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 50
+                        },
+                        new
+                        {
+                            Id = 5020,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 2,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 50
+                        },
+                        new
+                        {
+                            Id = 5030,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 3,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 50
+                        },
+                        new
+                        {
+                            Id = 5040,
+                            ClosingTime = new TimeSpan(0, 20, 0, 0, 0),
+                            Day = 4,
+                            OpeningTime = new TimeSpan(0, 9, 0, 0, 0),
+                            RestaurantId = 50
+                        },
+                        new
+                        {
+                            Id = 5050,
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
+                            Day = 5,
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
+                            RestaurantId = 50
+                        },
+                        new
+                        {
+                            Id = 5060,
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
+                            Day = 6,
+                            OpeningTime = new TimeSpan(0, 11, 0, 0, 0),
+                            RestaurantId = 50
                         });
+                });
+
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Index")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Picture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("RestaurantId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId");
+
+                    b.ToTable("RestaurantPictures");
                 });
 
             modelBuilder.Entity("Core.Models.RestaurantTable", b =>
@@ -572,7 +3216,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -590,428 +3234,6 @@ namespace Persistence.Migrations
                     b.HasIndex("RestaurantId");
 
                     b.ToTable("RestaurantTables");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 2,
-                            RestaurantId = 2,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 3,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 4,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 5,
-                            RestaurantId = 5,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 6,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 8,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 9,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 10,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 11,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 12,
-                            RestaurantId = 2,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 13,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 14,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 15,
-                            RestaurantId = 5,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 16,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 17,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 18,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 19,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 20,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 21,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 22,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 23,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 24,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 25,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 26,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 27,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 28,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 29,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 30,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 31,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 32,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 33,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 34,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 35,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 36,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 37,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 38,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 39,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 40,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 41,
-                            RestaurantId = 1,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 42,
-                            RestaurantId = 2,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 43,
-                            RestaurantId = 3,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 44,
-                            RestaurantId = 4,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 45,
-                            RestaurantId = 5,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 46,
-                            RestaurantId = 6,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 47,
-                            RestaurantId = 7,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 48,
-                            RestaurantId = 8,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 49,
-                            RestaurantId = 9,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 50,
-                            RestaurantId = 10,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 51,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 52,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 53,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 54,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 55,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 56,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 57,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 58,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 59,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 60,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 61,
-                            RestaurantId = 1,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 62,
-                            RestaurantId = 2,
-                            SeatPlaces = 7
-                        },
-                        new
-                        {
-                            Id = 63,
-                            RestaurantId = 3,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 64,
-                            RestaurantId = 4,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 65,
-                            RestaurantId = 5,
-                            SeatPlaces = 8
-                        },
-                        new
-                        {
-                            Id = 66,
-                            RestaurantId = 6,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 67,
-                            RestaurantId = 7,
-                            SeatPlaces = 9
-                        },
-                        new
-                        {
-                            Id = 68,
-                            RestaurantId = 8,
-                            SeatPlaces = 5
-                        },
-                        new
-                        {
-                            Id = 69,
-                            RestaurantId = 9,
-                            SeatPlaces = 6
-                        },
-                        new
-                        {
-                            Id = 70,
-                            RestaurantId = 10,
-                            SeatPlaces = 7
-                        });
                 });
 
             modelBuilder.Entity("Core.Models.User.Person", b =>
@@ -1020,7 +3242,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -1055,6 +3277,8 @@ namespace Persistence.Migrations
                     b.ToTable("Persons");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Core.Models.ZipCode", b =>
@@ -1063,7 +3287,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("District")
                         .IsRequired()
@@ -6831,26 +9055,18 @@ namespace Persistence.Migrations
                     b.Navigation("ZipCode");
                 });
 
-            modelBuilder.Entity("Core.Models.RestaurantCategory", b =>
+            modelBuilder.Entity("Core.Models.RestaurantOpeningTime", b =>
                 {
-                    b.HasOne("Core.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Core.Models.Restaurant", "Restaurant")
                         .WithMany()
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-
                     b.Navigation("Restaurant");
                 });
 
-            modelBuilder.Entity("Core.Models.RestaurantOpeningTime", b =>
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
                 {
                     b.HasOne("Core.Models.Restaurant", "Restaurant")
                         .WithMany()
