@@ -2,18 +2,21 @@
 {
     public static class CsvReader
     {
-        public static readonly string SolutionPath = TryGetSolutionDirectoryInfo().FullName;
+        public static readonly string SolutionPath = GetSolutionDirectory();
 
-        public static DirectoryInfo TryGetSolutionDirectoryInfo()
+        public static string GetSolutionDirectory()
         {
-            var directory = new DirectoryInfo(Directory.GetCurrentDirectory());
-            while (directory != null && !directory.GetFiles("*.sln").Any() && directory.FullName != "src")
+            string currentDir = Directory.GetCurrentDirectory();
+            DirectoryInfo? solutionDir = Directory.GetParent(currentDir);
+            
+            if (solutionDir == null)
             {
-                directory = directory.Parent;
+                throw new DirectoryNotFoundException("Solution directory not found!");
             }
-            return directory!;
-        }
 
+            return solutionDir.FullName;
+        }
+        
         public static string GetFullPathTo(string file)
         {
             file = file.Trim().Replace('\\', Path.DirectorySeparatorChar);
