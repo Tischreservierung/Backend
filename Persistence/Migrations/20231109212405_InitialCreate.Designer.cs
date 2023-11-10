@@ -12,17 +12,18 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OnlineReservationContext))]
-    [Migration("20230622123701_testData")]
-    partial class testData
+    [Migration("20231109212405_InitialCreate")]
+    partial class InitialCreate
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("CategoryRestaurant", b =>
                 {
@@ -45,7 +46,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -219,13 +220,13 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
 
                     b.Property<DateTime>("ReservationDay")
                         .HasColumnType("datetime2");
@@ -241,8 +242,8 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
 
                     b.HasKey("Id");
 
@@ -261,7 +262,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -310,7 +311,7 @@ namespace Persistence.Migrations
                             Description = "Tauchen Sie ein in die Welt des Sushis und erleben Sie eine Fusion aus traditionellen und modernen japanischen Geschmacksrichtungen. Unsere Sushi-Rollen und frischen Meeresfrüchte werden Sie begeistern.",
                             Name = "Sushi Corner",
                             StreetNr = "456",
-                            ZipCodeId = 2
+                            ZipCodeId = 1
                         },
                         new
                         {
@@ -319,7 +320,7 @@ namespace Persistence.Migrations
                             Description = "Lassen Sie sich von der französischen Küche verführen. Unsere raffinierten Gerichte, inspiriert von den Aromen Frankreichs, werden Ihren Gaumen verwöhnen. Genießen Sie ein Glas Wein aus unserer umfangreichen Weinkarte.",
                             Name = "Le Bistro Français",
                             StreetNr = "789",
-                            ZipCodeId = 4
+                            ZipCodeId = 1
                         },
                         new
                         {
@@ -328,7 +329,7 @@ namespace Persistence.Migrations
                             Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten, die Ihre Sinne begeistern werden.",
                             Name = "Spice Paradise",
                             StreetNr = "234",
-                            ZipCodeId = 2
+                            ZipCodeId = 1
                         },
                         new
                         {
@@ -346,7 +347,7 @@ namespace Persistence.Migrations
                             Description = "Chez Pierre ist ein elegantes französisches Restaurant, das sich auf klassische französische Küche spezialisiert hat. Mit einer raffinierten Atmosphäre und einer umfangreichen Weinkarte bietet Chez Pierre ein unvergessliches kulinarisches Erlebnis.",
                             Name = "Chez Pierre",
                             StreetNr = "10",
-                            ZipCodeId = 12
+                            ZipCodeId = 1
                         },
                         new
                         {
@@ -355,7 +356,7 @@ namespace Persistence.Migrations
                             Description = "The Spice Garden entführt Sie auf eine kulinarische Reise durch die Aromen Indiens. Von würzigen Currygerichten bis hin zu delikaten Vorspeisen bieten wir eine vielfältige Auswahl an indischen Spezialitäten, die Ihre Geschmacksknospen verzaubern werden.",
                             Name = "The Spice Garden",
                             StreetNr = "10",
-                            ZipCodeId = 54
+                            ZipCodeId = 1
                         },
                         new
                         {
@@ -364,7 +365,7 @@ namespace Persistence.Migrations
                             Description = "Erleben Sie den Geschmack von Mexiko bei El Rancho. Unser lebhaftes Restaurant serviert authentische mexikanische Gerichte wie Tacos, Enchiladas und frittierte Nachos, begleitet von erfrischenden Margaritas und traditionellen lateinamerikanischen Getränken.",
                             Name = "Sushi Zen",
                             StreetNr = "3-1-1",
-                            ZipCodeId = 67
+                            ZipCodeId = 1
                         },
                         new
                         {
@@ -373,7 +374,7 @@ namespace Persistence.Migrations
                             Description = "Erleben Sie die exotischen Aromen der indischen Küche in unserem Restaurant. Von würzigen Currygerichten bis hin zu köstlichen andoori-Spezialitäten bieten wir eine Vielzahl von Gerichten, die Ihre Sinne begeistern werden.",
                             Name = "El Rancho",
                             StreetNr = "20",
-                            ZipCodeId = 17
+                            ZipCodeId = 1
                         },
                         new
                         {
@@ -392,7 +393,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -411,7 +412,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("RestaurantCategory");
+                    b.ToTable("RestaurantCategories");
 
                     b.HasData(
                         new
@@ -482,16 +483,16 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("ClosingTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("ClosingTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OpeningTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("OpeningTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -511,235 +512,88 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 2,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 3,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 4,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 5,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 18, 0, 0, 0),
                             Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 6,
-                            ClosingTime = new DateTime(2023, 5, 27, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 17, 0, 0, 0),
                             Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 8, 0, 0, 0),
                             RestaurantId = 1
                         },
                         new
                         {
                             Id = 7,
-                            ClosingTime = new DateTime(2023, 5, 28, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingTime = new TimeSpan(0, 16, 0, 0, 0),
                             Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpeningTime = new TimeSpan(0, 10, 0, 0, 0),
                             RestaurantId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ClosingTime = new DateTime(2023, 5, 27, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ClosingTime = new DateTime(2023, 5, 28, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ClosingTime = new DateTime(2023, 5, 26, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 7, 30, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ClosingTime = new DateTime(2023, 5, 26, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ClosingTime = new DateTime(2023, 5, 26, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ClosingTime = new DateTime(2023, 5, 27, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ClosingTime = new DateTime(2023, 5, 28, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 3
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ClosingTime = new DateTime(2023, 5, 26, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ClosingTime = new DateTime(2023, 5, 26, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 1,
-                            OpeningTime = new DateTime(2023, 5, 26, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 2,
-                            OpeningTime = new DateTime(2023, 5, 26, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 25,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 3,
-                            OpeningTime = new DateTime(2023, 5, 26, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 26,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 4,
-                            OpeningTime = new DateTime(2023, 5, 26, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 27,
-                            ClosingTime = new DateTime(2023, 5, 26, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 5,
-                            OpeningTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 28,
-                            ClosingTime = new DateTime(2023, 5, 27, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 6,
-                            OpeningTime = new DateTime(2023, 5, 27, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
-                        },
-                        new
-                        {
-                            Id = 29,
-                            ClosingTime = new DateTime(2023, 5, 28, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Day = 0,
-                            OpeningTime = new DateTime(2023, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 4
                         });
+                });
+
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Index")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Picture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("RestaurantId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId");
+
+                    b.ToTable("RestaurantPictures");
                 });
 
             modelBuilder.Entity("Core.Models.RestaurantTable", b =>
@@ -748,7 +602,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
@@ -1196,7 +1050,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -1231,6 +1085,8 @@ namespace Persistence.Migrations
                     b.ToTable("Persons");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Core.Models.ZipCode", b =>
@@ -1239,7 +1095,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("District")
                         .IsRequired()
@@ -7027,6 +6883,17 @@ namespace Persistence.Migrations
                 });
 
             modelBuilder.Entity("Core.Models.RestaurantOpeningTime", b =>
+                {
+                    b.HasOne("Core.Models.Restaurant", "Restaurant")
+                        .WithMany()
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurant");
+                });
+
+            modelBuilder.Entity("Core.Models.RestaurantPicture", b =>
                 {
                     b.HasOne("Core.Models.Restaurant", "Restaurant")
                         .WithMany()

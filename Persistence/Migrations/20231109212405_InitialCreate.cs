@@ -3,10 +3,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Persistence.Migrations
 {
+    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -165,6 +169,28 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RestaurantPictures",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Picture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Index = table.Column<int>(type: "int", nullable: false),
+                    RestaurantId = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RestaurantPictures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RestaurantPictures_Restaurants_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RestaurantTables",
                 columns: table => new
                 {
@@ -209,14 +235,14 @@ namespace Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reservations_Restaurants_RestaurantId",
-                        column: x => x.RestaurantId,
-                        principalTable: "Restaurants",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Reservations_RestaurantTables_RestaurantTableId",
                         column: x => x.RestaurantTableId,
                         principalTable: "RestaurantTables",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Reservations_Restaurants_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurants",
                         principalColumn: "Id");
                 });
 
@@ -273,14 +299,7 @@ namespace Persistence.Migrations
                     { 9, "Urfahr-Umgebung", "Steyregg", "4040" },
                     { 10, "Urfahr-Umgebung", "Puchenau", "4048" },
                     { 11, "Linz-Land", "Traun", "4050" },
-                    { 12, "Linz-Land", "Ansfelden", "4052" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 12, "Linz-Land", "Ansfelden", "4052" },
                     { 13, "Linz", "Linz", "4052" },
                     { 14, "Linz-Land", "Ansfelden", "4053" },
                     { 15, "Linz-Land", "Neuhofen an der Krems", "4053" },
@@ -322,14 +341,7 @@ namespace Persistence.Migrations
                     { 51, "Schärding", "Waldkirchen am Wesen", "4085" },
                     { 52, "Schärding", "Engelhartszell", "4090" },
                     { 53, "Schärding", "St. Roman", "4091" },
-                    { 54, "Schärding", "Vichtenstein", "4091" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 54, "Schärding", "Vichtenstein", "4091" },
                     { 55, "Schärding", "Esternberg", "4092" },
                     { 56, "Urfahr-Umgebung", "Gramastetten", "4100" },
                     { 57, "Urfahr-Umgebung", "Ottensheim", "4100" },
@@ -371,14 +383,7 @@ namespace Persistence.Migrations
                     { 93, "Rohrbach", "Hörbich", "4134" },
                     { 94, "Rohrbach", "Putzleinsdorf", "4134" },
                     { 95, "Rohrbach", "Pfarrkirchen im Mühlkreis", "4141" },
-                    { 96, "Rohrbach", "Putzleinsdorf", "4141" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 96, "Rohrbach", "Putzleinsdorf", "4141" },
                     { 97, "Rohrbach", "Hofkirchen im Mühlkreis", "4142" },
                     { 98, "Rohrbach", "Pfarrkirchen im Mühlkreis", "4142" },
                     { 99, "Rohrbach", "Neustift im Mühlkreis", "4143" },
@@ -420,14 +425,7 @@ namespace Persistence.Migrations
                     { 135, "Rohrbach", "Auberg", "4171" },
                     { 136, "Rohrbach", "St. Peter am Wimberg", "4171" },
                     { 137, "Rohrbach", "St. Stefan-Afiesl", "4171" },
-                    { 138, "Rohrbach", "St. Johann am Wimberg", "4172" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 138, "Rohrbach", "St. Johann am Wimberg", "4172" },
                     { 139, "Rohrbach", "St. Veit im Mühlkreis", "4173" },
                     { 140, "Rohrbach", "Niederwaldkirchen", "4174" },
                     { 141, "Rohrbach", "St. Veit im Mühlkreis", "4174" },
@@ -469,14 +467,7 @@ namespace Persistence.Migrations
                     { 177, "Urfahr-Umgebung", "Hellmonsödt", "4202" },
                     { 178, "Urfahr-Umgebung", "Kirchschlag bei Linz", "4202" },
                     { 179, "Urfahr-Umgebung", "Sonnberg im Mühlkreis", "4202" },
-                    { 180, "Urfahr-Umgebung", "Altenberg bei Linz", "4203" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 180, "Urfahr-Umgebung", "Altenberg bei Linz", "4203" },
                     { 181, "Urfahr-Umgebung", "Haibach im Mühlkreis", "4204" },
                     { 182, "Urfahr-Umgebung", "Ottenschlag im Mühlkreis", "4204" },
                     { 183, "Urfahr-Umgebung", "Reichenau im Mühlkreis", "4204" },
@@ -518,14 +509,7 @@ namespace Persistence.Migrations
                     { 219, "Freistadt", "Sandl", "4263" },
                     { 220, "Freistadt", "Windhaag bei Freistadt", "4263" },
                     { 221, "Freistadt", "Grünbach", "4264" },
-                    { 222, "Freistadt", "Lasberg", "4264" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 222, "Freistadt", "Lasberg", "4264" },
                     { 223, "Freistadt", "Lasberg", "4271" },
                     { 224, "Freistadt", "St. Oswald bei Freistadt", "4271" },
                     { 225, "Freistadt", "St. Leonhard bei Freistadt", "4272" },
@@ -567,14 +551,7 @@ namespace Persistence.Migrations
                     { 261, "Perg", "Langenstein", "4310" },
                     { 262, "Perg", "Mauthausen", "4310" },
                     { 263, "Perg", "Naarn im Machlande", "4311" },
-                    { 264, "Perg", "Ried in der Riedmark", "4311" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 264, "Perg", "Ried in der Riedmark", "4311" },
                     { 265, "Perg", "Schwertberg", "4311" },
                     { 266, "Freistadt", "Tragwein", "4311" },
                     { 267, "Perg", "Langenstein", "4312" },
@@ -616,14 +593,7 @@ namespace Persistence.Migrations
                     { 303, "Perg", "Pabneukirchen", "4363" },
                     { 304, "Perg", "St. Thomas am Blasenstein", "4363" },
                     { 305, "Perg", "St. Thomas am Blasenstein", "4364" },
-                    { 306, "Perg", "Dimbach", "4371" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 306, "Perg", "Dimbach", "4371" },
                     { 307, "Perg", "Pabneukirchen", "4371" },
                     { 308, "Perg", "St. Georgen am Walde", "4371" },
                     { 309, "Zwettl", "Altmelon", "4372" },
@@ -665,14 +635,7 @@ namespace Persistence.Migrations
                     { 345, "Steyr-Land", "Reichraming", "4462" },
                     { 346, "Steyr-Land", "Großraming", "4463" },
                     { 347, "Steyr-Land", "Laussa", "4463" },
-                    { 348, "Steyr-Land", "Weyer", "4464" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 348, "Steyr-Land", "Weyer", "4464" },
                     { 349, "Linz-Land", "Enns", "4470" },
                     { 350, "Linz-Land", "Kronstorf", "4470" },
                     { 351, "Linz-Land", "Asten", "4481" },
@@ -714,14 +677,7 @@ namespace Persistence.Migrations
                     { 387, "Steyr-Land", "Bad Hall", "4540" },
                     { 388, "Kirchdorf", "Kremsmünster", "4540" },
                     { 389, "Steyr-Land", "Pfarrkirchen bei Bad Hall", "4540" },
-                    { 390, "Steyr-Land", "Adlwang", "4541" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 390, "Steyr-Land", "Adlwang", "4541" },
                     { 391, "Kirchdorf", "Nußbach", "4542" },
                     { 392, "Linz-Land", "Kematen an der Krems", "4550" },
                     { 393, "Kirchdorf", "Kremsmünster", "4550" },
@@ -763,14 +719,7 @@ namespace Persistence.Migrations
                     { 429, "Steyr-Land", "Ternberg", "4596" },
                     { 430, "Wels-Land", "Schleißheim", "4600" },
                     { 431, "Wels-Land", "Thalheim bei Wels", "4600" },
-                    { 432, "Wels", "Wels", "4600" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 432, "Wels", "Wels", "4600" },
                     { 433, "Wels-Land", "Buchkirchen", "4611" },
                     { 434, "Grieskirchen", "Wallern an der Trattnach", "4611" },
                     { 435, "Wels-Land", "Buchkirchen", "4612" },
@@ -812,14 +761,7 @@ namespace Persistence.Migrations
                     { 471, "Gmunden", "Scharnstein", "4645" },
                     { 472, "Wels-Land", "Edt bei Lambach", "4650" },
                     { 473, "Wels-Land", "Gunskirchen", "4650" },
-                    { 474, "Wels-Land", "Lambach", "4650" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 474, "Wels-Land", "Lambach", "4650" },
                     { 475, "Wels-Land", "Stadl-Paura", "4651" },
                     { 476, "Wels-Land", "Fischlham", "4652" },
                     { 477, "Wels-Land", "Steinerkirchen an der Traun", "4652" },
@@ -861,14 +803,7 @@ namespace Persistence.Migrations
                     { 513, "Vöcklabruck", "Schwanenstadt", "4690" },
                     { 514, "Wels-Land", "Stadl-Paura", "4690" },
                     { 515, "Vöcklabruck", "Niederthalheim", "4691" },
-                    { 516, "Vöcklabruck", "Schlatt", "4691" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 516, "Vöcklabruck", "Schlatt", "4691" },
                     { 517, "Grieskirchen", "Gaspoltshofen", "4692" },
                     { 518, "Vöcklabruck", "Niederthalheim", "4692" },
                     { 519, "Vöcklabruck", "Desselbrunn", "4693" },
@@ -910,14 +845,7 @@ namespace Persistence.Migrations
                     { 555, "Schärding", "Altschwendt", "4721" },
                     { 556, "Grieskirchen", "Neukirchen am Walde", "4722" },
                     { 557, "Grieskirchen", "Peuerbach", "4722" },
-                    { 558, "Grieskirchen", "Steegen", "4722" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 558, "Grieskirchen", "Steegen", "4722" },
                     { 559, "Schärding", "Kopfing im Innkreis", "4723" },
                     { 560, "Grieskirchen", "Natternbach", "4723" },
                     { 561, "Grieskirchen", "Eschenau im Hausruckkreis", "4724" },
@@ -959,14 +887,7 @@ namespace Persistence.Migrations
                     { 597, "Schärding", "St. Willibald", "4760" },
                     { 598, "Schärding", "Enzenkirchen", "4761" },
                     { 599, "Schärding", "Enzenkirchen", "4762" },
-                    { 600, "Grieskirchen", "Natternbach", "4762" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 600, "Grieskirchen", "Natternbach", "4762" },
                     { 601, "Schärding", "St. Willibald", "4762" },
                     { 602, "Schärding", "Andorf", "4770" },
                     { 603, "Schärding", "Enzenkirchen", "4771" },
@@ -1008,14 +929,7 @@ namespace Persistence.Migrations
                     { 639, "Vöcklabruck", "Pilsbach", "4800" },
                     { 640, "Vöcklabruck", "Pühret", "4800" },
                     { 641, "Vöcklabruck", "Regau", "4800" },
-                    { 642, "Gmunden", "Altmünster", "4801" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 642, "Gmunden", "Altmünster", "4801" },
                     { 643, "Gmunden", "Traunkirchen", "4801" },
                     { 644, "Gmunden", "Ebensee am Traunsee", "4802" },
                     { 645, "Gmunden", "Altmünster", "4810" },
@@ -1057,14 +971,7 @@ namespace Persistence.Migrations
                     { 681, "Vöcklabruck", "Redlham", "4846" },
                     { 682, "Vöcklabruck", "Puchkirchen am Trattberg", "4849" },
                     { 683, "Vöcklabruck", "Neukirchen an der Vöckla", "4850" },
-                    { 684, "Vöcklabruck", "Timelkam", "4850" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 684, "Vöcklabruck", "Timelkam", "4850" },
                     { 685, "Vöcklabruck", "Ungenach", "4850" },
                     { 686, "Vöcklabruck", "Vöcklabruck", "4850" },
                     { 687, "Vöcklabruck", "Gampern", "4851" },
@@ -1106,14 +1013,7 @@ namespace Persistence.Migrations
                     { 723, "Vöcklabruck", "Frankenmarkt", "4890" },
                     { 724, "Vöcklabruck", "Vöcklamarkt", "4890" },
                     { 725, "Vöcklabruck", "Weißenkirchen im Attergau", "4890" },
-                    { 726, "Vöcklabruck", "Frankenmarkt", "4891" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 726, "Vöcklabruck", "Frankenmarkt", "4891" },
                     { 727, "Vöcklabruck", "Pöndorf", "4891" },
                     { 728, "Vöcklabruck", "Weißenkirchen im Attergau", "4891" },
                     { 729, "Vöcklabruck", "Fornach", "4892" },
@@ -1155,14 +1055,7 @@ namespace Persistence.Migrations
                     { 765, "Ried", "Geinberg", "4943" },
                     { 766, "Ried", "Gurten", "4943" },
                     { 767, "Ried", "Kirchdorf am Inn", "4943" },
-                    { 768, "Braunau", "Polling im Innkreis", "4943" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Zipcodes",
-                columns: new[] { "Id", "District", "Location", "ZipCodeNr" },
-                values: new object[,]
-                {
+                    { 768, "Braunau", "Polling im Innkreis", "4943" },
                     { 769, "Braunau", "Altheim", "4950" },
                     { 770, "Braunau", "Weng im Innkreis", "4950" },
                     { 771, "Ried", "Geinberg", "4951" },
@@ -1283,14 +1176,7 @@ namespace Persistence.Migrations
                     { 22, 2, 7 },
                     { 23, 3, 5 },
                     { 24, 4, 6 },
-                    { 25, 5, 8 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RestaurantTables",
-                columns: new[] { "Id", "RestaurantId", "SeatPlaces" },
-                values: new object[,]
-                {
+                    { 25, 5, 8 },
                     { 26, 6, 6 },
                     { 27, 7, 9 },
                     { 28, 8, 5 },
@@ -1332,23 +1218,11 @@ namespace Persistence.Migrations
                     { 64, 4, 6 },
                     { 65, 5, 8 },
                     { 66, 6, 6 },
-                    { 67, 7, 9 }
+                    { 67, 7, 9 },
+                    { 68, 8, 5 },
+                    { 69, 9, 6 },
+                    { 70, 10, 7 }
                 });
-
-            migrationBuilder.InsertData(
-                table: "RestaurantTables",
-                columns: new[] { "Id", "RestaurantId", "SeatPlaces" },
-                values: new object[] { 68, 8, 5 });
-
-            migrationBuilder.InsertData(
-                table: "RestaurantTables",
-                columns: new[] { "Id", "RestaurantId", "SeatPlaces" },
-                values: new object[] { 69, 9, 6 });
-
-            migrationBuilder.InsertData(
-                table: "RestaurantTables",
-                columns: new[] { "Id", "RestaurantId", "SeatPlaces" },
-                values: new object[] { 70, 10, 7 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoryRestaurant_RestaurantsId",
@@ -1404,6 +1278,11 @@ namespace Persistence.Migrations
                 column: "RestaurantId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RestaurantPictures_RestaurantId",
+                table: "RestaurantPictures",
+                column: "RestaurantId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Restaurants_ZipCodeId",
                 table: "Restaurants",
                 column: "ZipCodeId");
@@ -1414,6 +1293,7 @@ namespace Persistence.Migrations
                 column: "RestaurantId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -1427,6 +1307,9 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "RestaurantOpeningTimes");
+
+            migrationBuilder.DropTable(
+                name: "RestaurantPictures");
 
             migrationBuilder.DropTable(
                 name: "Persons");
