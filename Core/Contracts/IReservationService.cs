@@ -1,4 +1,4 @@
-﻿using Core.DTO;
+﻿using Core.Dto; 
 using Core.Models;
 
 namespace Core.Contracts

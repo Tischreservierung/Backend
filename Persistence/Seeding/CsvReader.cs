@@ -7,13 +7,7 @@
         public static string GetSolutionDirectory()
         {
             string currentDir = Directory.GetCurrentDirectory();
-            DirectoryInfo? solutionDir = Directory.GetParent(currentDir);
-            
-            if (solutionDir == null)
-            {
-                throw new DirectoryNotFoundException("Solution directory not found!");
-            }
-
+            DirectoryInfo? solutionDir = Directory.GetParent(currentDir) ?? throw new DirectoryNotFoundException("Solution directory not found!");
             return solutionDir.FullName;
         }
         

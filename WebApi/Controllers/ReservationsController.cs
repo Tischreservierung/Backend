@@ -1,7 +1,9 @@
 ﻿using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 using Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using WebApi.QueryParams;
 
 namespace WebApi.Controllers
@@ -34,6 +36,7 @@ namespace WebApi.Controllers
 
 
         [HttpGet("customer/{customerId}")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer(int customerId)
         {
             var reservations = await _unitOfWork.Reservations.GetByCustomer(customerId);
@@ -42,6 +45,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("restaurant/{restaurantId}")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByRestaurant(int restaurantId)
         {
             var reservations = await _unitOfWork.Reservations.GetByRestaurant(restaurantId);
