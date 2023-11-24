@@ -1,7 +1,7 @@
 ﻿using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 using Core.Models;
-using WebApi.Util;
+using Core.Util;
 
 namespace WebApi.Services
 {
@@ -60,7 +60,7 @@ namespace WebApi.Services
 
                 if (currentStartTime % reservationTimeOffset != 0)
                 {
-                    currentStartTime += reservationTimeOffset - currentStartTime % reservationTimeOffset;
+                    currentStartTime += reservationTimeOffset + currentStartTime % reservationTimeOffset;
                 }
 
                 while (currentStartTime + reservationDuration <= searchToTime)
