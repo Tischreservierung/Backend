@@ -14,39 +14,33 @@ namespace Persistence.Data
 
         public async Task<IEnumerable<ReservationDto>> GetByCustomer(int customerId)
         {
-            return await _dbSet.Where(r => r.CustomerId == customerId).Select(x => new ReservationDto()
-            {
-                CustomerId = x.CustomerId,
-                RestaurantId = x.RestaurantId,
-                Day = x.ReservationDay,
-                StartTime = x.StartTime.ToDateTime(),
-                EndTime = x.EndTime.ToDateTime(),
-                RestaurantTableId = x.RestaurantTableId,
-                CustomerName = x.Customer!.Name,
-                RestaurantName = x.Restaurant!.Name,
-                Persons = x.RestaurantTable!.SeatPlaces
-            }).ToListAsync();
+            return await _dbSet.Where(r => r.CustomerId == customerId).Select(x => ReservationToDto(x)).ToListAsync();
         }
 
         public async Task<IEnumerable<ReservationDto>> GetByRestaurant(int restaurantId)
         {
-            return await _dbSet.Where(r => r.RestaurantId == restaurantId).Select(x => new ReservationDto()
-            {
-                CustomerId = x.CustomerId,
-                RestaurantId = x.RestaurantId,
-                Day = x.ReservationDay,
-                StartTime = x.StartTime.ToDateTime(),
-                EndTime = x.EndTime.ToDateTime(),
-                RestaurantTableId = x.RestaurantTableId,
-                CustomerName = x.Customer!.Name,
-                RestaurantName = x.Restaurant!.Name,
-                Persons = x.RestaurantTable!.SeatPlaces
-            }).ToListAsync();
+            return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId).Select(x => ReservationToDto(x)).ToListAsync();
         }
 
         public async Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day)
         {
-            return await _dbSet.Where(r => r.RestaurantId == restaurantId && r.ReservationDay == day).ToListAsync();
+            return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId && r.ReservationDay == day).ToListAsync();
+        }
+
+        private static ReservationDto ReservationToDto(Reservation reservation)
+        {
+            return new ReservationDto()
+            {
+                CustomerId = reservation.CustomerId,
+                RestaurantId = reservation.RestaurantTable!.RestaurantId,
+                Day = reservation.ReservationDay,
+                StartTime = reservation.StartTime.ToDateTime(),
+                EndTime = reservation.EndTime.ToDateTime(),
+                RestaurantTableId = reservation.RestaurantTableId,
+                CustomerName = reservation.Customer!.Name,
+                RestaurantName = reservation.RestaurantTable.Restaurant!.Name,
+                Persons = reservation.RestaurantTable!.SeatPlaces
+            };
         }
     }
 }

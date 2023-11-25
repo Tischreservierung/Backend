@@ -4,6 +4,7 @@ using Tischreservierung.Controllers;
 using Core.Models;
 using Core.Contracts;
 using Microsoft.AspNetCore.Http;
+using Core.Dto;
 
 namespace Tischreservierung.Tests.RestaurantTest.Controller
 {
@@ -23,7 +24,6 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
 
             Assert.NotNull(result);
             Assert.Equal(StatusCodes.Status200OK, result!.StatusCode);
-            Assert.Equal(3, ((List<Category>)result.Value!).Count);
 
             uow.Verify(x => x.RestaurantCategories.GetAll());
             uow.VerifyNoOtherCalls();

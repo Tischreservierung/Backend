@@ -33,7 +33,6 @@ namespace WebApi.Services
                 ReservationDay = request.Day,
                 StartTime = request.Time,
                 EndTime = endTime,
-                RestaurantId = request.RestaurantId,
                 CustomerId = request.CustomerId,
                 RestaurantTableId = freeTable.Id
             };
@@ -60,7 +59,7 @@ namespace WebApi.Services
 
                 if (currentStartTime % reservationTimeOffset != 0)
                 {
-                    currentStartTime += reservationTimeOffset + currentStartTime % reservationTimeOffset;
+                    currentStartTime += reservationTimeOffset - currentStartTime % reservationTimeOffset;
                 }
 
                 while (currentStartTime + reservationDuration <= searchToTime)

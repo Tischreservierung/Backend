@@ -171,7 +171,7 @@ namespace Tischreservierung.Tests
             uow.Setup(x => x.Reservations.GetByRestaurantAndDay(It.IsAny<int>(), It.IsAny<DateTime>())).ReturnsAsync(
                 new List<Reservation>()
                 {
-                    new Reservation() { Id = 1, CustomerId = 1, RestaurantId = 1, RestaurantTableId = 1, ReservationDay = DateTime.Today, StartTime = TimeSpan.FromHours(9), EndTime = TimeSpan.FromHours(10.5) }
+                    new Reservation() { Id = 1, CustomerId = 1, RestaurantTableId = 1, ReservationDay = DateTime.Today, StartTime = TimeSpan.FromHours(9), EndTime = TimeSpan.FromHours(10.5) }
                 });
 
             IReservationService reservationService = new ReservationService(uow.Object);

@@ -18,7 +18,6 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
                 Id = reservationId,
                 CustomerId = 1,
                 RestaurantTableId = 101,
-                RestaurantId = 1,
                 ReservationDay = DateTime.Now,
                 StartTime = TimeSpan.FromHours(8),
                 EndTime = TimeSpan.FromHours(9)
@@ -75,7 +74,6 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
                 Id = reservationId,
                 CustomerId = 1,
                 RestaurantTableId = 101,
-                RestaurantId = 1,
                 ReservationDay = DateTime.Now,
                 StartTime = TimeSpan.FromHours(8),
                 EndTime = TimeSpan.FromHours(9)
