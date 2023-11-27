@@ -94,7 +94,8 @@ namespace Persistence.Data.RestaurantRepo
             {
                 Id = id,
                 RestaurantName = r.Name,
-                Picture = _dbContext.RestaurantPictures.Where(p => p.RestaurantId == id && p.Index == 0).Select(p => p.Picture).SingleOrDefault()
+                Picture = _dbContext.RestaurantPictures.Where(p => p.RestaurantId == id && p.Index == 0).Select(p => p.Picture).SingleOrDefault(),
+                
             }).SingleOrDefaultAsync();
         }
     }

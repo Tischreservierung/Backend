@@ -22,7 +22,7 @@ namespace Persistence.Data
 
         public async Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day)
         {
-            return await _dbSet.Where(r => r.RestaurantId == restaurantId && r.ReservationDay == day).ToListAsync();
+            return await _dbSet.Where(r => r.RestaurantId == restaurantId && r.ReservationDay.Date == day.Date).ToListAsync();
         }
     }
 }

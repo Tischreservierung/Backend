@@ -28,15 +28,14 @@ namespace Tischreservierung.Tests
 
             var reservation = await reservationService.RequestReservation(new ReservationRequestDto()
             {
-                Day = DateTime.Today,
+                Day = DateTime.Today.AddHours(9),
                 CustomerId = 1,
                 NumberOfPersons = 4,
-                RestaurantId = 1,
-                Time = TimeSpan.FromHours(9)
+                RestaurantId = 1
             });
 
             Assert.NotNull(reservation);
-            Assert.Equal(DateTime.Today, reservation!.ReservationDay);
+            Assert.Equal(DateTime.Today.AddHours(9), reservation!.ReservationDay);
             Assert.Equal(1, reservation.RestaurantTableId);
             Assert.Equal(TimeSpan.FromHours(9), reservation.StartTime);
             Assert.Equal(TimeSpan.FromHours(10.5), reservation.EndTime);
@@ -54,11 +53,10 @@ namespace Tischreservierung.Tests
 
             var reservation = await reservationService.RequestReservation(new ReservationRequestDto()
             {
-                Day = DateTime.Today,
+                Day = DateTime.Today.AddHours(9),
                 CustomerId = 1,
                 NumberOfPersons = 4,
-                RestaurantId = 1,
-                Time = TimeSpan.FromHours(9)
+                RestaurantId = 1
             });
 
             Assert.Null(reservation);

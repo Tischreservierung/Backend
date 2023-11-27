@@ -13,5 +13,7 @@ namespace Core.DTO
         public string RestaurantName { get; set; } = string.Empty;
 
         public byte[]? Picture { get; set; }
+
+
     }
 }

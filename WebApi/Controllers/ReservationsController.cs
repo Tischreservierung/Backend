@@ -84,7 +84,8 @@ namespace WebApi.Controllers
                                                                                      queryParams.Day.Date,
                                                                                      queryParams.From.TimeOfDay,
                                                                                      queryParams.To.TimeOfDay,
-                                                                                     queryParams.SeatPlaces);
+                                                                                     queryParams.SeatPlaces,
+                                                                                     queryParams.Duration);
 
             return Ok(reservationOptions);
         }
