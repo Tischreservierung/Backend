@@ -14,12 +14,20 @@ namespace Persistence.Data
 
         public async Task<IEnumerable<ReservationDto>> GetByCustomer(int customerId)
         {
-            return await _dbSet.Where(r => r.CustomerId == customerId).Select(x => ReservationToDto(x)).ToListAsync();
+            return await _dbSet.Where(r => r.CustomerId == customerId)
+                .Include(r => r.RestaurantTable!.Restaurant)
+                .Include(r => r.Customer)
+                .Select(x => ReservationToDto(x))
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<ReservationDto>> GetByRestaurant(int restaurantId)
         {
-            return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId).Select(x => ReservationToDto(x)).ToListAsync();
+            return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId)
+                .Include(r => r.RestaurantTable!.Restaurant)
+                .Include(r => r.Customer)
+                .Select(x => ReservationToDto(x))
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day)
