@@ -89,6 +89,15 @@ builder.Services.AddAuthentication(options =>
 });
 
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ViewReservations", policy => policy.RequireClaim("permissions", "view:reservation"));
+    options.AddPolicy("CreateReservations", policy => policy.RequireClaim("permissions", "create:reservation"));
+    options.AddPolicy("ManageRestaurant", policy => policy.RequireClaim("permissions", "manage:restaurant"));
+    options.AddPolicy("EditRestaurant", policy => policy.RequireClaim("permissions", "edit:restaurant"));
+    options.AddPolicy("DeleteRestaurant", policy => policy.RequireClaim("permissions", "delete:restaurant"));
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
