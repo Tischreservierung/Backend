@@ -2,7 +2,6 @@
 using Core.Models;
 using Core.Contracts;
 using Core.Dto;
-using Core.Models.User;
 
 namespace Persistence.Data.RestaurantRepo
 {

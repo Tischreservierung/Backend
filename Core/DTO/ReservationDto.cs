@@ -9,7 +9,6 @@
         public int RestaurantTableId { get; set; }
         public int RestaurantId { get; set; }
         public string RestaurantName { get; set; } = string.Empty;
-        public string CustomerName { get; set; } = string.Empty;
         public int Persons { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace WebApi.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Reservation?> RequestReservation(ReservationRequestDto request)
+        public async Task<Reservation?> RequestReservation(ReservationRequestDto request, int customerId)
         {
             TimeSpan endTime = request.Time + TimeSpan.FromMinutes(reservationDuration);
 
@@ -33,7 +33,7 @@ namespace WebApi.Services
                 ReservationDay = request.Day,
                 StartTime = request.Time,
                 EndTime = endTime,
-                CustomerId = request.CustomerId,
+                CustomerId = customerId,
                 RestaurantTableId = freeTable.Id
             };
 
@@ -43,7 +43,7 @@ namespace WebApi.Services
             return reservation;
         }
 
-        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces)
+        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, int customerId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces)
         {
             List<ReservationOptionDto> reservationOptions = new();
 

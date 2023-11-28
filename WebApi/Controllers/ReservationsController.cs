@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using WebApi.QueryParams;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -14,11 +15,13 @@ namespace WebApi.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IReservationService _reservationService;
+        private readonly IUserAuthenticationService _authenticationService;
 
-        public ReservationsController(IUnitOfWork unitOfWork, IReservationService reservationService)
+        public ReservationsController(IUnitOfWork unitOfWork, IReservationService reservationService, IUserAuthenticationService userAuthenticationService)
         {
             _unitOfWork = unitOfWork;
             _reservationService = reservationService;
+            _authenticationService = userAuthenticationService;
         }
 
         [HttpGet("{id}")]
@@ -35,10 +38,20 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpGet("customer/{customerId}")]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer(int customerId)
+        [Authorize]
+        [HttpGet("customer")]
+        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer()
         {
-            var reservations = await _unitOfWork.Reservations.GetByCustomer(customerId);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            var reservations = await _unitOfWork.Reservations.GetByCustomer(user.Id);
 
             return Ok(reservations);
         }
@@ -54,7 +67,16 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Reservation>> RequestReservation([FromBody] ReservationRequestDto reservationRequest)
         {
-            Reservation? reservation = await _reservationService.RequestReservation(reservationRequest);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            Reservation? reservation = await _reservationService.RequestReservation(reservationRequest, user.Id);
 
             if (reservation == null)
             {
@@ -79,10 +101,21 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpGet("restaurant/{restaurantId}/options")]
         public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
         {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
             var reservationOptions = await _reservationService.GetReservationOptions(restaurantId,
+                                                                                     user.Id,
                                                                                      queryParams.Day.Date,
                                                                                      queryParams.From.TimeOfDay,
                                                                                      queryParams.To.TimeOfDay,

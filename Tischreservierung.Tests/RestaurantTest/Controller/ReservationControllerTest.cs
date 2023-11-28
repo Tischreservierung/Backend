@@ -26,8 +26,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync(reservation);
             var reservationService = new Mock<IReservationService>();
+            var authenticationService = new Mock<IUserAuthenticationService>();
 
-            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object, authenticationService.Object);
 
             var actionResult = await controller.GetReservation(reservationId);
 
@@ -50,8 +51,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync((Reservation?)null);
             var reservationService = new Mock<IReservationService>();
+            var authenticationService = new Mock<IUserAuthenticationService>();
 
-            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object, authenticationService.Object);
 
             var actionResult = await controller.GetReservation(reservationId);
 
@@ -83,8 +85,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync(reservation);
             unitOfWork.Setup(x => x.Reservations.Delete(It.IsAny<Reservation>()));
             var reservationService = new Mock<IReservationService>();
+            var authenticationService = new Mock<IUserAuthenticationService>();
 
-            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object, authenticationService.Object);
 
             var actionResult = await controller.DeleteReservation(reservationId);
 
@@ -108,8 +111,9 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             var unitOfWork = new Mock<IUnitOfWork>();
             unitOfWork.Setup(x => x.Reservations.GetById(reservationId)).ReturnsAsync((Reservation?)null);
             var reservationService = new Mock<IReservationService>();
+            var authenticationService = new Mock<IUserAuthenticationService>();
 
-            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object);
+            var controller = new ReservationsController(unitOfWork.Object, reservationService.Object, authenticationService.Object);
 
             var actionResult = await controller.DeleteReservation(reservationId);
 

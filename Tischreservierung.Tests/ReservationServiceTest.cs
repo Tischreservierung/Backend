@@ -29,11 +29,10 @@ namespace Tischreservierung.Tests
             var reservation = await reservationService.RequestReservation(new ReservationRequestDto()
             {
                 Day = DateTime.Today,
-                CustomerId = 1,
                 NumberOfPersons = 4,
                 RestaurantId = 1,
                 Time = TimeSpan.FromHours(9)
-            });
+            }, 1);
 
             Assert.NotNull(reservation);
             Assert.Equal(DateTime.Today, reservation!.ReservationDay);
@@ -55,11 +54,10 @@ namespace Tischreservierung.Tests
             var reservation = await reservationService.RequestReservation(new ReservationRequestDto()
             {
                 Day = DateTime.Today,
-                CustomerId = 1,
                 NumberOfPersons = 4,
                 RestaurantId = 1,
                 Time = TimeSpan.FromHours(9)
-            });
+            }, 1);
 
             Assert.Null(reservation);
         }
@@ -93,7 +91,7 @@ namespace Tischreservierung.Tests
             IReservationService reservationService = new ReservationService(uow.Object);
 
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(10), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(10), 4);
 
             Assert.Empty(reservationOptions);
         }
@@ -127,7 +125,7 @@ namespace Tischreservierung.Tests
 
             IReservationService reservationService = new ReservationService(uow.Object);
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(11), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(11), 4);
 
             Assert.Equal(3, reservationOptions.Count());
             Assert.Collection(reservationOptions,
@@ -176,7 +174,7 @@ namespace Tischreservierung.Tests
 
             IReservationService reservationService = new ReservationService(uow.Object);
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(12), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(12), 4);
 
             Assert.Single(reservationOptions);
         }
@@ -210,7 +208,7 @@ namespace Tischreservierung.Tests
             IReservationService reservationService = new ReservationService(uow.Object);
 
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(8.5), TimeSpan.FromHours(10.5), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(8.5), TimeSpan.FromHours(10.5), 4);
 
             Assert.Single(reservationOptions);
 
