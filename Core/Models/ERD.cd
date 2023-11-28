@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Core.Models.Restaurant">
+    <Position X="14.5" Y="3.5" Width="1.75" />
+    <Members>
+      <Property Name="Tables" Hidden="true" />
+      <Property Name="ZipCodeId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAgAAAAAAAAQAQAAAAAEAADAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Restaurant.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ZipCode" />
+      <Property Name="Tables" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Categories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Core.Models.RestaurantTable">
+    <Position X="18" Y="3" Width="1.5" />
+    <Members>
+      <Property Name="RestaurantId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\RestaurantTable.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Restaurant" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.Models.RestaurantOpeningTime">
+    <Position X="18" Y="5.25" Width="2" />
+    <Members>
+      <Property Name="RestaurantId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAIAAAAAIAAAAAAAAAEAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\RestaurantOpeningTime.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Restaurant" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.Models.Category">
+    <Position X="14.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Restaurants" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Core.Models.ZipCode">
+    <Position X="11.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ZipCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.Models.RestaurantPicture">
+    <Position X="13.75" Y="7" Width="1.5" />
+    <Members>
+      <Property Name="RestaurantId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAA=</HashCode>
+      <FileName>Models\RestaurantPicture.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Restaurant" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.Models.Reservation">
+    <Position X="21.75" Y="3.25" Width="1.5" />
+    <Members>
+      <Property Name="CustomerId" Hidden="true" />
+      <Property Name="RestaurantId" Hidden="true" />
+      <Property Name="RestaurantTableId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAEAAAAAAAAAAAAAAAAAAEBAIAAiABAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\Reservation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Customer" />
+      <Property Name="RestaurantTable" />
+      <Property Name="Restaurant" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.Models.User.Person">
+    <Position X="27.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAQAACAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.Models.User.Customer">
+    <Position X="25.75" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.Models.User.Employee">
+    <Position X="29.5" Y="4.75" Width="1.5" />
+    <Members>
+      <Property Name="RestaurantId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\User\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

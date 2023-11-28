@@ -1,4 +1,4 @@
-﻿namespace WebApi.Util
+﻿namespace Core.Util
 {
     public static class TimeSpanMinuteConverter
     {

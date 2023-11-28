@@ -1,7 +1,9 @@
 ﻿using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 using Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using WebApi.QueryParams;
 
 namespace WebApi.Controllers

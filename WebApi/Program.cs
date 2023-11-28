@@ -3,6 +3,10 @@ using Persistence.Data;
 using Core.Contracts;
 using WebApi.Services;
 using WebApi.ActionFilters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
@@ -13,13 +17,50 @@ builder.Services.AddDbContext<OnlineReservationContext>(options =>
 //Services.AddScopped
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IRestaurantService, RestaurantService>();
 
 builder.Services.AddScoped<ModelValidationAttribute>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "ReservioAPI",
+        Version = "v1",
+        Description = ""
+    });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`\"",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+      {
+          {
+              new OpenApiSecurityScheme
+              {
+                  Name = "Bearer",
+                  Scheme = "Bearer",
+                  Type = SecuritySchemeType.Http,
+                  In = ParameterLocation.Header,
+                  Reference = new OpenApiReference {
+                      Id = "Bearer",
+                      Type = ReferenceType.SecurityScheme
+                  }
+              },
+              Array.Empty<string>()
+          }
+      });
+});
 
 builder.Services.AddCors(options =>
 {
@@ -32,6 +73,30 @@ builder.Services.AddCors(options =>
         });
 });
 
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.Authority = builder.Configuration["Auth0:Domain"];
+    options.Audience = builder.Configuration["Auth0:Audience"];
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        NameClaimType = ClaimTypes.NameIdentifier
+    };
+});
+
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ViewReservations", policy => policy.RequireClaim("permissions", "view:reservation"));
+    options.AddPolicy("CreateReservations", policy => policy.RequireClaim("permissions", "create:reservation"));
+    options.AddPolicy("ManageRestaurant", policy => policy.RequireClaim("permissions", "manage:restaurant"));
+    options.AddPolicy("EditRestaurant", policy => policy.RequireClaim("permissions", "edit:restaurant"));
+    options.AddPolicy("DeleteRestaurant", policy => policy.RequireClaim("permissions", "delete:restaurant"));
+});
 
 var app = builder.Build();
 
@@ -47,13 +112,20 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ReservioAPI");
+        c.OAuthClientId(builder.Configuration["Authentication:ClientId"]);
+        c.OAuthClientSecret(builder.Configuration["Auth0:ClientSecret"]);
+        c.OAuthUsePkce();
+    });
 }
 
 app.UseCors();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

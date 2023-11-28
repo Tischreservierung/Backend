@@ -5,6 +5,7 @@
         Task<T?> GetById(int id);
         Task<IEnumerable<T>> GetAll();
         void Insert(T entity);
+        void InsertAll(T[] entities);
         void Delete(T entity);
         void Update(T entity);
     }

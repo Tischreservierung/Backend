@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Core.Models;
 using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 
 namespace Tischreservierung.Controllers
 {
@@ -10,9 +10,12 @@ namespace Tischreservierung.Controllers
     public class RestaurantsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        public RestaurantsController(IUnitOfWork unitOfWork)
+        private readonly IRestaurantService _restaurantService;
+
+        public RestaurantsController(IUnitOfWork unitOfWork, IRestaurantService restaurantService)
         {
             _unitOfWork = unitOfWork;
+            _restaurantService = restaurantService;
         }
 
         [HttpGet]
@@ -52,13 +55,24 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Restaurant>> PostRestaurant(RestaurantPostDto restaurant)
+        public async Task<ActionResult<Restaurant>> PostRestaurant([FromBody] RestaurantPostDto dto)
         {
-            Restaurant? res = await _unitOfWork.Restaurants.InsertRestaurantAsync(restaurant);
-            if (res == null)
-                return BadRequest();
+            Restaurant restaurant = await _restaurantService.CreateRestaurant(dto);
+
             await _unitOfWork.SaveChangesAsync();
-            return Ok(res.Id);
+            return Ok(restaurant.Id);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<Restaurant>> UpdateRestaurant([FromBody] RestaurantUpdateDto dto) {
+            Restaurant? restaurant = await _restaurantService.UpdateRestaurant(dto);
+
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+
+            return Ok();
         }
 
         [HttpDelete("{id}")]

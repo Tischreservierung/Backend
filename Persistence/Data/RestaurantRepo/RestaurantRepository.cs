@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Core.Models;
 using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 using Core.Models.User;
 
 namespace Persistence.Data.RestaurantRepo
@@ -12,39 +12,6 @@ namespace Persistence.Data.RestaurantRepo
         {
             
         }
-
-        public async Task<Restaurant?> InsertRestaurantAsync(RestaurantPostDto restaurant)
-        {
-            if (_dbContext.Persons.Any(p => p.EMail == restaurant.Employee!.EMail))
-                return null;
-
-            Restaurant res = new()
-            {
-                Name = restaurant.Name,
-                Address = restaurant.Address,
-                StreetNr = restaurant.StreetNr,
-                ZipCodeId = restaurant.ZipCode!.Id,
-                Description = restaurant.Description
-            };
-            if (restaurant.Categories != null)
-                res.Categories = _dbContext.Categories.Where(c => restaurant.Categories!.Contains(c)).ToList();
-
-            Employee emp = restaurant.Employee!;
-            emp.Restaurant = res;
-            RestaurantOpeningTime[] openings = restaurant.Openings!.Select(o => new RestaurantOpeningTime()
-            {
-                Day = (DayOfWeek)o.Day,
-                OpeningTime = new TimeSpan(int.Parse(o.OpenFrom.Split(':')[0]), int.Parse(o.OpenFrom.Split(':')[1]), 0),
-                ClosingTime = new TimeSpan(int.Parse(o.OpenTo.Split(':')[0]), int.Parse(o.OpenTo.Split(':')[1]), 0),
-                Restaurant = res
-            }).ToArray();
-
-            _dbContext.Restaurants.Add(res);
-            await _dbContext.RestaurantOpeningTimes.AddRangeAsync(openings);
-            await _dbContext.Employees.AddAsync(emp);
-            return res;
-        }
-
 
         public async Task<IEnumerable<Restaurant>> GetRestaurantsByName(string name, int zipCodeId, DateTime? dateTime)
         {

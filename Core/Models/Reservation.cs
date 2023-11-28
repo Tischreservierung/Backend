@@ -21,11 +21,7 @@ namespace Core.Models
         public Customer? Customer { get; set; }
 
         [ForeignKey(nameof(RestaurantTable))]
-        public int? RestaurantTableId { get; set; }
+        public int RestaurantTableId { get; set; }
         public RestaurantTable? RestaurantTable { get; set; }
-
-        [ForeignKey(nameof(Restaurant))]
-        public int? RestaurantId { get; set; }
-        public Restaurant? Restaurant { get; set; }
     }
 }

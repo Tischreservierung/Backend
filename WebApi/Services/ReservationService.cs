@@ -1,7 +1,7 @@
 ﻿using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 using Core.Models;
-using WebApi.Util;
+using Core.Util;
 
 namespace WebApi.Services
 {
@@ -33,7 +33,6 @@ namespace WebApi.Services
                 ReservationDay = request.Day,
                 StartTime = request.Time,
                 EndTime = endTime,
-                RestaurantId = request.RestaurantId,
                 CustomerId = request.CustomerId,
                 RestaurantTableId = freeTable.Id
             };
