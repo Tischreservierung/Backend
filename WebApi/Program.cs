@@ -16,6 +16,7 @@ builder.Services.AddDbContext<OnlineReservationContext>(options =>
 // Add services to the container.
 //Services.AddScopped
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IRestaurantService, RestaurantService>();
 

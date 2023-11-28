@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using WebApi.QueryParams;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -14,11 +15,13 @@ namespace WebApi.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IReservationService _reservationService;
+        private readonly IUserAuthenticationService _authenticationService;
 
-        public ReservationsController(IUnitOfWork unitOfWork, IReservationService reservationService)
+        public ReservationsController(IUnitOfWork unitOfWork, IReservationService reservationService, IUserAuthenticationService userAuthenticationService)
         {
             _unitOfWork = unitOfWork;
             _reservationService = reservationService;
+            _authenticationService = userAuthenticationService;
         }
 
         [HttpGet("{id}")]
@@ -35,10 +38,20 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpGet("customer/{customerId}")]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer(int customerId)
+        [Authorize]
+        [HttpGet("customer")]
+        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer()
         {
-            var reservations = await _unitOfWork.Reservations.GetByCustomer(customerId);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            var reservations = await _unitOfWork.Reservations.GetByCustomer(user.Id);
 
             return Ok(reservations);
         }
