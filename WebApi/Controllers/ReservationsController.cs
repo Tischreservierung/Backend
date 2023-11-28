@@ -67,7 +67,16 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Reservation>> RequestReservation([FromBody] ReservationRequestDto reservationRequest)
         {
-            Reservation? reservation = await _reservationService.RequestReservation(reservationRequest);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            Reservation? reservation = await _reservationService.RequestReservation(reservationRequest, user.Id);
 
             if (reservation == null)
             {
@@ -92,10 +101,21 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpGet("restaurant/{restaurantId}/options")]
         public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
         {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
             var reservationOptions = await _reservationService.GetReservationOptions(restaurantId,
+                                                                                     user.Id,
                                                                                      queryParams.Day.Date,
                                                                                      queryParams.From.TimeOfDay,
                                                                                      queryParams.To.TimeOfDay,
