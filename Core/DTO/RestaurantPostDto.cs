@@ -1,5 +1,4 @@
 ﻿using Core.Models;
-using Core.Models.User;
 
 namespace Core.Dto
 {
@@ -14,6 +13,6 @@ namespace Core.Dto
         public Category[] Categories { get; set; } = Array.Empty<Category>();
         public OpeningTimeDto[] Openings { get; set; } = Array.Empty<OpeningTimeDto>();
 
-        public Employee? Employee { get; set; }
+        public User? Owner { get; set; }
     }
 }

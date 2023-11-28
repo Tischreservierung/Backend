@@ -16,7 +16,6 @@ namespace Persistence.Data
         {
             return await _dbSet.Where(r => r.CustomerId == customerId)
                 .Include(r => r.RestaurantTable!.Restaurant)
-                .Include(r => r.Customer)
                 .Select(x => ReservationToDto(x))
                 .ToListAsync();
         }
@@ -25,7 +24,6 @@ namespace Persistence.Data
         {
             return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId)
                 .Include(r => r.RestaurantTable!.Restaurant)
-                .Include(r => r.Customer)
                 .Select(x => ReservationToDto(x))
                 .ToListAsync();
         }
@@ -45,7 +43,6 @@ namespace Persistence.Data
                 StartTime = reservation.StartTime.ToDateTime(),
                 EndTime = reservation.EndTime.ToDateTime(),
                 RestaurantTableId = reservation.RestaurantTableId,
-                CustomerName = reservation.Customer!.Name,
                 RestaurantName = reservation.RestaurantTable.Restaurant!.Name,
                 Persons = reservation.RestaurantTable!.SeatPlaces
             };

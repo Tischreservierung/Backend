@@ -1,7 +1,6 @@
 using Core.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data.RestaurantRepo;
-using Persistence.Data.User;
 
 namespace Persistence.Data
 {
@@ -14,9 +13,7 @@ namespace Persistence.Data
         public IOpeningTimeRepository OpeningTimes { get; }
         public IRestaurantCategoryRepository RestaurantCategories { get; }
         public IZipCodeRepository ZipCodes { get; }
-        public ICustomerRepository Customers { get; }
-        public IEmployeeRepository Employees { get; }
-        public IPersonRepository Persons { get; }
+        public IUserRepository Users { get; }
         public IReservationRepository Reservations { get; }
         public IRestaurantPictureRepository RestaurantPictures { get; }
 
@@ -28,9 +25,7 @@ namespace Persistence.Data
             OpeningTimes = new OpeningTimeRepository(_dbContext);
             RestaurantCategories = new RestaurantCategoryRepository(_dbContext);
             ZipCodes = new ZipCodeRepository(_dbContext);
-            Customers = new CustomerRepository(_dbContext);
-            Employees = new EmployeeRepository(_dbContext);
-            Persons = new PersonRepository(_dbContext);
+            Users = new UserRepository(_dbContext);
             Reservations = new ReservationRepository(_dbContext);
             RestaurantPictures = new RestaurantPictureRepository(_dbContext);
         }
