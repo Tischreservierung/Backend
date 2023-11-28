@@ -7,6 +7,7 @@ namespace Core.Contracts
     {
         public Task<Reservation?> RequestReservation(ReservationRequestDto request);
 
-        public Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration);
+        public Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId,
+            DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration, int customerId);
     }
 }

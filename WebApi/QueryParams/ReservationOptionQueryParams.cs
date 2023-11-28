@@ -7,5 +7,6 @@
         public DateTime Day { get; set; } = DateTime.Today;
         public int SeatPlaces { get; set; } = 1;
         public int Duration { get; set; } = 90;
+        public int CustomerId { get; set; }
     }
 }
