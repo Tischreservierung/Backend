@@ -1,6 +1,6 @@
 ﻿using Core.Models;
 
-namespace Core.DTO
+namespace Core.Dto
 {
     public class RestaurantViewDto
     {

@@ -30,6 +30,11 @@ namespace Persistence.Data
             _dbSet.Add(entity);
         }
 
+        public virtual void InsertAll(T[] entities)
+        {
+            _dbSet.AddRange(entities);
+        }
+
         public virtual void Delete(T entity)
         {
             _dbSet.Remove(entity);

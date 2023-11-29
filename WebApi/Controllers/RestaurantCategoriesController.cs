@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Core.Models;
 using Core.Contracts;
+using Core.Dto;
 
 namespace Tischreservierung.Controllers
 {
@@ -15,47 +16,16 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetRestaurantCategories()
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetRestaurantCategories()
         {
             IEnumerable<Category> categories = await _unitOfWork.RestaurantCategories.GetAll();
 
-            return Ok(categories);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetRestaurantCategory(int id)
-        {
-            var restaurantCategory = await _unitOfWork.RestaurantCategories.GetById(id);
-
-            if (restaurantCategory == null)
+            IEnumerable<CategoryDto> categoryDtos = categories.Select(x => new CategoryDto()
             {
-                return NotFound();
-            }
+                Name = x.Name
+            });
 
-            return Ok(restaurantCategory);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<Category>> PostRestaurantCategory(Category restaurantCategory)
-        {
-            _unitOfWork.RestaurantCategories.Insert(restaurantCategory);
-            await _unitOfWork.SaveChangesAsync();
-
-            return CreatedAtAction("GetRestaurantCategory", new { id = restaurantCategory.Id }, restaurantCategory);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRestaurantCategory(int id)
-        {
-            var restaurantCategory = await _unitOfWork.RestaurantCategories.GetById(id);
-            if (restaurantCategory == null)
-            {
-                return NotFound();
-            }
-
-            _unitOfWork.RestaurantCategories.Delete(restaurantCategory);
-            await _unitOfWork.SaveChangesAsync();
-            return NoContent();
+            return Ok(categoryDtos);
         }
     }
 }

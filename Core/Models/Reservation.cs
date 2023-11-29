@@ -1,5 +1,4 @@
-﻿using Core.Models.User;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models
@@ -18,14 +17,10 @@ namespace Core.Models
 
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
-        public Customer? Customer { get; set; }
+        public User? Customer { get; set; }
 
         [ForeignKey(nameof(RestaurantTable))]
-        public int? RestaurantTableId { get; set; }
+        public int RestaurantTableId { get; set; }
         public RestaurantTable? RestaurantTable { get; set; }
-
-        [ForeignKey(nameof(Restaurant))]
-        public int? RestaurantId { get; set; }
-        public Restaurant? Restaurant { get; set; }
     }
 }

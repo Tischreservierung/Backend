@@ -1,5 +1,5 @@
 ﻿using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 using Core.Models;
 using Moq;
 using WebApi.Services;
@@ -17,9 +17,9 @@ namespace Tischreservierung.Tests
             uow.Setup(x => x.RestaurantTables.GetByRestaurantAndTableSize(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(
                 new List<RestaurantTable>()
                 {
-                                new RestaurantTable() { Id = 1, RestaurantId = 1, SeatPlaces = 4 },
-                                new RestaurantTable() { Id = 2, RestaurantId = 1, SeatPlaces = 6 },
-                                new RestaurantTable() { Id = 3, RestaurantId = 1, SeatPlaces = 10 }
+                    new RestaurantTable() { Id = 1, RestaurantId = 1, SeatPlaces = 4 },
+                    new RestaurantTable() { Id = 2, RestaurantId = 1, SeatPlaces = 6 },
+                    new RestaurantTable() { Id = 3, RestaurantId = 1, SeatPlaces = 10 }
                 });
 
             uow.Setup(x => x.Reservations.GetByRestaurantAndDay(It.IsAny<int>(), It.IsAny<DateTime>())).ReturnsAsync(new List<Reservation>());
@@ -28,11 +28,11 @@ namespace Tischreservierung.Tests
 
             var reservation = await reservationService.RequestReservation(new ReservationRequestDto()
             {
-                Day = DateTime.Today.AddHours(9),
-                CustomerId = 1,
+                Day = DateTime.Today,
                 NumberOfPersons = 4,
-                RestaurantId = 1
-            });
+                RestaurantId = 1,
+                Time = TimeSpan.FromHours(9)
+            }, 1);
 
             Assert.NotNull(reservation);
             Assert.Equal(DateTime.Today.AddHours(9), reservation!.ReservationDay);
@@ -53,11 +53,11 @@ namespace Tischreservierung.Tests
 
             var reservation = await reservationService.RequestReservation(new ReservationRequestDto()
             {
-                Day = DateTime.Today.AddHours(9),
-                CustomerId = 1,
+                Day = DateTime.Today,
                 NumberOfPersons = 4,
-                RestaurantId = 1
-            });
+                RestaurantId = 1,
+                Time = TimeSpan.FromHours(9)
+            }, 1);
 
             Assert.Null(reservation);
         }
@@ -91,7 +91,7 @@ namespace Tischreservierung.Tests
             IReservationService reservationService = new ReservationService(uow.Object);
 
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(10), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(10), 4);
 
             Assert.Empty(reservationOptions);
         }
@@ -125,7 +125,7 @@ namespace Tischreservierung.Tests
 
             IReservationService reservationService = new ReservationService(uow.Object);
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(11), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(11), 4);
 
             Assert.Equal(3, reservationOptions.Count());
             Assert.Collection(reservationOptions,
@@ -169,12 +169,12 @@ namespace Tischreservierung.Tests
             uow.Setup(x => x.Reservations.GetByRestaurantAndDay(It.IsAny<int>(), It.IsAny<DateTime>())).ReturnsAsync(
                 new List<Reservation>()
                 {
-                    new Reservation() { Id = 1, CustomerId = 1, RestaurantId = 1, RestaurantTableId = 1, ReservationDay = DateTime.Today, StartTime = TimeSpan.FromHours(9), EndTime = TimeSpan.FromHours(10.5) }
+                    new Reservation() { Id = 1, CustomerId = 1, RestaurantTableId = 1, ReservationDay = DateTime.Today, StartTime = TimeSpan.FromHours(9), EndTime = TimeSpan.FromHours(10.5) }
                 });
 
             IReservationService reservationService = new ReservationService(uow.Object);
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(12), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(9), TimeSpan.FromHours(12), 4);
 
             Assert.Single(reservationOptions);
         }
@@ -208,7 +208,7 @@ namespace Tischreservierung.Tests
             IReservationService reservationService = new ReservationService(uow.Object);
 
 
-            var reservationOptions = await reservationService.GetReservationOptions(1, DateTime.Today, TimeSpan.FromHours(8.5), TimeSpan.FromHours(10.5), 4);
+            var reservationOptions = await reservationService.GetReservationOptions(1, 1, DateTime.Today, TimeSpan.FromHours(8.5), TimeSpan.FromHours(10.5), 4);
 
             Assert.Single(reservationOptions);
 

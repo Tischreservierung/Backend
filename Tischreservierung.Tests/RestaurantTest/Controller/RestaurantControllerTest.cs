@@ -14,7 +14,8 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         {
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.Restaurants.GetAll()).ReturnsAsync(GetRestaurantTestData);
-            var controller = new RestaurantsController(uow.Object);
+            var restaurantService = new Mock<IRestaurantService>();
+            var controller = new RestaurantsController(uow.Object, restaurantService.Object);
 
             var actionResult = await controller.GetRestaurants();
 
@@ -30,7 +31,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         }
 
         [Fact]
-        public async void GetRestaurant()
+        public async Task GetRestaurant()
         {
             int restaurantId = 10;
             Restaurant restaurant = new()
@@ -41,7 +42,8 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
 
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.Restaurants.GetById(restaurantId)).ReturnsAsync(restaurant);
-            var controller = new RestaurantsController(uow.Object);
+            var restaurantService = new Mock<IRestaurantService>();
+            var controller = new RestaurantsController(uow.Object, restaurantService.Object);
 
             var actionResult = await controller.GetRestaurant(restaurantId);
 
@@ -57,13 +59,14 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         }
 
         [Fact]
-        public async void GetRestaurant_ReturnsNotFound()
+        public async Task GetRestaurant_ReturnsNotFound()
         {
             int restaurant = 10;
 
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.Restaurants.GetById(restaurant)).ReturnsAsync((Restaurant?)null);
-            var controller = new RestaurantsController(uow.Object);
+            var restaurantService = new Mock<IRestaurantService>();
+            var controller = new RestaurantsController(uow.Object, restaurantService.Object);
 
             var actionResult = await controller.GetRestaurant(restaurant);
 
@@ -91,7 +94,8 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(x => x.Restaurants.GetById(restaurantId)).ReturnsAsync(restaurant);
             uow.Setup(x => x.Restaurants.Delete(It.IsAny<Restaurant>()));
-            var controller = new RestaurantsController(uow.Object);
+            var restaurantService = new Mock<IRestaurantService>();
+            var controller = new RestaurantsController(uow.Object, restaurantService.Object);
 
             var actionResult = await controller.DeleteRestaurant(restaurantId);
 
@@ -108,13 +112,14 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         }
 
         [Fact]
-        public async void DeleteRetaurant_ReturnsNotFound()
+        public async Task DeleteRetaurant_ReturnsNotFound()
         {
             int restaurantId = 10;
 
             var ouw = new Mock<IUnitOfWork>();
             ouw.Setup(x => x.Restaurants.GetById(restaurantId)).ReturnsAsync((Restaurant?)null);
-            var controller = new RestaurantsController(ouw.Object);
+            var restaurantService = new Mock<IRestaurantService>();
+            var controller = new RestaurantsController(ouw.Object, restaurantService.Object);
 
             var actionResult = await controller.DeleteRestaurant(restaurantId);
 

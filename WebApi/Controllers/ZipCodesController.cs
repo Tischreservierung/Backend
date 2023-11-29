@@ -21,36 +21,5 @@ namespace Tischreservierung.Controllers
 
             return Ok(zipCodes);
         }
-
-        [HttpGet("{zipcode}")]
-        public async Task<ActionResult<IEnumerable<ZipCode>>> GetZipCodesByZipCode(string zipcode)
-        {
-            var zipCode = await _unitOfWork.ZipCodes.GetByZipCode(zipcode);
-
-            return Ok(zipCode);
-        }
-
-        [HttpGet("byLocation")]
-        public async Task<ActionResult<IEnumerable<ZipCode>>> GetZipCodesByLocation(string location)
-        {
-            return Ok( await _unitOfWork.ZipCodes.GetByLocation(location));
-
-        }
-
-        [HttpGet("byDistrict")]
-        public async Task<ActionResult<IEnumerable<ZipCode>>> GetZipCodesByDistrict(string district)
-        {
-            return Ok(await _unitOfWork.ZipCodes.GetByDistrict(district));
-
-        }
-
-        [HttpGet("byZipCodeAndLocation")]
-        public async Task<ActionResult<IEnumerable<ZipCode>>> GetZipCodesByZipCodeAndLocation
-            (string zipZode, string location)
-        {
-            return Ok(await _unitOfWork.ZipCodes.GetByZipCodeAndLocation(zipZode,location));
-
-        }
-
     }
 }

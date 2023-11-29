@@ -1,7 +1,7 @@
 ﻿using Core.Contracts;
-using Core.DTO;
+using Core.Dto;
 using Core.Models;
-using WebApi.Util;
+using Core.Util;
 
 namespace WebApi.Services
 {
@@ -17,7 +17,7 @@ namespace WebApi.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Reservation?> RequestReservation(ReservationRequestDto request)
+        public async Task<Reservation?> RequestReservation(ReservationRequestDto request, int customerId)
         {
             TimeSpan endTime = request.Day.TimeOfDay + TimeSpan.FromMinutes(request.Duration);
 
@@ -34,8 +34,7 @@ namespace WebApi.Services
                 ReservationDay = request.Day,
                 StartTime = request.Day.TimeOfDay,
                 EndTime = endTime,
-                RestaurantId = request.RestaurantId,
-                CustomerId = request.CustomerId,
+                CustomerId = customerId,
                 RestaurantTableId = freeTable.Id
             };
 
@@ -45,7 +44,7 @@ namespace WebApi.Services
             return reservation;
         }
 
-        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration, int customerId)
+        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId,int customerId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration)
         {
             List<ReservationOptionDto> reservationOptions = new();
 

@@ -1,4 +1,5 @@
-﻿using Core.DTO;
+﻿using Core.Dto;
+using Core.DTO;
 using Core.Models;
 
 namespace Core.Contracts
@@ -7,8 +8,6 @@ namespace Core.Contracts
     {
         Task<IEnumerable<Restaurant>> GetRestaurantsByName(string name, int zipCodeId, DateTime? dateTime);
         Task<IEnumerable<Restaurant>> GetRestaurantsByCategories(int[] categories, int zipCodeId, DateTime? dateTime);
-
-        Task<Restaurant?> InsertRestaurantAsync(RestaurantPostDto restaurant);
 
         Task<RestaurantViewDto?> GetRestaurantForViewById(int id);
 

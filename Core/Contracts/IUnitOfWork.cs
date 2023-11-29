@@ -7,9 +7,7 @@
         public IOpeningTimeRepository OpeningTimes { get; }
         public IRestaurantCategoryRepository RestaurantCategories { get; }
         public IZipCodeRepository ZipCodes { get; }
-        public ICustomerRepository Customers { get; }
-        public IEmployeeRepository Employees { get; }
-        public IPersonRepository Persons { get; }
+        public IUserRepository Users { get; }
         public IReservationRepository Reservations { get; }
         public IRestaurantPictureRepository RestaurantPictures { get; }
 
