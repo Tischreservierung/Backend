@@ -100,7 +100,6 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-
         [Authorize]
         [HttpGet("restaurant/{restaurantId}/options")]
         public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
