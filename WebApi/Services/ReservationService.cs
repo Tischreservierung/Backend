@@ -19,9 +19,10 @@ namespace WebApi.Services
 
         public async Task<Reservation?> RequestReservation(ReservationRequestDto request, int customerId)
         {
-            TimeSpan endTime = request.Time + TimeSpan.FromMinutes(reservationDuration);
+            TimeSpan endTime = request.Day.TimeOfDay + TimeSpan.FromMinutes(request.Duration);
 
-            RestaurantTable? freeTable = await GetFreeRestaurantTable(request.RestaurantId, request.NumberOfPersons, request.Day, request.Time, endTime);
+            RestaurantTable? freeTable = await GetFreeRestaurantTable(request.RestaurantId,
+                request.NumberOfPersons, request.Day, request.Day.TimeOfDay, endTime, request.CustomerId);
 
             if (freeTable == null)
             {
@@ -31,7 +32,7 @@ namespace WebApi.Services
             Reservation reservation = new()
             {
                 ReservationDay = request.Day,
-                StartTime = request.Time,
+                StartTime = request.Day.TimeOfDay,
                 EndTime = endTime,
                 CustomerId = customerId,
                 RestaurantTableId = freeTable.Id
@@ -43,7 +44,7 @@ namespace WebApi.Services
             return reservation;
         }
 
-        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, int customerId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces)
+        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId,int customerId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration)
         {
             List<ReservationOptionDto> reservationOptions = new();
 
@@ -62,12 +63,12 @@ namespace WebApi.Services
                     currentStartTime += reservationTimeOffset - currentStartTime % reservationTimeOffset;
                 }
 
-                while (currentStartTime + reservationDuration <= searchToTime)
+                while (currentStartTime + duration <= searchToTime)
                 {
                     TimeSpan startTime = TimeSpan.FromMinutes(currentStartTime);
-                    TimeSpan endTime = TimeSpan.FromMinutes(currentStartTime + reservationDuration);
+                    TimeSpan endTime = TimeSpan.FromMinutes(currentStartTime + duration);
 
-                    RestaurantTable? freeTable = await GetFreeRestaurantTable(restaurantId, seatPlaces, day, startTime, endTime);
+                    RestaurantTable? freeTable = await GetFreeRestaurantTable(restaurantId, seatPlaces, day, startTime, endTime, customerId);
 
                     if (freeTable != null)
                     {
@@ -76,7 +77,7 @@ namespace WebApi.Services
                             Day = day,
                             StartTime = startTime,
                             EndTime = endTime,
-                            Duration = reservationDuration,
+                            Duration = duration,
                             RestaurantTableId = freeTable.Id,
                             SeatPlaces = freeTable.SeatPlaces
                         });
@@ -89,21 +90,25 @@ namespace WebApi.Services
             return reservationOptions;
         }
 
-        private async Task<RestaurantTable?> GetFreeRestaurantTable(int restaurantId, int seatPlaces, DateTime day, TimeSpan startTime, TimeSpan endTime)
+        private async Task<RestaurantTable?> GetFreeRestaurantTable(int restaurantId, int seatPlaces, DateTime day, TimeSpan startTime, TimeSpan endTime, int customerId)
         {
             var restaurantTables = await _unitOfWork.RestaurantTables.GetByRestaurantAndTableSize(restaurantId, seatPlaces);
             var reservations = await _unitOfWork.Reservations.GetByRestaurantAndDay(restaurantId, day);
+            var customerReservations = await _unitOfWork.Reservations.GetByCustomerAndDay(customerId,day);
+
+            if (customerReservations.Any(r => ReservationTimeIntersects(r, startTime, endTime)))
+                return null;
 
             return restaurantTables
-                .FirstOrDefault(t => reservations
-                    .All(r => !ReservationTimeIntersects(r, startTime, endTime)));
+                .Where(t => reservations.Where(r => t.Id == r.RestaurantTableId)
+                    .All(r => !ReservationTimeIntersects(r, startTime, endTime))).FirstOrDefault();
         }
 
         private static bool ReservationTimeIntersects(Reservation reservation, TimeSpan start, TimeSpan end)
         {
-            return reservation.StartTime < start && reservation.EndTime > start ||
-                        reservation.StartTime < end && reservation.EndTime > end ||
-                        reservation.StartTime >= start && reservation.EndTime <= end;
+            return (reservation.StartTime < start && reservation.EndTime > start) ||
+                        (reservation.StartTime < end && reservation.EndTime > end) ||
+                        (reservation.StartTime >= start && reservation.EndTime <= end);
         }
     }
 }

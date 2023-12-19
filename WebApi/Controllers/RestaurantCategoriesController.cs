@@ -22,7 +22,8 @@ namespace Tischreservierung.Controllers
 
             IEnumerable<CategoryDto> categoryDtos = categories.Select(x => new CategoryDto()
             {
-                Name = x.Name
+                Name = x.Name,
+                Id = x.Id
             });
 
             return Ok(categoryDtos);

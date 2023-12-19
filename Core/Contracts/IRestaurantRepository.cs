@@ -1,4 +1,5 @@
 ﻿using Core.Dto;
+using Core.DTO;
 using Core.Models;
 
 namespace Core.Contracts
@@ -9,5 +10,7 @@ namespace Core.Contracts
         Task<IEnumerable<Restaurant>> GetRestaurantsByCategories(int[] categories, int zipCodeId, DateTime? dateTime);
 
         Task<RestaurantViewDto?> GetRestaurantForViewById(int id);
+
+        Task<ReservationViewDto?> GetReservationViewById(int id);
     }
 }
