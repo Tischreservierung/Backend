@@ -22,5 +22,7 @@ namespace Core.Models
         [ForeignKey(nameof(RestaurantTable))]
         public int RestaurantTableId { get; set; }
         public RestaurantTable? RestaurantTable { get; set; }
+
+        public int Persons { get; set; }
     }
 }

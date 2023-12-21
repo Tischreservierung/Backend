@@ -16,7 +16,17 @@ namespace Persistence.Data
         {
             return await _dbSet.Where(r => r.CustomerId == customerId)
                 .Include(r => r.RestaurantTable!.Restaurant)
-                .Select(x => ReservationToDto(x))
+                .Select(r => new ReservationDto()
+                {
+                    CustomerId = r.CustomerId,
+                    RestaurantId = r.RestaurantTable!.RestaurantId,
+                    Day = r.ReservationDay,
+                    StartTime = r.StartTime.ToDateTime(),
+                    EndTime = r.EndTime.ToDateTime(),
+                    RestaurantTableId = r.RestaurantTableId,
+                    RestaurantName = r.RestaurantTable.Restaurant!.Name,
+                    Persons = r.Persons
+                }).OrderBy(r => r.Day.Date)
                 .ToListAsync();
         }
 
@@ -29,7 +39,17 @@ namespace Persistence.Data
         {
             return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId)
                 .Include(r => r.RestaurantTable!.Restaurant)
-                .Select(x => ReservationToDto(x))
+                .Select(r => new ReservationDto()
+                {
+                    CustomerId = r.CustomerId,
+                    RestaurantId = r.RestaurantTable!.RestaurantId,
+                    Day = r.ReservationDay,
+                    StartTime = r.StartTime.ToDateTime(),
+                    EndTime = r.EndTime.ToDateTime(),
+                    RestaurantTableId = r.RestaurantTableId,
+                    RestaurantName = r.RestaurantTable.Restaurant!.Name,
+                    Persons = r.RestaurantTable!.SeatPlaces
+                }). OrderBy(r => r.Day.Date.Day).ThenBy(r => r.StartTime.TimeOfDay)
                 .ToListAsync();
         }
 

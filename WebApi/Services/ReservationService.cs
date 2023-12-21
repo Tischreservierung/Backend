@@ -35,7 +35,8 @@ namespace WebApi.Services
                 StartTime = request.Day.TimeOfDay,
                 EndTime = endTime,
                 CustomerId = customerId,
-                RestaurantTableId = freeTable.Id
+                RestaurantTableId = freeTable.Id,
+                Persons = request.NumberOfPersons
             };
 
             _unitOfWork.Reservations.Insert(reservation);
