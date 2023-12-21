@@ -64,6 +64,7 @@ namespace WebApi.Controllers
             return Ok(reservations);
         }
 
+
         [HttpPost]
         public async Task<ActionResult<Reservation>> RequestReservation([FromBody] ReservationRequestDto reservationRequest)
         {
