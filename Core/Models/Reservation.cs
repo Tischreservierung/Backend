@@ -23,6 +23,7 @@ namespace Core.Models
         public int RestaurantTableId { get; set; }
         public RestaurantTable? RestaurantTable { get; set; }
 
+        [Range(0, int.MaxValue)]
         public int Persons { get; set; }
     }
 }
