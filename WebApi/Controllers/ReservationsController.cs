@@ -64,7 +64,7 @@ namespace WebApi.Controllers
             return Ok(reservations);
         }
 
-
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Reservation>> RequestReservation([FromBody] ReservationRequestDto reservationRequest)
         {
@@ -78,6 +78,19 @@ namespace WebApi.Controllers
             User user = await _authenticationService.GetAuthenticatedUser(claim);
 
             Reservation? reservation = await _reservationService.RequestReservation(reservationRequest, user.Id);
+
+            if (reservation == null)
+            {
+                return BadRequest();
+            }
+
+            return CreatedAtAction("GetReservation", new { id = reservation.Id }, reservation);
+        }
+
+        [HttpPost("manual")]
+        public async Task<ActionResult<Reservation>> CreateReservationManually([FromBody] ReservationManualDto manualReservation)
+        {
+            Reservation? reservation = await _reservationService.CreateReservationManually(manualReservation);
 
             if (reservation == null)
             {

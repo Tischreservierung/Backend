@@ -16,7 +16,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         }
 
         [Fact]
-        public async void GetById()
+        public async Task GetById()
         {
             int id = 10;
             Restaurant restaurant = new() { Id = id };
@@ -32,7 +32,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         }
 
         [Fact]
-        public async void GetAll()
+        public async Task GetAll()
         {
             List<Restaurant> restaurants = new()
             {
@@ -65,7 +65,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         }
 
         [Fact]
-        public async void Update()
+        public async Task Update()
         {
             int id = 10;
             Restaurant restaurant = new() { Id = id };
