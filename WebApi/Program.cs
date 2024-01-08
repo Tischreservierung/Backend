@@ -97,6 +97,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ManageRestaurant", policy => policy.RequireClaim("permissions", "manage:restaurant"));
     options.AddPolicy("EditRestaurant", policy => policy.RequireClaim("permissions", "edit:restaurant"));
     options.AddPolicy("DeleteRestaurant", policy => policy.RequireClaim("permissions", "delete:restaurant"));
+    options.AddPolicy("Customer", policy => policy.RequireClaim("permissions", "customer"));
+    options.AddPolicy("Restaurant", policy => policy.RequireClaim("permissions", "restaurant"));
 });
 
 var app = builder.Build();

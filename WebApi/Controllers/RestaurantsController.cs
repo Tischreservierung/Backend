@@ -2,6 +2,7 @@
 using Core.Models;
 using Core.Contracts;
 using Core.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tischreservierung.Controllers
 {
@@ -64,6 +65,7 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "Customer")]
         public async Task<ActionResult<Restaurant>> PostRestaurant([FromBody] RestaurantPostDto dto)
         {
             Restaurant restaurant = await _restaurantService.CreateRestaurant(dto);
