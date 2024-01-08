@@ -1,4 +1,5 @@
-﻿using Core.Contracts;
+﻿using Azure.Core;
+using Core.Contracts;
 using Core.Dto;
 using Core.Models;
 using Core.Util;
@@ -104,6 +105,39 @@ namespace WebApi.Services
             return reservation.StartTime < start && reservation.EndTime > start ||
                         reservation.StartTime < end && reservation.EndTime > end ||
                         reservation.StartTime >= start && reservation.EndTime <= end;
+        }
+
+        public async Task<Reservation?> CreateReservationManually(ReservationManualDto manualReservation)
+        {
+            TimeSpan endTime = manualReservation.Time + TimeSpan.FromMinutes(reservationDuration);
+            RestaurantTable? freeTable = await GetFreeRestaurantTable(manualReservation.RestaurantId, manualReservation.NumberOfPersons, manualReservation.Day, manualReservation.Time, endTime);
+
+            if (freeTable == null)
+            {
+                return null;
+            }
+
+            User user = new()
+            {
+                UserName = manualReservation.UserName
+            };
+
+            _unitOfWork.Users.Insert(user);
+            await _unitOfWork.SaveChangesAsync();
+
+            Reservation reservation = new()
+            {
+                ReservationDay = manualReservation.Day,
+                StartTime = manualReservation.Time,
+                EndTime = endTime,
+                CustomerId = user.Id,
+                RestaurantTableId = freeTable.Id
+            };
+
+            _unitOfWork.Reservations.Insert(reservation);
+            await _unitOfWork.SaveChangesAsync();
+
+            return reservation;
         }
     }
 }
