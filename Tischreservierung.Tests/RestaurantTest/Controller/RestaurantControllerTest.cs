@@ -112,7 +112,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Controller
         }
 
         [Fact]
-        public async Task DeleteRetaurant_ReturnsNotFound()
+        public async Task DeleteRestaurant_ReturnsNotFound()
         {
             int restaurantId = 10;
 
