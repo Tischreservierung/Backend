@@ -33,6 +33,15 @@ namespace Tischreservierung.Controllers
             return Ok(restaurants);
         }
 
+
+        [HttpGet("openingTimes/{restaurantId}")]
+        public async Task<ActionResult<IEnumerable<RestaurantOpeningTime>>> GetOpeningTimesByRestaurant(int restaurantId)
+        {
+            var openingTimes = await _unitOfWork.OpeningTimes.GetByRestaurant(restaurantId);
+
+            return Ok(openingTimes);
+        }
+
         [HttpGet("categories")]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByCategories
             ([FromQuery] int[] categories, DateTime? dateTime, int zipCodeId = -1)
@@ -94,6 +103,12 @@ namespace Tischreservierung.Controllers
         public async Task<ActionResult<RestaurantViewDto?>> GetRestaurantForView(int id)
         {
             return Ok(await _unitOfWork.Restaurants.GetRestaurantForViewById(id));
+        }
+
+        [HttpGet("reservationview/{id}")]
+        public async Task<ActionResult<RestaurantViewDto?>> GetReservationView(int id)
+        {
+            return Ok(await _unitOfWork.Restaurants.GetReservationViewById(id));
         }
     }
 }

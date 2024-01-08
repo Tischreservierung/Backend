@@ -64,7 +64,6 @@ namespace WebApi.Controllers
             return Ok(reservations);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Reservation>> RequestReservation([FromBody] ReservationRequestDto reservationRequest)
         {
@@ -114,7 +113,6 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-
         [Authorize]
         [HttpGet("restaurant/{restaurantId}/options")]
         public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
@@ -133,7 +131,9 @@ namespace WebApi.Controllers
                                                                                      queryParams.Day.Date,
                                                                                      queryParams.From.TimeOfDay,
                                                                                      queryParams.To.TimeOfDay,
-                                                                                     queryParams.SeatPlaces);
+                                                                                     queryParams.SeatPlaces,
+                                                                                     queryParams.Duration
+                                                                                     );
 
             return Ok(reservationOptions);
         }
