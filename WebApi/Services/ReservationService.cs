@@ -23,7 +23,7 @@ namespace WebApi.Services
             TimeSpan endTime = request.Day.TimeOfDay + TimeSpan.FromMinutes(request.Duration);
 
             RestaurantTable? freeTable = await GetFreeRestaurantTable(request.RestaurantId,
-                request.NumberOfPersons, request.Day, request.Day.TimeOfDay, endTime, request.CustomerId);
+                request.NumberOfPersons, request.Day, request.Day.TimeOfDay, endTime, customerId);
 
             if (freeTable == null)
             {
@@ -35,9 +35,9 @@ namespace WebApi.Services
                 ReservationDay = request.Day,
                 StartTime = request.Day.TimeOfDay,
                 EndTime = endTime,
+                Persons = request.NumberOfPersons,
                 CustomerId = customerId,
-                RestaurantTableId = freeTable.Id,
-                Persons = request.NumberOfPersons
+                RestaurantTableId = freeTable.Id
             };
 
             _unitOfWork.Reservations.Insert(reservation);
@@ -115,7 +115,9 @@ namespace WebApi.Services
 
         public async Task<Reservation?> CreateReservationManually(ReservationManualDto manualReservation)
         {
-            TimeSpan endTime = manualReservation.Time + TimeSpan.FromMinutes(reservationDuration);
+            TimeSpan startTime = manualReservation.Day.TimeOfDay;
+            TimeSpan endTime = startTime + TimeSpan.FromMinutes(manualReservation.Duration);
+
             User user = new()
             {
                 UserName = manualReservation.UserName
@@ -124,7 +126,7 @@ namespace WebApi.Services
             _unitOfWork.Users.Insert(user);
             await _unitOfWork.SaveChangesAsync();
 
-            RestaurantTable? freeTable = await GetFreeRestaurantTable(manualReservation.RestaurantId, manualReservation.NumberOfPersons, manualReservation.Day, manualReservation.Time, endTime, user.Id);
+            RestaurantTable? freeTable = await GetFreeRestaurantTable(manualReservation.RestaurantId, manualReservation.NumberOfPersons, manualReservation.Day, startTime, endTime, user.Id);
 
             if (freeTable == null)
             {
@@ -134,8 +136,9 @@ namespace WebApi.Services
             Reservation reservation = new()
             {
                 ReservationDay = manualReservation.Day,
-                StartTime = manualReservation.Time,
+                StartTime = startTime,
                 EndTime = endTime,
+                Persons = manualReservation.NumberOfPersons,
                 CustomerId = user.Id,
                 RestaurantTableId = freeTable.Id
             };

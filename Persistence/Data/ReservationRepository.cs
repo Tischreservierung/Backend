@@ -49,7 +49,7 @@ namespace Persistence.Data
                     RestaurantTableId = r.RestaurantTableId,
                     RestaurantName = r.RestaurantTable.Restaurant!.Name,
                     Persons = r.RestaurantTable!.SeatPlaces
-                }). OrderBy(r => r.Day.Date.Day).ThenBy(r => r.StartTime.TimeOfDay)
+                }). OrderBy(r => r.Day.Date)
                 .ToListAsync();
         }
 
