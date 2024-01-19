@@ -1,4 +1,4 @@
-﻿using Core.Dto; 
+﻿using Core.Dto;
 using Core.Models;
 
 namespace Core.Contracts
@@ -8,7 +8,6 @@ namespace Core.Contracts
         public Task<Reservation?> CreateReservationManually(ReservationManualDto manualReservation);
         public Task<Reservation?> RequestReservation(ReservationRequestDto request, int customerId);
 
-        public Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId,int customerId,
-            DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration);
+        public Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration);
     }
 }

@@ -25,7 +25,8 @@ namespace Persistence.Data
                     EndTime = r.EndTime.ToDateTime(),
                     RestaurantTableId = r.RestaurantTableId,
                     RestaurantName = r.RestaurantTable.Restaurant!.Name,
-                    Persons = r.Persons
+                    Persons = r.Persons,
+                    SeatPlaces = r.RestaurantTable.SeatPlaces
                 }).OrderBy(r => r.Day.Date)
                 .ToListAsync();
         }
@@ -38,7 +39,7 @@ namespace Persistence.Data
         public async Task<IEnumerable<ReservationDto>> GetByRestaurant(int restaurantId)
         {
             return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId)
-                .Include(r => r.RestaurantTable!.Restaurant)
+                .Include(r => r.Customer)
                 .Select(r => new ReservationDto()
                 {
                     CustomerId = r.CustomerId,
@@ -47,8 +48,9 @@ namespace Persistence.Data
                     StartTime = r.StartTime.ToDateTime(),
                     EndTime = r.EndTime.ToDateTime(),
                     RestaurantTableId = r.RestaurantTableId,
-                    RestaurantName = r.RestaurantTable.Restaurant!.Name,
-                    Persons = r.RestaurantTable!.SeatPlaces
+                    CustomerName = r.Customer!.UserName,
+                    Persons = r.Persons,
+                    SeatPlaces = r.RestaurantTable.SeatPlaces
                 }). OrderBy(r => r.Day.Date)
                 .ToListAsync();
         }
@@ -56,21 +58,6 @@ namespace Persistence.Data
         public async Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day)
         {
             return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId && r.ReservationDay == day).ToListAsync();
-        }
-
-        private static ReservationDto ReservationToDto(Reservation reservation)
-        {
-            return new ReservationDto()
-            {
-                CustomerId = reservation.CustomerId,
-                RestaurantId = reservation.RestaurantTable!.RestaurantId,
-                Day = reservation.ReservationDay,
-                StartTime = reservation.StartTime.ToDateTime(),
-                EndTime = reservation.EndTime.ToDateTime(),
-                RestaurantTableId = reservation.RestaurantTableId,
-                RestaurantName = reservation.RestaurantTable.Restaurant!.Name,
-                Persons = reservation.RestaurantTable!.SeatPlaces
-            };
         }
     }
 }
