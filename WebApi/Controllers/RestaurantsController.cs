@@ -2,6 +2,8 @@
 using Core.Models;
 using Core.Contracts;
 using Core.Dto;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Tischreservierung.Controllers
 {
@@ -11,11 +13,13 @@ namespace Tischreservierung.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRestaurantService _restaurantService;
+        private readonly IUserAuthenticationService _authenticationService;
 
-        public RestaurantsController(IUnitOfWork unitOfWork, IRestaurantService restaurantService)
+        public RestaurantsController(IUnitOfWork unitOfWork, IRestaurantService restaurantService, IUserAuthenticationService authenticationService)
         {
             _unitOfWork = unitOfWork;
             _restaurantService = restaurantService;
+            _authenticationService = authenticationService;
         }
 
         [HttpGet]
@@ -27,7 +31,7 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpGet("name")]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestauntsByName(string name, DateTime? dateTime, int zipCodeId = -1)
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurantsByName(string name, DateTime? dateTime, int zipCodeId = -1)
         {
             var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByName(name, zipCodeId, dateTime);
             return Ok(restaurants);
@@ -109,6 +113,35 @@ namespace Tischreservierung.Controllers
         public async Task<ActionResult<RestaurantViewDto?>> GetReservationView(int id)
         {
             return Ok(await _unitOfWork.Restaurants.GetReservationViewById(id));
+        }
+
+        [Authorize]
+        [HttpGet("employee")]
+        public async Task<ActionResult<RestaurantEmployeeInfoDto>> GetRestaurantEmployeeInfo()
+        {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            if (restaurantId == 0)
+            {
+                return BadRequest();
+            }
+
+
+            RestaurantEmployeeInfoDto dto = new()
+            {
+                RestaurantId = restaurantId
+            };
+
+            return Ok(dto);
         }
     }
 }

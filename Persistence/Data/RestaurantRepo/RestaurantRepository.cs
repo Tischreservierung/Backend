@@ -65,5 +65,13 @@ namespace Persistence.Data.RestaurantRepo
                 
             }).SingleOrDefaultAsync();
         }
+
+        public async Task<int> GetRestaurantIdByEmployee(int employeeId)
+        {
+            return await _dbContext.RestaurantUser
+                .Where(x => x.UserId == employeeId)
+                .Select(x => x.RestaurantId)
+                .FirstOrDefaultAsync();
+        }
     }
 }

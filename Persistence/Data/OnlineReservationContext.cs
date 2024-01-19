@@ -6,7 +6,7 @@ namespace Persistence.Data
 {
     public class OnlineReservationContext : DbContext
     {
-        public DbSet<Core.Models.User> Persons => base.Set<Core.Models.User>();
+        public DbSet<User> Persons => Set<User>();
         public DbSet<User> Users => Set<User>();
         public DbSet<Restaurant> Restaurants => Set<Restaurant>();
         public DbSet<Category> Categories => Set<Category>();
@@ -16,6 +16,7 @@ namespace Persistence.Data
         public DbSet<Reservation> Reservations => Set<Reservation>();
 
         public DbSet<RestaurantPicture> RestaurantPictures => Set<RestaurantPicture>();
+        public DbSet<RestaurantUser> RestaurantUser => Set<RestaurantUser>();
 
         public OnlineReservationContext(DbContextOptions<OnlineReservationContext> options)
             : base(options)

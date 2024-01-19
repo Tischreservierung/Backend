@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using WebApi.QueryParams;
-using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -40,7 +39,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [HttpGet("customer")]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer()
+        public async Task<ActionResult<IEnumerable<ReservationDto>>> GetReservationsByCustomer()
         {
             Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
@@ -57,7 +56,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("restaurant/{restaurantId}")]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByRestaurant(int restaurantId)
+        public async Task<ActionResult<IEnumerable<ReservationDto>>> GetReservationsByRestaurant(int restaurantId)
         {
             var reservations = await _unitOfWork.Reservations.GetByRestaurant(restaurantId);
 
@@ -114,27 +113,16 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-        [Authorize]
+
         [HttpGet("restaurant/{restaurantId}/options")]
         public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
         {
-            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-
-            if (claim == null)
-            {
-                return Unauthorized();
-            }
-
-            User user = await _authenticationService.GetAuthenticatedUser(claim);
-
             var reservationOptions = await _reservationService.GetReservationOptions(restaurantId,
-                                                                                     user.Id,
                                                                                      queryParams.Day.Date,
                                                                                      queryParams.From.TimeOfDay,
                                                                                      queryParams.To.TimeOfDay,
                                                                                      queryParams.SeatPlaces,
-                                                                                     queryParams.Duration
-                                                                                     );
+                                                                                     queryParams.Duration);
 
             return Ok(reservationOptions);
         }
