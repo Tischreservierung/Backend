@@ -2,6 +2,7 @@
 using Core.Dto;
 using Core.Models;
 using Core.Paging;
+using NuGet.Packaging;
 
 namespace WebApi.Services
 {
@@ -27,13 +28,32 @@ namespace WebApi.Services
 
             Category[] categories = dto.Categories;
             RestaurantOpeningTime[] openingTimes = GetOpeningTimes(dto.Openings, restaurant);
+            List<RestaurantPicture> add = StringToByteArray(dto.Pictures, restaurant);
+            RestaurantPicture[] pictures = add.ToArray();
 
             _unitOfWork.Restaurants.Insert(restaurant);
-            _unitOfWork.RestaurantCategories.InsertAll(categories);
+            //_unitOfWork.RestaurantCategories.InsertAll(categories);
             _unitOfWork.OpeningTimes.InsertAll(openingTimes);
+            _unitOfWork.RestaurantPictures.InsertAll(pictures);
             await _unitOfWork.SaveChangesAsync();
 
             return restaurant;
+        }
+
+        private static List<RestaurantPicture> StringToByteArray(string[] pictureStrings, Restaurant res)
+        {
+            List<RestaurantPicture> ret = new();
+            int count = 0;
+
+            foreach (string pictureString in pictureStrings)
+            {
+                RestaurantPicture pic = new RestaurantPicture() { Picture = Convert.FromBase64String(pictureString), Index = count, Restaurant = res };
+                ret.Add(pic);
+
+                count++;
+            }
+
+            return ret;
         }
 
         public async Task<Restaurant?> UpdateRestaurant(RestaurantUpdateDto dto)

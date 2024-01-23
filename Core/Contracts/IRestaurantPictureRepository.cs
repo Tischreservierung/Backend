@@ -2,7 +2,7 @@
 
 namespace Core.Contracts
 {
-    public interface IRestaurantPictureRepository
+    public interface IRestaurantPictureRepository : IGenericRepository<RestaurantPicture>
     {
         Task<List<RestaurantPicture>> GetPicturesByRestaurantId(int restaurantId);
         Task<RestaurantPicture?> GetFirstPictureByRestaurantId(int restaurantId);
