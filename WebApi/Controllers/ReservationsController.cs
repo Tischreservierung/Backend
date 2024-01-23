@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using WebApi.QueryParams;
-using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -40,7 +39,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [HttpGet("customer")]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByCustomer()
+        public async Task<ActionResult<IEnumerable<ReservationDto>>> GetReservationsByCustomer()
         {
             Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
@@ -56,9 +55,26 @@ namespace WebApi.Controllers
             return Ok(reservations);
         }
 
-        [HttpGet("restaurant/{restaurantId}")]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservationsByRestaurant(int restaurantId)
+        [Authorize]
+        [HttpGet("restaurant")]
+        public async Task<ActionResult<IEnumerable<ReservationDto>>> GetReservationsByRestaurant()
         {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            if (restaurantId == 0)
+            {
+                return BadRequest();
+            }
+
             var reservations = await _unitOfWork.Reservations.GetByRestaurant(restaurantId);
 
             return Ok(reservations);
@@ -87,10 +103,27 @@ namespace WebApi.Controllers
             return CreatedAtAction("GetReservation", new { id = reservation.Id }, reservation);
         }
 
+        [Authorize]
         [HttpPost("manual")]
         public async Task<ActionResult<Reservation>> CreateReservationManually([FromBody] ReservationManualDto manualReservation)
         {
-            Reservation? reservation = await _reservationService.CreateReservationManually(manualReservation);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            if (restaurantId == 0)
+            {
+                return BadRequest();
+            }
+
+            Reservation? reservation = await _reservationService.CreateReservationManually(manualReservation, restaurantId);
 
             if (reservation == null)
             {
@@ -114,27 +147,16 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-        [Authorize]
+
         [HttpGet("restaurant/{restaurantId}/options")]
         public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
         {
-            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-
-            if (claim == null)
-            {
-                return Unauthorized();
-            }
-
-            User user = await _authenticationService.GetAuthenticatedUser(claim);
-
             var reservationOptions = await _reservationService.GetReservationOptions(restaurantId,
-                                                                                     user.Id,
                                                                                      queryParams.Day.Date,
                                                                                      queryParams.From.TimeOfDay,
                                                                                      queryParams.To.TimeOfDay,
                                                                                      queryParams.SeatPlaces,
-                                                                                     queryParams.Duration
-                                                                                     );
+                                                                                     queryParams.Duration);
 
             return Ok(reservationOptions);
         }
