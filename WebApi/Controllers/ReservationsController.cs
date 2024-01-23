@@ -55,9 +55,26 @@ namespace WebApi.Controllers
             return Ok(reservations);
         }
 
-        [HttpGet("restaurant/{restaurantId}")]
-        public async Task<ActionResult<IEnumerable<ReservationDto>>> GetReservationsByRestaurant(int restaurantId)
+        [Authorize]
+        [HttpGet("restaurant")]
+        public async Task<ActionResult<IEnumerable<ReservationDto>>> GetReservationsByRestaurant()
         {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            if (restaurantId == 0)
+            {
+                return BadRequest();
+            }
+
             var reservations = await _unitOfWork.Reservations.GetByRestaurant(restaurantId);
 
             return Ok(reservations);
