@@ -103,10 +103,27 @@ namespace WebApi.Controllers
             return CreatedAtAction("GetReservation", new { id = reservation.Id }, reservation);
         }
 
+        [Authorize]
         [HttpPost("manual")]
         public async Task<ActionResult<Reservation>> CreateReservationManually([FromBody] ReservationManualDto manualReservation)
         {
-            Reservation? reservation = await _reservationService.CreateReservationManually(manualReservation);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            if (restaurantId == 0)
+            {
+                return BadRequest();
+            }
+
+            Reservation? reservation = await _reservationService.CreateReservationManually(manualReservation, restaurantId);
 
             if (reservation == null)
             {

@@ -107,7 +107,7 @@ namespace WebApi.Services
                         (reservation.StartTime >= start && reservation.EndTime <= end);
         }
 
-        public async Task<Reservation?> CreateReservationManually(ReservationManualDto manualReservation)
+        public async Task<Reservation?> CreateReservationManually(ReservationManualDto manualReservation, int restaurantId)
         {
             TimeSpan startTime = manualReservation.Day.TimeOfDay;
             TimeSpan endTime = startTime + TimeSpan.FromMinutes(manualReservation.Duration);
@@ -120,7 +120,7 @@ namespace WebApi.Services
             _unitOfWork.Users.Insert(user);
             await _unitOfWork.SaveChangesAsync();
 
-            RestaurantTable? freeTable = await GetFreeRestaurantTable(manualReservation.RestaurantId, manualReservation.NumberOfPersons, manualReservation.Day, startTime, endTime);
+            RestaurantTable? freeTable = await GetFreeRestaurantTable(restaurantId, manualReservation.NumberOfPersons, manualReservation.Day, startTime, endTime);
 
             if (freeTable == null)
             {
