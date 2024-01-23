@@ -13,6 +13,6 @@ namespace Core.Dto
         public Category[] Categories { get; set; } = Array.Empty<Category>();
         public OpeningTimeDto[] Openings { get; set; } = Array.Empty<OpeningTimeDto>();
 
-        public User? Owner { get; set; }
+        public string[] Pictures { get; set; } = Array.Empty<string>();
     }
 }
