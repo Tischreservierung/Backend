@@ -10,6 +10,6 @@ namespace Core.Contracts
 {
     public interface IUserAuthenticationService
     {
-        Task<User> GetAuthenticatedUser(Claim claim);
+        Task<AuthUser> GetAuthenticatedUser(Claim claim);
     }
 }

@@ -48,7 +48,7 @@ namespace WebApi.Controllers
                 return Unauthorized();
             }
 
-            User user = await _authenticationService.GetAuthenticatedUser(claim);
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
 
             var reservations = await _unitOfWork.Reservations.GetByCustomer(user.Id);
 
@@ -66,7 +66,7 @@ namespace WebApi.Controllers
                 return Unauthorized();
             }
 
-            User user = await _authenticationService.GetAuthenticatedUser(claim);
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
 
             int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
 
@@ -91,7 +91,7 @@ namespace WebApi.Controllers
                 return Unauthorized();
             }
 
-            User user = await _authenticationService.GetAuthenticatedUser(claim);
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
 
             Reservation? reservation = await _reservationService.RequestReservation(reservationRequest, user.Id);
 
@@ -114,7 +114,7 @@ namespace WebApi.Controllers
                 return Unauthorized();
             }
 
-            User user = await _authenticationService.GetAuthenticatedUser(claim);
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
 
             int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
 

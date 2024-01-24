@@ -17,7 +17,7 @@ namespace Core.Models
 
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
-        public User? Customer { get; set; }
+        public AuthUser? Customer { get; set; }
 
         [ForeignKey(nameof(RestaurantTable))]
         public int RestaurantTableId { get; set; }

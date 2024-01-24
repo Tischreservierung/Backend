@@ -31,7 +31,7 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpGet("name")]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurantsByName(string name, DateTime? dateTime, int zipCodeId = -1)
+        public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetRestaurantsByName(string name, DateTime? dateTime, int zipCodeId = -1)
         {
             var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByName(name, zipCodeId, dateTime);
             return Ok(restaurants);
@@ -47,7 +47,7 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpGet("categories")]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurantsByCategories
+        public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetRestaurantsByCategories
             ([FromQuery] int[] categories, DateTime? dateTime, int zipCodeId = -1)
         {
             var restaurants = await _unitOfWork.Restaurants.GetRestaurantsByCategories(categories, zipCodeId, dateTime);
@@ -126,7 +126,7 @@ namespace Tischreservierung.Controllers
                 return Unauthorized();
             }
 
-            User user = await _authenticationService.GetAuthenticatedUser(claim);
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
 
             int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
 
