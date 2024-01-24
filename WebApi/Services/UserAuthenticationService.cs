@@ -13,14 +13,14 @@ namespace WebApi.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<User> GetAuthenticatedUser(Claim claim)
+        public async Task<AuthUser> GetAuthenticatedUser(Claim claim)
         {
             string token_id = claim.Value;
-            User? user = await _unitOfWork.Users.GetByTokenId(token_id);
+            AuthUser? user = await _unitOfWork.Users.GetByTokenId(token_id);
 
             if (user == null)
             {
-                user = new User()
+                user = new AuthUser()
                 {
                     TokenId = token_id
                 };

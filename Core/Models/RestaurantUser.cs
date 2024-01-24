@@ -9,6 +9,6 @@ namespace Core.Models
         public Restaurant? Restaurant { get; set; }
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
-        public User? User { get; set; }
+        public AuthUser? User { get; set; }
     }
 }

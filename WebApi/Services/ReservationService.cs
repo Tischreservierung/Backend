@@ -112,7 +112,7 @@ namespace WebApi.Services
             TimeSpan startTime = manualReservation.Day.TimeOfDay;
             TimeSpan endTime = startTime + TimeSpan.FromMinutes(manualReservation.Duration);
 
-            User user = new()
+            AuthUser user = new()
             {
                 UserName = manualReservation.UserName
             };

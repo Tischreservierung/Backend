@@ -6,8 +6,8 @@ namespace Persistence.Data
 {
     public class OnlineReservationContext : DbContext
     {
-        public DbSet<User> Persons => Set<User>();
-        public DbSet<User> Users => Set<User>();
+        public DbSet<AuthUser> Persons => Set<AuthUser>();
+        public DbSet<AuthUser> Users => Set<AuthUser>();
         public DbSet<Restaurant> Restaurants => Set<Restaurant>();
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<RestaurantTable> RestaurantTables => Set<RestaurantTable>();

@@ -2,8 +2,8 @@
 
 namespace Core.Contracts
 {
-    public interface IUserRepository : IGenericRepository<User>
+    public interface IUserRepository : IGenericRepository<AuthUser>
     {
-        Task<User?> GetByTokenId(string tokenId);
+        Task<AuthUser?> GetByTokenId(string tokenId);
     }
 }
