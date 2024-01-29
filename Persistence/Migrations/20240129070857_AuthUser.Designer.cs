@@ -12,7 +12,7 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OnlineReservationContext))]
-    [Migration("20240124131603_AuthUser")]
+    [Migration("20240129070857_AuthUser")]
     partial class AuthUser
     {
         /// <inheritdoc />
