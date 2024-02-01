@@ -70,7 +70,16 @@ namespace Tischreservierung.Controllers
         [HttpPost]
         public async Task<ActionResult<Restaurant>> PostRestaurant([FromBody] RestaurantPostDto dto)
         {
-            Restaurant restaurant = await _restaurantService.CreateRestaurant(dto);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            Restaurant restaurant = await _restaurantService.CreateRestaurant(dto, user);
 
             await _unitOfWork.SaveChangesAsync();
             return Ok(restaurant.Id);
