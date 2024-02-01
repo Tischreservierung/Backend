@@ -24,8 +24,7 @@ namespace WebApi.Services
                 Address = dto.Address,
                 StreetNr = dto.StreetNr,
                 ZipCodeId = dto.ZipCode!.Id,
-                Description = dto.Description,
-                Categories = dto.Categories.ToList()
+                Description = dto.Description
             };
 
             RestaurantOpeningTime[] openingTimes = GetOpeningTimes(dto.Openings, restaurant);
