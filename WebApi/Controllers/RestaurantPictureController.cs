@@ -41,6 +41,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [RequestSizeLimit(100_000_000)]
         public async Task<ActionResult<RestaurantPicture>> PostPicture(List<string> pictureStrings, int restaurantId)
         {
             List<byte[]> pictures = StringToByteArray(pictureStrings);

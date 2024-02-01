@@ -68,6 +68,7 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpPost]
+        [RequestSizeLimit(100_000_000)]
         public async Task<ActionResult<Restaurant>> PostRestaurant([FromBody] RestaurantPostDto dto)
         {
             Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
