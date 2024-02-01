@@ -14,5 +14,6 @@ namespace Core.Contracts
         Task<ReservationViewDto?> GetReservationViewById(int id);
 
         Task<int> GetRestaurantIdByEmployee(int employeeId);
+        void AddCategories(int id, List<int> categories);
     }
 }

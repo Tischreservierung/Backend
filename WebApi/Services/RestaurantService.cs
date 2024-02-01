@@ -33,7 +33,7 @@ namespace WebApi.Services
             RestaurantPicture[] pictures = add.ToArray();
 
             _unitOfWork.Restaurants.Insert(restaurant);
-            //_unitOfWork.RestaurantCategories.InsertAll(categories);
+            _unitOfWork.RestaurantCategories.InsertAll(categories);
             _unitOfWork.OpeningTimes.InsertAll(openingTimes);
             _unitOfWork.Users.AddEmployee(restaurant, user);
             _unitOfWork.RestaurantPictures.InsertAll(pictures);
@@ -94,5 +94,6 @@ namespace WebApi.Services
                 Restaurant = restaurant
             }).ToArray();
         }
+
     }
 }
