@@ -10,25 +10,40 @@ namespace Persistence.Data.RestaurantRepo
     {
         public RestaurantRepository(OnlineReservationContext context) : base(context)
         {
-            
+
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByName(string name, int zipCodeId, DateTime? dateTime)
+        public async Task<IEnumerable<RestaurantDto>> GetRestaurantsByName(string name, int zipCodeId, DateTime? dateTime)
         {
-            return await _dbSet.Where(r => (r.ZipCodeId == zipCodeId || zipCodeId == -1) 
+            //new RestaurantDto() { Description = "", Name = "", Id = "", Picture = ""}
+
+            return await _dbSet.Where(r => (r.ZipCodeId == zipCodeId || zipCodeId == -1)
             && r.Name.ToLower().Contains(name.ToLower())
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => ((int)o.Day+1)%7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id ))).ToListAsync();
+            .Any(o => ((int)o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
+                .Select(r => new RestaurantDto()
+                {
+                    Id = r.Id,
+                    Description = r.Description,
+                    Name = r.Name,
+                    Picture = _dbContext.RestaurantPictures.SingleOrDefault(p => p.Index == 0 && p.Restaurant!.Id == r.Id)
+                }).ToListAsync();
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories
+        public async Task<IEnumerable<RestaurantDto>> GetRestaurantsByCategories
             (int[] categories, int zipCodeId, DateTime? dateTime)
         {
             return await _dbContext.Restaurants.Where(r => (zipCodeId == -1 || r.ZipCodeId == zipCodeId)
             && (categories.Length == 0 || r.Categories.Any(c => categories.Contains(c.Id)))
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
             .Any(o => ((int)o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
-                .ToListAsync();
+                .Select(r => new RestaurantDto()
+                {
+                    Id = r.Id,
+                    Description = r.Description,
+                    Name = r.Name,
+                    Picture = _dbContext.RestaurantPictures.SingleOrDefault(p => p.Index == 0 && p.Restaurant!.Id == r.Id)
+                }).ToListAsync();
         }
 
         public async Task<RestaurantViewDto?> GetRestaurantForViewById(int id)
@@ -41,9 +56,12 @@ namespace Persistence.Data.RestaurantRepo
                 Address = x.Address,
                 ZipCode = x.ZipCode,
                 Openings = _dbContext.RestaurantOpeningTimes.Where(y => y.RestaurantId == x.Id)
-                    .Select(o => new OpeningTimeDto() { Day = (int)o.Day, 
-                        OpenFrom = o.OpeningTime.Hours + ":" + o.OpeningTime.Minutes, 
-                        OpenTo = o.ClosingTime.Hours + ":" + o.ClosingTime.Minutes}).ToArray(),
+                    .Select(o => new OpeningTimeDto()
+                    {
+                        Day = (int)o.Day,
+                        OpenFrom = o.OpeningTime.Hours + ":" + o.OpeningTime.Minutes,
+                        OpenTo = o.ClosingTime.Hours + ":" + o.ClosingTime.Minutes
+                    }).ToArray(),
                 Name = x.Name,
                 Categories = x.Categories.ToArray(),
                 Pictures = _dbContext.RestaurantPictures.Where(z => z.RestaurantId == x.Id)
@@ -62,7 +80,7 @@ namespace Persistence.Data.RestaurantRepo
                 Id = id,
                 RestaurantName = r.Name,
                 Picture = _dbContext.RestaurantPictures.Where(p => p.RestaurantId == id && p.Index == 0).Select(p => p.Picture).SingleOrDefault(),
-                
+
             }).SingleOrDefaultAsync();
         }
 

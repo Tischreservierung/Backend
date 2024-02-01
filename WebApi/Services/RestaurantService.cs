@@ -16,7 +16,7 @@ namespace WebApi.Services
         }
 
 
-        public async Task<Restaurant> CreateRestaurant(RestaurantPostDto dto)
+        public async Task<Restaurant> CreateRestaurant(RestaurantPostDto dto, AuthUser user)
         {
             Restaurant restaurant = new()
             {
@@ -35,6 +35,7 @@ namespace WebApi.Services
             _unitOfWork.Restaurants.Insert(restaurant);
             //_unitOfWork.RestaurantCategories.InsertAll(categories);
             _unitOfWork.OpeningTimes.InsertAll(openingTimes);
+            _unitOfWork.Users.AddEmployee(restaurant, user);
             _unitOfWork.RestaurantPictures.InsertAll(pictures);
             await _unitOfWork.SaveChangesAsync();
 

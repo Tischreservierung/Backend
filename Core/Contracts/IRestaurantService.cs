@@ -6,7 +6,7 @@ namespace Core.Contracts
 {
     public interface IRestaurantService
     {
-        Task<Restaurant> CreateRestaurant(RestaurantPostDto dto);
+        Task<Restaurant> CreateRestaurant(RestaurantPostDto dto, AuthUser user);
 
         Task<Restaurant?> UpdateRestaurant(RestaurantUpdateDto dto);
 
