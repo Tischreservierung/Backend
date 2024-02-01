@@ -91,5 +91,15 @@ namespace Persistence.Data.RestaurantRepo
                 .Select(x => x.RestaurantId)
                 .FirstOrDefaultAsync();
         }
+
+        public void AddCategories(int id, List<int> categories)
+        {
+            var res = _dbContext.Restaurants.Single(r => r.Id == id);
+
+            res.Categories = _dbContext.Categories.Where(c => categories.Contains(c.Id)).ToList();
+
+            _dbContext.Restaurants.Update(res);
+                
+        }
     }
 }
