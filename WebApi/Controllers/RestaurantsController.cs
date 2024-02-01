@@ -94,6 +94,18 @@ namespace Tischreservierung.Controllers
             return Ok();
         }
 
+        [HttpPost("table")]
+        public async Task<ActionResult> AddTable([FromBody] List<int> tables, int id)
+        {
+            _unitOfWork.RestaurantTables.InsertAll(tables.Select(t => new RestaurantTable()
+            {
+                 RestaurantId = id,
+                 SeatPlaces = t
+            }).ToArray());
+            await _unitOfWork.SaveChangesAsync();
+            return Ok();
+        }
+
         [HttpPut]
         public async Task<ActionResult<Restaurant>> UpdateRestaurant([FromBody] RestaurantUpdateDto dto) {
             Restaurant? restaurant = await _restaurantService.UpdateRestaurant(dto);
