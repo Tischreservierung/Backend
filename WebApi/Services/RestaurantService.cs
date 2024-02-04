@@ -24,17 +24,21 @@ namespace WebApi.Services
                 Address = dto.Address,
                 StreetNr = dto.StreetNr,
                 ZipCodeId = dto.ZipCode!.Id,
-                Description = dto.Description
+                Description = dto.Description,
+                Categories = _unitOfWork.RestaurantCategories.GetByCategories(dto.Categories)
             };
 
             RestaurantOpeningTime[] openingTimes = GetOpeningTimes(dto.Openings, restaurant);
             List<RestaurantPicture> add = StringToByteArray(dto.Pictures, restaurant);
             RestaurantPicture[] pictures = add.ToArray();
+            RestaurantTable[] table = dto.Tables
+                .Select(t => new RestaurantTable() { Restaurant = restaurant, SeatPlaces = t }).ToArray();
 
             _unitOfWork.Restaurants.Insert(restaurant);
             _unitOfWork.OpeningTimes.InsertAll(openingTimes);
             _unitOfWork.Users.AddEmployee(restaurant, user);
             _unitOfWork.RestaurantPictures.InsertAll(pictures);
+            _unitOfWork.RestaurantTables.InsertAll(table);
             await _unitOfWork.SaveChangesAsync();
 
             return restaurant;

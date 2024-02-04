@@ -12,6 +12,7 @@ namespace Core.Dto
 
         public Category[] Categories { get; set; } = Array.Empty<Category>();
         public OpeningTimeDto[] Openings { get; set; } = Array.Empty<OpeningTimeDto>();
+        public int[] Tables { get; set; } = Array.Empty<int>();
 
         public string[] Pictures { get; set; } = Array.Empty<string>();
     }
