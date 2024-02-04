@@ -71,7 +71,7 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
         public async Task GetByRestaurantAndDay()
         {
             var repository = TestData();
-            var result = await repository.GetByDayAndRestaurant(2, DayOfWeek.Monday);
+            var result = await repository.GetByDayAndRestaurant(2, DayOfWeek.Tuesday);
             Assert.NotNull(result);
 
             var list = result.ToList();
