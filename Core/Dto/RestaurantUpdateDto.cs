@@ -7,7 +7,7 @@ namespace Core.Dto
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public ZipCode? ZipCode { get; set; }
+        public ZipCode ZipCode { get; set; } = new();
         public string Address { get; set; } = string.Empty;
         public string StreetNr { get; set; } = string.Empty;
     }
