@@ -4,6 +4,7 @@ using Core.Contracts;
 using Core.Dto;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Core.DTO;
 
 namespace Tischreservierung.Controllers
 {
@@ -28,6 +29,52 @@ namespace Tischreservierung.Controllers
             var restaurants = await _unitOfWork.Restaurants.GetAll();
 
             return Ok(restaurants);
+        }
+
+        [Authorize]
+        [HttpGet("basicdata")]
+        public async Task<ActionResult<RestaurantUpdateDto>> GetBasicDataOfRestaurant()
+        {
+            AuthUser? user = await GetUser();
+            if (user == null)
+                return Unauthorized();
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            return Ok(await _unitOfWork.Restaurants.GetBasicDataOfRestaurant(restaurantId));
+        }
+
+        private async Task<AuthUser?> GetUser()
+        {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return null;
+            }
+
+            return await _authenticationService.GetAuthenticatedUser(claim);
+        }
+
+        [Authorize]
+        [HttpGet("fullrestaurant")]
+        public async Task<ActionResult<RestaurantEditDto>> GetFullRestaurant()
+        {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            if (restaurantId == 0)
+                return BadRequest();
+
+            return Ok(await _unitOfWork.Restaurants.GetFull(restaurantId));
         }
 
         [HttpGet("name")]

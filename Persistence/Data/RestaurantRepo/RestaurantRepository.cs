@@ -99,7 +99,37 @@ namespace Persistence.Data.RestaurantRepo
             res.Categories = _dbContext.Categories.Where(c => categories.Contains(c.Id)).ToList();
 
             _dbContext.Restaurants.Update(res);
-                
+
+        }
+
+        public async Task<RestaurantEditDto?> GetFull(int restaurantId)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == restaurantId).Select(r => new RestaurantEditDto()
+            {
+                Id = r.Id,
+                Name = r.Name,
+                Description = r.Description,
+                Address = r.Address,
+                StreetNr = r.StreetNr,
+                ZipCode = r.ZipCode!,
+                Categories = r.Categories,
+                Tables = r.Tables,
+                Openings = _dbContext.RestaurantOpeningTimes.Where(o => o.RestaurantId == r.Id).ToList(),
+                Pictures = _dbContext.RestaurantPictures.Where(p => p.RestaurantId == r.Id).ToList()
+            }).FirstAsync();
+        }
+
+        public async Task<RestaurantUpdateDto?> GetBasicDataOfRestaurant(int id)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == id).Select(r => new RestaurantUpdateDto()
+            {
+                Id = r.Id,
+                Name = r.Name,
+                Description = r.Description,
+                Address = r.Address,
+                StreetNr = r.StreetNr,
+                ZipCode = r.ZipCode!
+            }).SingleAsync();
         }
     }
 }

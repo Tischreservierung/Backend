@@ -15,5 +15,7 @@ namespace Core.Contracts
 
         Task<int> GetRestaurantIdByEmployee(int employeeId);
         void AddCategories(int id, List<int> categories);
+        Task<RestaurantEditDto?> GetFull(int restaurantId);
+        Task<RestaurantUpdateDto?> GetBasicDataOfRestaurant(int id);
     }
 }
