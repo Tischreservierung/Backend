@@ -131,5 +131,11 @@ namespace Persistence.Data.RestaurantRepo
                 ZipCode = r.ZipCode!
             }).SingleAsync();
         }
+
+        public async Task<IEnumerable<Category>> GetCategoriesOfRestaurant(int restaurantId)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == restaurantId).Include(r => r.Categories)
+                .Select(r => r.Categories).SingleAsync();
+        }
     }
 }

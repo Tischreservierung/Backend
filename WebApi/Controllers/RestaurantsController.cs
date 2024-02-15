@@ -101,6 +101,19 @@ namespace Tischreservierung.Controllers
             return Ok(restaurants);
         }
 
+        [HttpGet("categoriesOfRestaurant")]
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategoriesOfRestaurant()
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            var categories = await _unitOfWork.Restaurants.GetCategoriesOfRestaurant(restaurantId);
+            return Ok(categories);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
