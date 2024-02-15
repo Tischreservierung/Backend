@@ -3,6 +3,7 @@ using Core.Models;
 using Core.Contracts;
 using Core.Dto;
 using Core.DTO;
+using System.Linq;
 
 namespace Persistence.Data.RestaurantRepo
 {
@@ -136,6 +137,15 @@ namespace Persistence.Data.RestaurantRepo
         {
             return await _dbContext.Restaurants.Where(r => r.Id == restaurantId).Include(r => r.Categories)
                 .Select(r => r.Categories).SingleAsync();
+        }
+
+        public void UpdateCategories(List<Category> categories, int restaurantId)
+        {
+            var res = _dbContext.Restaurants.Include(r => r.Categories).Single(r => r.Id == restaurantId);
+
+            var cats = categories.Select(c => c.Id).ToList();
+            res.Categories = _dbContext.Categories.Where(c => cats.Contains(c.Id)).ToList();
+            _dbContext.Restaurants.Update(res);
         }
     }
 }

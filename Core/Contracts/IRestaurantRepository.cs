@@ -18,5 +18,6 @@ namespace Core.Contracts
         Task<RestaurantEditDto?> GetFull(int restaurantId);
         Task<RestaurantUpdateDto?> GetBasicDataOfRestaurant(int id);
         Task<IEnumerable<Category>> GetCategoriesOfRestaurant(int restaurantId);
+        void UpdateCategories(List<Category> categories, int restaurantId);
     }
 }
