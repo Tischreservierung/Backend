@@ -101,6 +101,37 @@ namespace Tischreservierung.Controllers
             return Ok(restaurants);
         }
 
+        [HttpPost("categoriesOfRestaurant")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Category>>> PostCategories([FromBody] List<Category> categories)
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            _unitOfWork.Restaurants.UpdateCategories(categories, restaurantId);
+            await _unitOfWork.SaveChangesAsync();
+
+            var updatedCategories = await _unitOfWork.Restaurants.GetCategoriesOfRestaurant(restaurantId);
+            return Ok(updatedCategories);
+
+        }
+
+        [HttpGet("categoriesOfRestaurant")]
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategoriesOfRestaurant()
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            var categories = await _unitOfWork.Restaurants.GetCategoriesOfRestaurant(restaurantId);
+            return Ok(categories);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
