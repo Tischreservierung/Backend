@@ -37,12 +37,13 @@
       <Property Name="RestaurantId" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>IAAAAAAAIAAAAAIAAAAAAAAAEAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>IAAAAAAAIACAAAIAAAAAAAAAEAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\RestaurantOpeningTime.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Restaurant" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Core.Models.Category">
     <Position X="14.75" Y="1.25" Width="1.5" />
@@ -78,18 +79,16 @@
     <Position X="21.75" Y="3.25" Width="1.5" />
     <Members>
       <Property Name="CustomerId" Hidden="true" />
-      <Property Name="RestaurantId" Hidden="true" />
       <Property Name="RestaurantTableId" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>IAEAAAAAAAAAAAAAAAAAAEBAIAAiABAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAACAAAAAAAAAAEBAIAAiABAAAAAAAAEAAAA=</HashCode>
       <FileName>Models\Reservation.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Customer" />
       <Property Name="RestaurantTable" />
-      <Property Name="Restaurant" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Core.Models.User.Person">
     <Position X="27.5" Y="2" Width="1.5" />
@@ -113,6 +112,20 @@
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\User\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.Models.AuthUser">
+    <Position X="9.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\AuthUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.Models.RestaurantUser" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAABAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\RestaurantUser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

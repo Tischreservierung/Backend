@@ -2,7 +2,7 @@
 using Core.Models;
 using Core.Contracts;
 
-namespace Persistence.Data.RestaurantRepo
+namespace Persistence.Data.Repositories
 {
     public class RestaurantTableRepository : GenericRepository<RestaurantTable>, IRestaurantTableRepository
     {

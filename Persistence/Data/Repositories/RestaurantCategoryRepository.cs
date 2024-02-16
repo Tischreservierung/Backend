@@ -1,14 +1,14 @@
 ﻿using Core.Models;
 using Core.Contracts;
 
-namespace Persistence.Data.RestaurantRepo
+namespace Persistence.Data.Repositories
 {
     public class RestaurantCategoryRepository : GenericRepository<Category>, IRestaurantCategoryRepository
     {
 
         public RestaurantCategoryRepository(OnlineReservationContext context) : base(context)
         {
-            
+
         }
 
         public List<Category> GetByCategories(Category[] categories)
