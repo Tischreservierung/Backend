@@ -2,7 +2,6 @@
 using Core.Dto;
 using Core.Models;
 using Core.Paging;
-using NuGet.Packaging;
 
 namespace WebApi.Services
 {
@@ -24,16 +23,13 @@ namespace WebApi.Services
                 Address = dto.Address,
                 StreetNr = dto.StreetNr,
                 ZipCodeId = dto.ZipCode!.Id,
-                Description = dto.Description
+                Description = dto.Description,
             };
 
-            Category[] categories = dto.Categories;
             RestaurantOpeningTime[] openingTimes = GetOpeningTimes(dto.Openings, restaurant);
-            List<RestaurantPicture> add = StringToByteArray(dto.Pictures, restaurant);
-            RestaurantPicture[] pictures = add.ToArray();
+            RestaurantPicture[] pictures = StringToByteArray(dto.Pictures, restaurant);
 
             _unitOfWork.Restaurants.Insert(restaurant);
-            //_unitOfWork.RestaurantCategories.InsertAll(categories);
             _unitOfWork.OpeningTimes.InsertAll(openingTimes);
             _unitOfWork.RestaurantPictures.InsertAll(pictures);
             await _unitOfWork.SaveChangesAsync();
@@ -41,20 +37,21 @@ namespace WebApi.Services
             return restaurant;
         }
 
-        private static List<RestaurantPicture> StringToByteArray(string[] pictureStrings, Restaurant res)
+        private static RestaurantPicture[] StringToByteArray(string[] pictureStrings, Restaurant restaurant)
         {
-            List<RestaurantPicture> ret = new();
-            int count = 0;
+            List<RestaurantPicture> pictures = new();
 
-            foreach (string pictureString in pictureStrings)
+            for (int i = 0; i < pictureStrings.Length; i++)
             {
-                RestaurantPicture pic = new RestaurantPicture() { Picture = Convert.FromBase64String(pictureString), Index = count, Restaurant = res };
-                ret.Add(pic);
-
-                count++;
+                pictures.Add(new RestaurantPicture()
+                {
+                    Picture = Convert.FromBase64String(pictureStrings[i]),
+                    Index = i,
+                    Restaurant = restaurant 
+                });
             }
 
-            return ret;
+            return pictures.ToArray();
         }
 
         public async Task<Restaurant?> UpdateRestaurant(RestaurantUpdateDto dto)

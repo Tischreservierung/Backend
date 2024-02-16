@@ -2,7 +2,7 @@
 using Core.Models;
 using Core.Contracts;
 
-namespace Persistence.Data
+namespace Persistence.Data.Repositories
 {
 
     public class ZipCodeRepository : GenericRepository<ZipCode>, IZipCodeRepository

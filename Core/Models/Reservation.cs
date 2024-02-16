@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models
 {
-    public class Reservation : EntityObject
+    public class Reservation : EntityObject, IValidatableObject
     {
         [Required]
         [DataType(DataType.Date)]
@@ -25,5 +25,15 @@ namespace Core.Models
 
         [Range(0, int.MaxValue)]
         public int Persons { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            TimeSpan difference = EndTime - StartTime;
+
+            if (difference.Ticks < 0)
+            {
+                yield return new ValidationResult("Start and End dates cannot overlap!");
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistence.Data
+namespace Persistence.Data.Repositories
 {
     public class UserRepository : GenericRepository<AuthUser>, IUserRepository
     {

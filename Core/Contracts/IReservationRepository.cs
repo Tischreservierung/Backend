@@ -9,5 +9,8 @@ namespace Core.Contracts
         Task<IEnumerable<Reservation>> GetByCustomerAndDay(int customerId, DateTime day);
         Task<IEnumerable<ReservationDto>> GetByRestaurant(int restaurantId);
         Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day);
+        Task<IEnumerable<Reservation>> GetByRestaurantTable(int restaurantTableId);
+
+        Task<bool> RestaurantTableHasReservation(int restaurantTableId);
     }
 }

@@ -2,13 +2,13 @@
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistence.Data.RestaurantRepo
+namespace Persistence.Data.Repositories
 {
     internal class RestaurantPictureRepository : GenericRepository<RestaurantPicture>, IRestaurantPictureRepository
     {
         public RestaurantPictureRepository(OnlineReservationContext context) : base(context)
-        { 
-        
+        {
+
         }
 
         public int CountPicture(int restaurantId)

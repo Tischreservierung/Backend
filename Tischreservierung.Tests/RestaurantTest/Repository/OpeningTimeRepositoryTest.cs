@@ -1,7 +1,7 @@
 ﻿using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
-using Persistence.Data.RestaurantRepo;
+using Persistence.Data.Repositories;
 
 namespace Tischreservierung.Tests.RestaurantTest.Repository
 {
