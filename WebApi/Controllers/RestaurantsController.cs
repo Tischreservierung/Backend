@@ -4,6 +4,7 @@ using Core.Contracts;
 using Core.Dto;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Core.DTO;
 
 namespace Tischreservierung.Controllers
 {
@@ -30,6 +31,52 @@ namespace Tischreservierung.Controllers
             return Ok(restaurants);
         }
 
+        [Authorize]
+        [HttpGet("basicdata")]
+        public async Task<ActionResult<RestaurantUpdateDto>> GetBasicDataOfRestaurant()
+        {
+            AuthUser? user = await GetUser();
+            if (user == null)
+                return Unauthorized();
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            return Ok(await _unitOfWork.Restaurants.GetBasicDataOfRestaurant(restaurantId));
+        }
+
+        private async Task<AuthUser?> GetUser()
+        {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return null;
+            }
+
+            return await _authenticationService.GetAuthenticatedUser(claim);
+        }
+
+        [Authorize]
+        [HttpGet("fullrestaurant")]
+        public async Task<ActionResult<RestaurantEditDto>> GetFullRestaurant()
+        {
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            int restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            if (restaurantId == 0)
+                return BadRequest();
+
+            return Ok(await _unitOfWork.Restaurants.GetFull(restaurantId));
+        }
+
         [HttpGet("name")]
         public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetRestaurantsByName(string name, DateTime? dateTime, int zipCodeId = -1)
         {
@@ -54,6 +101,37 @@ namespace Tischreservierung.Controllers
             return Ok(restaurants);
         }
 
+        [HttpPost("categoriesOfRestaurant")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Category>>> PostCategories([FromBody] List<Category> categories)
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            _unitOfWork.Restaurants.UpdateCategories(categories, restaurantId);
+            await _unitOfWork.SaveChangesAsync();
+
+            var updatedCategories = await _unitOfWork.Restaurants.GetCategoriesOfRestaurant(restaurantId);
+            return Ok(updatedCategories);
+
+        }
+
+        [HttpGet("categoriesOfRestaurant")]
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategoriesOfRestaurant()
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            var categories = await _unitOfWork.Restaurants.GetCategoriesOfRestaurant(restaurantId);
+            return Ok(categories);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
@@ -68,12 +146,42 @@ namespace Tischreservierung.Controllers
         }
 
         [HttpPost]
+        [RequestSizeLimit(100_000_000)]
         public async Task<ActionResult<Restaurant>> PostRestaurant([FromBody] RestaurantPostDto dto)
         {
-            Restaurant restaurant = await _restaurantService.CreateRestaurant(dto);
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim == null)
+            {
+                return Unauthorized();
+            }
+
+            AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
+
+            Restaurant restaurant = await _restaurantService.CreateRestaurant(dto, user);
 
             await _unitOfWork.SaveChangesAsync();
             return Ok(restaurant.Id);
+        }
+
+        [HttpPost("cat")]
+        public async Task<ActionResult> AddCategory([FromBody] List<int> categories, int id)
+        {
+            _unitOfWork.Restaurants.AddCategories(id, categories);
+            await _unitOfWork.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPost("table")]
+        public async Task<ActionResult> AddTable([FromBody] List<int> tables, int id)
+        {
+            _unitOfWork.RestaurantTables.InsertAll(tables.Select(t => new RestaurantTable()
+            {
+                 RestaurantId = id,
+                 SeatPlaces = t
+            }).ToArray());
+            await _unitOfWork.SaveChangesAsync();
+            return Ok();
         }
 
         [HttpPut]

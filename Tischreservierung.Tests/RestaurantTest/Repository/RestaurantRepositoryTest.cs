@@ -52,7 +52,6 @@ namespace Tischreservierung.Tests.RestaurantTest.Repository
             var list = result.ToList();
             Assert.Single(list);
             Assert.Equal("Res1", list[0].Name);
-            Assert.Equal(1, list[0].ZipCodeId);
         }
     }
 }

@@ -10,6 +10,11 @@ namespace Persistence.Data.Repositories
         {
         }
 
+        public void AddEmployee(Restaurant restaurant, AuthUser user)
+        {
+            _dbContext.RestaurantUser.Add(new RestaurantUser() { Restaurant = restaurant, User = user });
+        }
+
         public async Task<AuthUser?> GetByTokenId(string tokenId)
         {
             return await _dbSet.SingleOrDefaultAsync(x => x.TokenId == tokenId);

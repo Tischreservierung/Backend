@@ -3,8 +3,9 @@ using Core.Models;
 using Core.Contracts;
 using Core.Dto;
 using Core.DTO;
+using System.Linq;
 
-namespace Persistence.Data.Repositories
+namespace Persistence.Data.RestaurantRepo
 {
     public class RestaurantRepository : GenericRepository<Restaurant>, IRestaurantRepository
     {
@@ -13,22 +14,37 @@ namespace Persistence.Data.Repositories
 
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByName(string name, int zipCodeId, DateTime? dateTime)
+        public async Task<IEnumerable<RestaurantDto>> GetRestaurantsByName(string name, int zipCodeId, DateTime? dateTime)
         {
+            //new RestaurantDto() { Description = "", Name = "", Id = "", Picture = ""}
+
             return await _dbSet.Where(r => (r.ZipCodeId == zipCodeId || zipCodeId == -1)
             && r.Name.ToLower().Contains(name.ToLower())
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => ((int)o.Day + 1) % 7 == (int)dateTime.Value.DayOfWeek && o.RestaurantId == r.Id))).ToListAsync();
+            .Any(o => ((int)o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
+                .Select(r => new RestaurantDto()
+                {
+                    Id = r.Id,
+                    Description = r.Description,
+                    Name = r.Name,
+                    Picture = _dbContext.RestaurantPictures.SingleOrDefault(p => p.Index == 0 && p.Restaurant!.Id == r.Id)
+                }).ToListAsync();
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsByCategories
+        public async Task<IEnumerable<RestaurantDto>> GetRestaurantsByCategories
             (int[] categories, int zipCodeId, DateTime? dateTime)
         {
             return await _dbContext.Restaurants.Where(r => (zipCodeId == -1 || r.ZipCodeId == zipCodeId)
             && (categories.Length == 0 || r.Categories.Any(c => categories.Contains(c.Id)))
             && (dateTime == null || _dbContext.RestaurantOpeningTimes
-            .Any(o => ((int)o.Day + 1) % 7 == (int)dateTime.Value.DayOfWeek && o.RestaurantId == r.Id)))
-                .ToListAsync();
+            .Any(o => ((int)o.Day + 1) % 7 == ((int)dateTime.Value.DayOfWeek) && o.RestaurantId == r.Id)))
+                .Select(r => new RestaurantDto()
+                {
+                    Id = r.Id,
+                    Description = r.Description,
+                    Name = r.Name,
+                    Picture = _dbContext.RestaurantPictures.SingleOrDefault(p => p.Index == 0 && p.Restaurant!.Id == r.Id)
+                }).ToListAsync();
         }
 
         public async Task<RestaurantViewDto?> GetRestaurantForViewById(int id)
@@ -75,6 +91,61 @@ namespace Persistence.Data.Repositories
                 .Where(x => x.UserId == employeeId)
                 .Select(x => x.RestaurantId)
                 .FirstOrDefaultAsync();
+        }
+
+        public void AddCategories(int id, List<int> categories)
+        {
+            var res = _dbContext.Restaurants.Single(r => r.Id == id);
+
+            res.Categories = _dbContext.Categories.Where(c => categories.Contains(c.Id)).ToList();
+
+            _dbContext.Restaurants.Update(res);
+
+        }
+
+        public async Task<RestaurantEditDto?> GetFull(int restaurantId)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == restaurantId).Select(r => new RestaurantEditDto()
+            {
+                Id = r.Id,
+                Name = r.Name,
+                Description = r.Description,
+                Address = r.Address,
+                StreetNr = r.StreetNr,
+                ZipCode = r.ZipCode!,
+                Categories = r.Categories,
+                Tables = r.Tables,
+                Openings = _dbContext.RestaurantOpeningTimes.Where(o => o.RestaurantId == r.Id).ToList(),
+                Pictures = _dbContext.RestaurantPictures.Where(p => p.RestaurantId == r.Id).ToList()
+            }).FirstAsync();
+        }
+
+        public async Task<RestaurantUpdateDto?> GetBasicDataOfRestaurant(int id)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == id).Select(r => new RestaurantUpdateDto()
+            {
+                Id = r.Id,
+                Name = r.Name,
+                Description = r.Description,
+                Address = r.Address,
+                StreetNr = r.StreetNr,
+                ZipCode = r.ZipCode!
+            }).SingleAsync();
+        }
+
+        public async Task<IEnumerable<Category>> GetCategoriesOfRestaurant(int restaurantId)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == restaurantId).Include(r => r.Categories)
+                .Select(r => r.Categories).SingleAsync();
+        }
+
+        public void UpdateCategories(List<Category> categories, int restaurantId)
+        {
+            var res = _dbContext.Restaurants.Include(r => r.Categories).Single(r => r.Id == restaurantId);
+
+            var cats = categories.Select(c => c.Id).ToList();
+            res.Categories = _dbContext.Categories.Where(c => cats.Contains(c.Id)).ToList();
+            _dbContext.Restaurants.Update(res);
         }
     }
 }

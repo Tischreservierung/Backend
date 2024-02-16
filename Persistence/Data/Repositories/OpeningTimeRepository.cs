@@ -18,7 +18,7 @@ namespace Persistence.Data.Repositories
 
         public async Task<IEnumerable<RestaurantOpeningTime>> GetByDayAndRestaurant(int id, DayOfWeek day)
         {
-            return await _dbSet.Where(oT => oT.Day == day && oT.RestaurantId == id).ToListAsync();
+            return await _dbSet.Where(oT => (((int)oT.Day) + 1) % 7 == ((int)day) && oT.RestaurantId == id).ToListAsync();
         }
 
         public async Task<IEnumerable<RestaurantOpeningTime>> GetByRestaurant(int id)

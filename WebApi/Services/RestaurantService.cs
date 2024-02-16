@@ -2,6 +2,7 @@
 using Core.Dto;
 using Core.Models;
 using Core.Paging;
+using NuGet.Packaging;
 
 namespace WebApi.Services
 {
@@ -15,7 +16,7 @@ namespace WebApi.Services
         }
 
 
-        public async Task<Restaurant> CreateRestaurant(RestaurantPostDto dto)
+        public async Task<Restaurant> CreateRestaurant(RestaurantPostDto dto, AuthUser user)
         {
             Restaurant restaurant = new()
             {
@@ -24,34 +25,39 @@ namespace WebApi.Services
                 StreetNr = dto.StreetNr,
                 ZipCodeId = dto.ZipCode!.Id,
                 Description = dto.Description,
+                Categories = _unitOfWork.RestaurantCategories.GetByCategories(dto.Categories)
             };
 
             RestaurantOpeningTime[] openingTimes = GetOpeningTimes(dto.Openings, restaurant);
-            RestaurantPicture[] pictures = StringToByteArray(dto.Pictures, restaurant);
+            List<RestaurantPicture> add = StringToByteArray(dto.Pictures, restaurant);
+            RestaurantPicture[] pictures = add.ToArray();
+            RestaurantTable[] table = dto.Tables
+                .Select(t => new RestaurantTable() { Restaurant = restaurant, SeatPlaces = t }).ToArray();
 
             _unitOfWork.Restaurants.Insert(restaurant);
             _unitOfWork.OpeningTimes.InsertAll(openingTimes);
+            _unitOfWork.Users.AddEmployee(restaurant, user);
             _unitOfWork.RestaurantPictures.InsertAll(pictures);
+            _unitOfWork.RestaurantTables.InsertAll(table);
             await _unitOfWork.SaveChangesAsync();
 
             return restaurant;
         }
 
-        private static RestaurantPicture[] StringToByteArray(string[] pictureStrings, Restaurant restaurant)
+        private static List<RestaurantPicture> StringToByteArray(string[] pictureStrings, Restaurant res)
         {
-            List<RestaurantPicture> pictures = new();
+            List<RestaurantPicture> ret = new();
+            int count = 0;
 
-            for (int i = 0; i < pictureStrings.Length; i++)
+            foreach (string pictureString in pictureStrings)
             {
-                pictures.Add(new RestaurantPicture()
-                {
-                    Picture = Convert.FromBase64String(pictureStrings[i]),
-                    Index = i,
-                    Restaurant = restaurant 
-                });
+                RestaurantPicture pic = new RestaurantPicture() { Picture = Convert.FromBase64String(pictureString), Index = count, Restaurant = res };
+                ret.Add(pic);
+
+                count++;
             }
 
-            return pictures.ToArray();
+            return ret;
         }
 
         public async Task<Restaurant?> UpdateRestaurant(RestaurantUpdateDto dto)
@@ -90,5 +96,6 @@ namespace WebApi.Services
                 Restaurant = restaurant
             }).ToArray();
         }
+
     }
 }

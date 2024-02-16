@@ -10,5 +10,10 @@ namespace Persistence.Data.Repositories
         {
 
         }
+
+        public List<Category> GetByCategories(Category[] categories)
+        {
+            return _dbContext.Categories.Where(c => categories.Contains(c)).ToList();
+        }
     }
 }

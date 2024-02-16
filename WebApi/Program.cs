@@ -99,6 +99,11 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("DeleteRestaurant", policy => policy.RequireClaim("permissions", "delete:restaurant"));
 });
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Limits.MaxRequestBodySize = 100_000_000;
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
