@@ -1,5 +1,4 @@
 using Core.Contracts;
-using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data.Repositories;
 
