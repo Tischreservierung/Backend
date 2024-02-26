@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Seeding\images\**" />
+    <EmbeddedResource Remove="Seeding\images\**" />
+    <None Remove="Seeding\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -30,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Seeding\images\" />
   </ItemGroup>
 
 </Project>

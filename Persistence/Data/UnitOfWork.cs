@@ -1,6 +1,8 @@
 using Core.Contracts;
+using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data.Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace Persistence.Data
 {
@@ -76,7 +78,21 @@ namespace Persistence.Data
 
         private void ValidateEntity(object entity)
         {
+            //if (entity is Reservation reservation)
+            //{
+            //    bool intersects = _dbContext.Reservations
+            //        .Where(x => x.CustomerId == reservation.CustomerId &&
+            //        x.ReservationDay.Date == reservation.ReservationDay.Date)
+            //        .Any(x => x.Intersects(reservation));
 
+            //    if (intersects)
+            //    {
+            //        throw new ValidationException(
+            //            new ValidationResult("Es existiert bereits eine Reservierung zu diesem Zeitpunkt!",
+            //                                 new string[] { nameof(reservation.StartTime), nameof(reservation.EndTime) }),
+            //            null, null);
+            //    }
+            //}
         }
     }
 }

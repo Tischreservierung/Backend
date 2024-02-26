@@ -35,5 +35,17 @@ namespace Core.Models
                 yield return new ValidationResult("Start and End dates cannot overlap!");
             }
         }
+
+        public bool Intersects(TimeSpan start, TimeSpan end)
+        {
+            return (StartTime < start && EndTime > start) ||
+                   (StartTime < end && EndTime > end) ||
+                   (StartTime >= start && EndTime <= end);
+        }
+
+        public bool Intersects(Reservation other)
+        {
+            return Intersects(other.StartTime, other.EndTime);
+        }
     }
 }

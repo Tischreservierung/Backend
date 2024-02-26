@@ -44,7 +44,7 @@ namespace WebApi.Services
             return reservation;
         }
 
-        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration)
+        public async Task<IEnumerable<ReservationOptionDto>> GetReservationOptions(int restaurantId, DateTime day, TimeSpan from, TimeSpan to, int seatPlaces, int duration, int userId)
         {
             List<ReservationOptionDto> reservationOptions = new();
 
@@ -96,16 +96,12 @@ namespace WebApi.Services
             var reservations = await _unitOfWork.Reservations.GetByRestaurantAndDay(restaurantId, day);
 
             return restaurantTables
-                .Where(t => reservations.Where(r => t.Id == r.RestaurantTableId)
-                    .All(r => !ReservationTimeIntersects(r, startTime, endTime))).FirstOrDefault();
+                .Where(t => reservations
+                    .Where(r => t.Id == r.RestaurantTableId)
+                    .All(r => !r.Intersects(startTime, endTime)))
+                .FirstOrDefault();
         }
 
-        private static bool ReservationTimeIntersects(Reservation reservation, TimeSpan start, TimeSpan end)
-        {
-            return (reservation.StartTime < start && reservation.EndTime > start) ||
-                        (reservation.StartTime < end && reservation.EndTime > end) ||
-                        (reservation.StartTime >= start && reservation.EndTime <= end);
-        }
 
         public async Task<Reservation?> CreateReservationManually(ReservationManualDto manualReservation, int restaurantId)
         {

@@ -151,12 +151,23 @@ namespace WebApi.Controllers
         [HttpGet("restaurant/{restaurantId}/options")]
         public async Task<ActionResult<IEnumerable<ReservationOptionDto>>> GetReservationOptions(int restaurantId, [FromQuery] ReservationOptionQueryParams queryParams)
         {
+            int userId = 0;
+            Claim? claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if (claim != null)
+            {
+                AuthUser user = await _authenticationService.GetAuthenticatedUser(claim);
+                userId = user.Id;
+            }
+
+
             var reservationOptions = await _reservationService.GetReservationOptions(restaurantId,
                                                                                      queryParams.Day.Date,
                                                                                      queryParams.From.TimeOfDay,
                                                                                      queryParams.To.TimeOfDay,
                                                                                      queryParams.SeatPlaces,
-                                                                                     queryParams.Duration);
+                                                                                     queryParams.Duration,
+                                                                                     userId);
 
             return Ok(reservationOptions);
         }
