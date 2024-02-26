@@ -118,6 +118,7 @@ namespace Tischreservierung.Controllers
 
         }
 
+        [Authorize]
         [HttpGet("categoriesOfRestaurant")]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategoriesOfRestaurant()
         {
@@ -129,6 +130,53 @@ namespace Tischreservierung.Controllers
 
             var categories = await _unitOfWork.Restaurants.GetCategoriesOfRestaurant(restaurantId);
             return Ok(categories);
+        }
+
+        [Authorize]
+        [HttpGet("picturesOfRestaurant")]
+        public async Task<ActionResult<IEnumerable<RestaurantPicture>>> GetPicturesOfRestaurant()
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            var pictures = await _unitOfWork.Restaurants.GetPicturesOfRestaurant(restaurantId);
+            return Ok(pictures);
+        }
+
+        [HttpPost("picturesOfRestaurant")]
+        [RequestSizeLimit(100_000_000)]
+        public async Task<ActionResult<RestaurantPicture>> PostPicture([FromBody] List<RestaurantPicture> pictures)
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            for (int i = 0; i < pictures.Count; i++)
+            {
+                pictures[i].Index = i;
+            }
+
+            _unitOfWork.Restaurants.UpdatePictures(pictures, restaurantId);
+            await _unitOfWork.SaveChangesAsync();
+
+            return Ok(pictures.Count);
+        }
+
+        private static List<byte[]> StringToByteArray(List<string> pictureStrings)
+        {
+            List<byte[]> ret = new();
+
+            foreach (string pictureString in pictureStrings)
+            {
+                ret.Add(Convert.FromBase64String(pictureString));
+            }
+
+            return ret;
         }
 
         [HttpGet("{id}")]

@@ -18,5 +18,7 @@ namespace Core.Contracts
         Task<RestaurantUpdateDto?> GetBasicDataOfRestaurant(int id);
         Task<IEnumerable<Category>> GetCategoriesOfRestaurant(int restaurantId);
         void UpdateCategories(List<Category> categories, int restaurantId);
+        Task<IEnumerable<RestaurantPicture>> GetPicturesOfRestaurant(int restaurantId);
+        void UpdatePictures(List<RestaurantPicture> pictures, int restaurantId);
     }
 }

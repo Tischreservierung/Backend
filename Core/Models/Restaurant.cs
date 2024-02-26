@@ -30,5 +30,8 @@ namespace Core.Models
         public List<RestaurantTable> Tables { get; set; } = new List<RestaurantTable>();
         [JsonIgnore]
         public List<Category> Categories { get; set; } = new List<Category>();
+
+        [JsonIgnore]
+        public List<RestaurantPicture> Pictures { get; set; } = new();
     }
 }

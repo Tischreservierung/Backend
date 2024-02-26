@@ -145,5 +145,19 @@ namespace Persistence.Data.Repositories
             res.Categories = _dbContext.Categories.Where(c => cats.Contains(c.Id)).ToList();
             _dbContext.Restaurants.Update(res);
         }
+
+        public async Task<IEnumerable<RestaurantPicture>> GetPicturesOfRestaurant(int restaurantId)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == restaurantId).Include(r => r.Pictures)
+                .Select(r => r.Pictures).SingleAsync();
+        }
+
+        public void UpdatePictures(List<RestaurantPicture> pictures, int restaurantId)
+        {
+            var res = _dbContext.Restaurants.Include(r => r.Pictures).Single(r => r.Id == restaurantId);
+
+            res.Pictures = pictures;
+            _dbContext.Restaurants.Update(res);
+        }
     }
 }
