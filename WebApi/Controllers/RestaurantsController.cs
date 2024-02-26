@@ -4,7 +4,6 @@ using Core.Contracts;
 using Core.Dto;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using Core.DTO;
 
 namespace Tischreservierung.Controllers
 {

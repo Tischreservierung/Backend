@@ -1,6 +1,4 @@
 ﻿using Core.Models;
-using Microsoft.IdentityModel.Protocols;
-using Persistence.Data.RestaurantRepo;
 
 namespace Persistence.Seeding
 {

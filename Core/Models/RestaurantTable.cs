@@ -8,6 +8,7 @@ namespace Core.Models
     {
         [Range(1, 20)]
         public int SeatPlaces { get; set; }
+
         [ForeignKey(nameof(Restaurant))]
         public int RestaurantId { get; set; }
         [JsonIgnore]

@@ -4,7 +4,7 @@ using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Core.Util;
 
-namespace Persistence.Data
+namespace Persistence.Data.Repositories
 {
     public class ReservationRepository : GenericRepository<Reservation>, IReservationRepository
     {
@@ -51,13 +51,23 @@ namespace Persistence.Data
                     CustomerName = r.Customer!.UserName,
                     Persons = r.Persons,
                     SeatPlaces = r.RestaurantTable.SeatPlaces
-                }). OrderBy(r => r.Day.Date)
+                }).OrderBy(r => r.Day.Date)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Reservation>> GetByRestaurantAndDay(int restaurantId, DateTime day)
         {
             return await _dbSet.Where(r => r.RestaurantTable!.RestaurantId == restaurantId && r.ReservationDay == day).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Reservation>> GetByRestaurantTable(int restaurantTableId)
+        {
+            return await _dbSet.Where(r => r.RestaurantTableId == restaurantTableId).ToListAsync();
+        }
+
+        public async Task<bool> RestaurantTableHasReservation(int restaurantTableId)
+        {
+            return await _dbSet.Where(r => r.ReservationDay >= DateTime.Now).AnyAsync(r => r.RestaurantTableId == restaurantTableId);
         }
     }
 }

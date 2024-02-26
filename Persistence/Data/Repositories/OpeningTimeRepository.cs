@@ -2,13 +2,13 @@
 using Core.Models;
 using Core.Contracts;
 
-namespace Persistence.Data.RestaurantRepo
+namespace Persistence.Data.Repositories
 {
     public class OpeningTimeRepository : GenericRepository<RestaurantOpeningTime>, IOpeningTimeRepository
     {
         public OpeningTimeRepository(OnlineReservationContext context) : base(context)
         {
-            
+
         }
 
         public async Task<IEnumerable<RestaurantOpeningTime>> GetByDay(DayOfWeek day)
