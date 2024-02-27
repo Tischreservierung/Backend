@@ -1,4 +1,5 @@
 ﻿using Core.Dto;
+using Core.DTO;
 using Core.Models;
 
 namespace Core.Contracts
@@ -20,5 +21,6 @@ namespace Core.Contracts
         void UpdateCategories(List<Category> categories, int restaurantId);
         Task<IEnumerable<RestaurantPicture>> GetPicturesOfRestaurant(int restaurantId);
         void UpdatePictures(List<RestaurantPicture> pictures, int restaurantId);
+        Task<IEnumerable<RestaurantTableDto>> GetTablesOfRestaurant(int restaurantId);
     }
 }

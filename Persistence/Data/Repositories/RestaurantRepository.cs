@@ -2,6 +2,7 @@
 using Core.Models;
 using Core.Contracts;
 using Core.Dto;
+using Core.DTO;
 
 namespace Persistence.Data.Repositories
 {
@@ -158,6 +159,19 @@ namespace Persistence.Data.Repositories
 
             res.Pictures = pictures;
             _dbContext.Restaurants.Update(res);
+        }
+
+        public async Task<IEnumerable<RestaurantTableDto>> GetTablesOfRestaurant(int restaurantId)
+        {
+            return await _dbContext.Restaurants.Where(r => r.Id == restaurantId).Include(r => r.Tables)
+               .Select(r => r.Tables.Select(t => new RestaurantTableDto()
+               {
+                   Id = t.Id,
+                   SeatPlaces = t.SeatPlaces,
+                   LastReservation = _dbContext.Reservations.Where(r => r.RestaurantTableId == t.Id)
+                                .Select(r => r.ReservationDay).OrderBy(r => r).Last(),
+                   ClosedAt = t.ClosedAt
+               }).ToList()).SingleAsync();
         }
     }
 }
