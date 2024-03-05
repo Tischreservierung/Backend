@@ -12,5 +12,7 @@ namespace Core.Contracts
         Task<IEnumerable<Reservation>> GetByRestaurantTable(int restaurantTableId);
 
         Task<bool> RestaurantTableHasReservation(int restaurantTableId);
+
+        Task CancelReservation(int reservation_id);
     }
 }

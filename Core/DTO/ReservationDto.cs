@@ -2,6 +2,7 @@
 {
     public class ReservationDto
     {
+        public int ReservationId { get; set; }
         public DateTime Day { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -12,5 +13,6 @@
         public string CustomerName { get; set; } = string.Empty;
         public int Persons { get; set; }
         public int SeatPlaces { get; set; }
+
     }
 }

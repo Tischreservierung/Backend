@@ -12,12 +12,23 @@ namespace Persistence.Data.Repositories
         {
         }
 
+        public async Task CancelReservation(int reservation_id)
+        {
+            Reservation? reservation = await _dbSet.Where(x => x.Id == reservation_id).FirstOrDefaultAsync();
+
+            if(reservation == null)
+            {
+                _dbSet.Remove(reservation!);
+            }
+        }
+
         public async Task<IEnumerable<ReservationDto>> GetByCustomer(int customerId)
         {
             return await _dbSet.Where(r => r.CustomerId == customerId)
                 .Include(r => r.RestaurantTable!.Restaurant)
                 .Select(r => new ReservationDto()
                 {
+                    ReservationId = r.Id,
                     CustomerId = r.CustomerId,
                     RestaurantId = r.RestaurantTable!.RestaurantId,
                     Day = r.ReservationDay,
