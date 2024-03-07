@@ -4,6 +4,7 @@ using Core.Contracts;
 using Core.Dto;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Core.DTO;
 
 namespace Tischreservierung.Controllers
 {
@@ -130,6 +131,20 @@ namespace Tischreservierung.Controllers
 
             var categories = await _unitOfWork.Restaurants.GetCategoriesOfRestaurant(restaurantId);
             return Ok(categories);
+        }
+
+        [Authorize]
+        [HttpGet("tablesOfRestaurant")]
+        public async Task<ActionResult<IEnumerable<RestaurantTableDto>>> GetTablesOfRestaurant()
+        {
+            var user = await GetUser();
+
+            if (user == null)
+                return Unauthorized();
+            var restaurantId = await _unitOfWork.Restaurants.GetRestaurantIdByEmployee(user.Id);
+
+            var tables = await _unitOfWork.Restaurants.GetTablesOfRestaurant(restaurantId);
+            return Ok(tables);
         }
 
         [Authorize]
